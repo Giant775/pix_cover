@@ -1,0 +1,327 @@
+{% load static %}
+{% get_static_prefix as static_prefix %}
+{% include 'pixcoverapp/layout/profile_header.html' %}
+
+<body>
+    <div class="site-main">
+        <header id="mainHeader" class="site-header">
+            <div class="header-container">
+                <div class="container-fluid">
+                    <nav class="navbar">
+                        {% include 'pixcoverapp/layout/site_logo.html' %}
+                        {% include 'pixcoverapp/layout/main_menu.html' %}
+                        {% include 'pixcoverapp/layout/header_account_info.html' %}
+                    </nav>
+                </div>
+            </div>
+        </header><!-- #Header -->
+
+        <!-- Mobile Main Menu Start -->
+        {% include 'pixcoverapp/layout/main_menu_mob.html' %}
+        <!-- Mobile Main Menu End -->
+
+        <main class="main-content pix-plans-page">
+            {% with image_url=static_prefix|add:'images/plan-background-bg.jpg' %}
+            <div class="pix-plans-page-bg loading pix-lazyload-bgi" style="background-image: url({{image_url}})">
+                <span class="photo-mask"></span>
+                <img class="lazyload hide" src="{{image_url}}" alt="BannerImage">
+            </div>
+            {%endwith%}
+
+            <div class="container">
+                <div class="plans-head">
+                    <h2 class="font-s40">Simple, transparent pricing</h2>
+                    <p>No contracts. No Surprise fees.</p>
+                </div>
+                <div class="pix-plans-container">
+                    <div class="pix-overflow-content pix-custom-scrollbar">
+                        <div class="pix-plans-content">
+                            <div class="pix-row">
+                                <div class="pix-col-4">
+                                    <div class="pix-plans-col-item">
+                                        <ul>
+                                            <li>Portfolio</li>
+                                            <li>Chat</li>
+                                            <li>Profile Views</li>
+                                            <li>Profile</li>
+                                            <li>Apply for work</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="pix-col-4">
+                                    <div class="pix-plans-col-item">
+                                        <div class="pix-plans-title">
+                                            <h2 class="font-s50">Free</h2>
+                                        </div>
+                                        <ul>
+                                            <li>
+                                                <div class="pix-plans-list-item">
+                                                    <span class="plan-list-icon">
+                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M10.5858 13.4142L7.75735 10.5858L6.34314 12L10.5858 16.2427L17.6568 9.1716L16.2426 7.75739L10.5858 13.4142Z" fill="currentColor" />
+                                                        </svg>
+                                                    </span>
+                                                    <span class="plan-list-text">Up to 10 Photos</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="pix-plans-list-item">
+                                                    <span class="plan-list-icon">
+                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M10.5858 13.4142L7.75735 10.5858L6.34314 12L10.5858 16.2427L17.6568 9.1716L16.2426 7.75739L10.5858 13.4142Z" fill="currentColor" />
+                                                        </svg>
+                                                    </span>
+                                                    <span class="plan-list-text">2 Chats per Month</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="pix-plans-list-item">
+                                                    <span class="plan-list-icon">
+                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M10.5858 13.4142L7.75735 10.5858L6.34314 12L10.5858 16.2427L17.6568 9.1716L16.2426 7.75739L10.5858 13.4142Z" fill="currentColor" />
+                                                        </svg>
+                                                    </span>
+                                                    <span class="plan-list-text">5 per month</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="pix-plans-list-item">
+                                                    <span class="plan-list-icon">
+                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M10.5858 13.4142L7.75735 10.5858L6.34314 12L10.5858 16.2427L17.6568 9.1716L16.2426 7.75739L10.5858 13.4142Z" fill="currentColor" />
+                                                        </svg>
+                                                    </span>
+                                                    <span class="plan-list-text">Up to 10 search</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="pix-plans-list-item">
+                                                    <span class="plan-list-icon">
+                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M10.5858 13.4142L7.75735 10.5858L6.34314 12L10.5858 16.2427L17.6568 9.1716L16.2426 7.75739L10.5858 13.4142Z" fill="currentColor" />
+                                                        </svg>
+                                                    </span>
+                                                    <span class="plan-list-text">Up to 2 jobs</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="pix-col-4">
+                                    <div class="pix-plans-col-item plans-bdr-left">
+                                        <div class="pix-plans-title">
+                                            <h2 class="font-s50">$15 <small>Month</small></h2>
+                                        </div>
+                                        <ul>
+                                            <li>
+                                                <div class="pix-plans-list-item">
+                                                    <span class="plan-list-icon">
+                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M10.5858 13.4142L7.75735 10.5858L6.34314 12L10.5858 16.2427L17.6568 9.1716L16.2426 7.75739L10.5858 13.4142Z" fill="currentColor" />
+                                                        </svg>
+                                                    </span>
+                                                    <span class="plan-list-text">Unlimited</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="pix-plans-list-item">
+                                                    <span class="plan-list-icon">
+                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M10.5858 13.4142L7.75735 10.5858L6.34314 12L10.5858 16.2427L17.6568 9.1716L16.2426 7.75739L10.5858 13.4142Z" fill="currentColor" />
+                                                        </svg>
+                                                    </span>
+                                                    <span class="plan-list-text">Unlimited</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="pix-plans-list-item">
+                                                    <span class="plan-list-icon">
+                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M10.5858 13.4142L7.75735 10.5858L6.34314 12L10.5858 16.2427L17.6568 9.1716L16.2426 7.75739L10.5858 13.4142Z" fill="currentColor" />
+                                                        </svg>
+                                                    </span>
+                                                    <span class="plan-list-text">Unlimited</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="pix-plans-list-item">
+                                                    <span class="plan-list-icon">
+                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M10.5858 13.4142L7.75735 10.5858L6.34314 12L10.5858 16.2427L17.6568 9.1716L16.2426 7.75739L10.5858 13.4142Z" fill="currentColor" />
+                                                        </svg>
+                                                    </span>
+                                                    <span class="plan-list-text">Unlimited</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="pix-plans-list-item">
+                                                    <span class="plan-list-icon">
+                                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M10.5858 13.4142L7.75735 10.5858L6.34314 12L10.5858 16.2427L17.6568 9.1716L16.2426 7.75739L10.5858 13.4142Z" fill="currentColor" />
+                                                        </svg>
+                                                    </span>
+                                                    <span class="plan-list-text">Unlimited</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pix-row">
+                                <div class="pix-col-4"></div>
+                                <div class="pix-col-4">
+                                    <div class="plan-btn-group">
+                                        <a class="pix-btn-normal" href="#">TRY IT</a>
+                                    </div>
+                                </div>
+                                <div class="pix-col-4">
+                                    <div class="plan-btn-group">
+                                        <a class="pix-btn-normal" href="#">GET HIRED</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="resView" style="display: none !important;">
+                        <div class="plans-mob-item">
+                            <div class="pix-plans-title">
+                                <h2 class="font-s50">Free</h2>
+                            </div>
+                            <ul>
+                                <li>
+                                    <span class="plans-text">Portfolio</span>
+                                    <div class="pix-plans-list-item">
+                                        <span class="plan-list-icon">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10.5858 13.4142L7.75735 10.5858L6.34314 12L10.5858 16.2427L17.6568 9.1716L16.2426 7.75739L10.5858 13.4142Z" fill="currentColor" />
+                                            </svg>
+                                        </span>
+                                        <span class="plan-list-text">Up to 10 Photos</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="plans-text">Chat</span>
+                                    <div class="pix-plans-list-item">
+                                        <span class="plan-list-icon">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10.5858 13.4142L7.75735 10.5858L6.34314 12L10.5858 16.2427L17.6568 9.1716L16.2426 7.75739L10.5858 13.4142Z" fill="currentColor" />
+                                            </svg>
+                                        </span>
+                                        <span class="plan-list-text">2 Chats per Month</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="plans-text">Profile Views</span>
+                                    <div class="pix-plans-list-item">
+                                        <span class="plan-list-icon">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10.5858 13.4142L7.75735 10.5858L6.34314 12L10.5858 16.2427L17.6568 9.1716L16.2426 7.75739L10.5858 13.4142Z" fill="currentColor" />
+                                            </svg>
+                                        </span>
+                                        <span class="plan-list-text">5 per month</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="plans-text">Profile</span>
+                                    <div class="pix-plans-list-item">
+                                        <span class="plan-list-icon">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10.5858 13.4142L7.75735 10.5858L6.34314 12L10.5858 16.2427L17.6568 9.1716L16.2426 7.75739L10.5858 13.4142Z" fill="currentColor" />
+                                            </svg>
+                                        </span>
+                                        <span class="plan-list-text">Up to 10 search</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="plans-text">Apply for work</span>
+                                    <div class="pix-plans-list-item">
+                                        <span class="plan-list-icon">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10.5858 13.4142L7.75735 10.5858L6.34314 12L10.5858 16.2427L17.6568 9.1716L16.2426 7.75739L10.5858 13.4142Z" fill="currentColor" />
+                                            </svg>
+                                        </span>
+                                        <span class="plan-list-text">Up to 2 jobs</span>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <div class="plan-btn-group">
+                                <a class="pix-btn-normal" href="#">TRY IT</a>
+                            </div>
+                        </div>
+                        <div class="plans-mob-item">
+                            <div class="pix-plans-title">
+                                <h2 class="font-s50">$15 <small>Month</small></h2>
+                            </div>
+                            <ul>
+                                <li>
+                                    <span class="plans-text">Portfolio</span>
+                                    <div class="pix-plans-list-item">
+                                        <span class="plan-list-icon">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10.5858 13.4142L7.75735 10.5858L6.34314 12L10.5858 16.2427L17.6568 9.1716L16.2426 7.75739L10.5858 13.4142Z" fill="currentColor" />
+                                            </svg>
+                                        </span>
+                                        <span class="plan-list-text">Unlimited</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="plans-text">Chat</span>
+                                    <div class="pix-plans-list-item">
+                                        <span class="plan-list-icon">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10.5858 13.4142L7.75735 10.5858L6.34314 12L10.5858 16.2427L17.6568 9.1716L16.2426 7.75739L10.5858 13.4142Z" fill="currentColor" />
+                                            </svg>
+                                        </span>
+                                        <span class="plan-list-text">Unlimited</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="plans-text">Profile Views</span>
+                                    <div class="pix-plans-list-item">
+                                        <span class="plan-list-icon">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10.5858 13.4142L7.75735 10.5858L6.34314 12L10.5858 16.2427L17.6568 9.1716L16.2426 7.75739L10.5858 13.4142Z" fill="currentColor" />
+                                            </svg>
+                                        </span>
+                                        <span class="plan-list-text">Unlimited</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="plans-text">Profile</span>
+                                    <div class="pix-plans-list-item">
+                                        <span class="plan-list-icon">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10.5858 13.4142L7.75735 10.5858L6.34314 12L10.5858 16.2427L17.6568 9.1716L16.2426 7.75739L10.5858 13.4142Z" fill="currentColor" />
+                                            </svg>
+                                        </span>
+                                        <span class="plan-list-text">Unlimited</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span class="plans-text">Apply for work</span>
+                                    <div class="pix-plans-list-item">
+                                        <span class="plan-list-icon">
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10.5858 13.4142L7.75735 10.5858L6.34314 12L10.5858 16.2427L17.6568 9.1716L16.2426 7.75739L10.5858 13.4142Z" fill="currentColor" />
+                                            </svg>
+                                        </span>
+                                        <span class="plan-list-text">Unlimited</span>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="plan-btn-group">
+                                <a class="pix-btn-normal" href="#">GET HIRED</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div><!-- /site-main -->
+
+      <!-- JS Links -->
+    {% include 'pixcoverapp/layout/js.html' %}
+</body>
+</html>

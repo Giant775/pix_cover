@@ -1,0 +1,255 @@
+{% load static %}
+{% get_static_prefix as static_prefix %}
+{% include 'pixcoverapp/layout/profile_header.html' %}
+
+<body class="bg-gray">
+    <div class="site-main">
+        <header id="mainHeader" class="site-header">
+            <div class="header-container">
+                <div class="container-fluid">
+                    <nav class="navbar">
+                        {% include 'pixcoverapp/layout/site_logo.html' %}
+                        {% include 'pixcoverapp/layout/main_menu.html' %}
+                        {% include 'pixcoverapp/layout/header_account_info.html' %}
+                    </nav>
+                </div>
+            </div>
+        </header><!-- #Header -->
+
+
+        <!-- Mobile Main Menu Start -->
+        {% include 'pixcoverapp/layout/main_menu_mob.html' %}
+        <!-- Mobile Main Menu End -->
+
+
+        <main class="main-content pix-profile-page">
+            <div class="container">
+                {% include 'pixcoverapp/layout/pix_profile_header.html' with nav_title='settings' %}
+
+                <div class="pix-setting-container">
+                    <div class="pix-profile-content">
+                        <div class="profile-page-menu">
+                            {% include 'pixcoverapp/layout/profile_navbar.html'  with nav_title='settings' %}
+                            <a class="back-link" href="/profile-visitor">Back to profile</a>
+                        </div>
+
+                        <div class="work-setting-content">
+                            <div class="white-box-container">
+                                <form method="post" class="psettings">
+                                    {% csrf_token %}
+                                    {% if error and error == 1 %} 
+                                    <h4 class="clr-red">{{ message }}</h4>
+                                {% endif%}
+                                {% if error and error == 2 %} 
+                                <h4 >{{ message }}</h4>
+                                {% endif%}
+                               
+                                    <div class="pix-setting-form">
+                                        <div class="pix-setting-header">
+                                            <div class="pix-tab-menu">
+                                                <ul>
+                                                    <li><a class="pix-setting-menu-item active" data-pixtab="workSettingPersonal" href="#">Personal</a></li>
+                                                    <li><a class="pix-setting-menu-item" data-pixtab="workSettingPublic" href="#">Public</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="pix-change-psw-btn">
+                                                <a class="pix-setting-menu-item" href="#">Change Password</a>
+                                            </div>
+                                        </div>
+
+                                        <div id="workSettingPersonal" class="pix-tab-content pix-collapse pix-show">
+                                            <div class="pix-form-content">
+                                                <div class="pix-form-block">
+                                                    <div class="width-p40">
+                                                        <input class="pix-form-control"  type="text" style="display:none" name="user_id"value="{{user.id}}">
+                                                        <input class="pix-form-control" type="text" placeholder="Full Name" name="fullname" value="{{user.fullname}}">
+                                                    </div>
+                                                </div>
+
+                                                <div class="pix-form-block">
+                                                    <div class="width-p40">
+                                                        
+                                                        <input class="pix-form-control" type="text" placeholder="Phone" name="phone"value="{{user.phone_number}}">
+                                                        <span class="pix-form-inst-text">Your phone is for verification purpose only. It will not be shown anywhere.</span>
+                                                    </div>
+                                                </div>
+                                                <div class="pix-form-block">
+                                                    <div class="width-p40">
+                                                        <input class="pix-form-control" type="email" placeholder="Email" name="email" value="{{user.email}}">
+                                                        <span class="pix-form-inst-text">We will not share or expose your email</span>
+                                                    </div>
+                                                </div>
+                                                <div class="pix-form-block">
+                                                    <div class="width-p40">
+                                                        <div class="pix-form-block">
+                                                            <div class="width-p45">
+                                                                <input class="pix-form-control" type="text" placeholder="Age" name="age" value="{{user.age}}">
+                                                            </div>
+                                                            <div class="width-p45">
+                                                                <div class="pix-form-group select2-parent">
+                                                                    <select id="workSettingSelectSex" class="pix-form-control pixSelect2" name="gender">
+                                                                        <!-- <option value="{{user.gender}}">Sex</option> -->
+                                                                        <option value='0' {% if user.gender == 0 %} selected {% endif %}>Male</option>
+                                                                        <option value='1' {% if user.gender == 1 %} selected {% endif %}>Female</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="pix-form-footer">
+                                                    <button class="pix-btn btn-h60" type="submit"><span class="pix-btn-text">Save</span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div id="workSettingPublic" class="pix-tab-content pix-collapse">
+                                            <div class="pix-form-content">
+                                                <div class="pix-form-block">
+                                                    <div class="width-p40">
+                                                        <input class="pix-form-control" type="text" name="name" placeholder="Full Name" value="{{user.fullname}}">
+                                                    </div>
+                                                </div>
+
+                                                <div class="pix-form-group">
+                                                    <label class="input-label">Location</label>
+                                                    
+                                                    <div class="pix-form-block">
+                                                        <div class="width-p40 select2-parent">
+                                                            <!-- <input class="pix-form-control" type="text" name="location1" placeholder="Country" value="{{user.location1}}"> -->
+                                                            <select class="pix-form-control pixSelect2" name="location1">
+                                                                {% for x in countries %}
+                                                                    {% if user.location1 == x %}
+                                                                        <option value="{{x}}" selected>{{x}}</option>
+                                                                    {% else %}
+                                                                        <option value="{{x}}">{{x}}</option>
+                                                                    {% endif %}
+                                                                {% endfor %}
+                                                            </select>
+                                                        </div>
+                                                        <div class="width-p30 select2-parent">
+                                                            <input class="pix-form-control" type="text" name="location2" placeholder="State" value="{{user.location2}}">
+                                                            <!-- <select class="pix-form-control pixSelect2" name="state">
+                                                                <option value="0">State</option>
+                                                                <option value="miami">Miami</option>
+                                                                <option value="ny">NY</option>
+                                                            </select> -->
+                                                        </div>
+                                                        <div class="width-p30 select2-parent">
+                                                            <input class="pix-form-control" type="text" name="location3" placeholder="City" value="{{user.location3}}">
+                                                            <!-- <select class="pix-form-control pixSelect2" name="city">
+                                                                <option value="0">City</option>
+                                                                <option value="miami">Miami</option>
+                                                                <option value="ny">NY</option>
+                                                            </select> -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="pix-form-block">
+                                                    <div class="width-p40 select2-parent">
+                                                        <input class="pix-form-control" type="text" name="location4" placeholder="Street Address" value="{{user.location4}}">
+                                                        <!-- <select class="pix-form-control pixSelect2" name="profession">
+                                                            <option value="0">Profession</option>
+                                                            <option value="photogrpher">Photogrpher</option>
+                                                            <option value="actors">Actors</option>
+                                                            <option value="models">Models</option>
+                                                        </select> -->
+                                                    </div>
+                                                </div>
+                                                <div class="pix-form-block">
+                                                    <div class="width-p100">
+                                                        <label class="input-label">About</label>
+                                                        <textarea class="pix-form-control" name="about" id="aboutyou" cols="30" rows="10">{{user.description}}</textarea>
+                                                    </div>
+                                                </div>
+
+                                                <div class="pix-form-block">
+                                                    <div class="width-p40 select2-parent">
+                                                        <label class="input-label">I am one of </label>
+                                                        <select class="pix-form-control pixSelect2" name="category_id">
+                                                            {% for category_item in categories %} 
+                                                                {% if user.category == category_item.id %}
+                                                                    <option value="{{category_item.id}}" selected>{{category_item.category}}</option>                                                
+                                                                {% else %}
+                                                                    <option value="{{category_item.id}}">{{category_item.category}}</option>                                                
+                                                                {% endif %}
+                                                            {% endfor %}
+                                                        </select>
+                                                    </div>
+                                                    <div class="width-p50">
+                                                        <label class="input-label">Available for</label>
+                                                        <div class="pix-select-box">
+                                                            <span class="select-list-title">Any/All</span>
+                                                            <div class="pix-select-dropdown">
+                                                                <ul class="select-lists">
+                                                                    {% for skill in skills %} 
+                                                                    <li class="select-list-item">
+                                                                        {% if skill.id in user.skills %} 
+                                                                            <input id="{{skill.skill}}" name="checkbox_{{skill.skill}}" type="checkbox" checked>
+                                                                        {% else %}
+                                                                            <input id="{{skill.skill}}" name="checkbox_{{skill.skill}}" type="checkbox">
+                                                                        {% endif %}
+                                                                        <label for="{{skill.skill}}">{{skill.skill}}</label>
+                                                                    </li>
+                                                                    {% endfor %} 
+                                                                    <!-- <li class="select-list-item">
+                                                                        <input id="avl_runway" name="avl_runway" type="checkbox" value="Runway" checked>
+                                                                        <label for="avl_runway">Runway</label>
+                                                                    </li>
+                                                                    <li class="select-list-item">
+                                                                        <input id="avl_sport" name="avl_sport" type="checkbox" value="Sport">
+                                                                        <label for="avl_sport">Sport</label>
+                                                                    </li>
+                                                                    <li class="select-list-item">
+                                                                        <input id="avl_casual" name="avl_casual" type="checkbox" value="Casual" checked>
+                                                                        <label for="avl_casual">Casual</label>
+                                                                    </li>
+                                                                    <li class="select-list-item">
+                                                                        <input id="avl_swimwear" name="avl_swimwear" type="checkbox" value="Swimwear">
+                                                                        <label for="avl_swimwear">Swimwear</label>
+                                                                    </li>
+                                                                    <li class="select-list-item">
+                                                                        <input id="avl_print" name="avl_print" type="checkbox" value="Print" checked>
+                                                                        <label for="avl_print">Print</label>
+                                                                    </li>
+                                                                    <li class="select-list-item">
+                                                                        <input id="avl_hair" name="avl_hair" type="checkbox" value="Hair">
+                                                                        <label for="avl_hair">Hair</label>
+                                                                    </li>
+                                                                    <li class="select-list-item">
+                                                                        <input id="avl_makeup" name="avl_makeup" type="checkbox" value="Makeup" checked>
+                                                                        <label for="avl_makeup">Makeup</label>
+                                                                    </li>
+                                                                    <li class="select-list-item">
+                                                                        <input id="avl_parts_modeling" name="avl_parts_modeling" type="checkbox" value="Parts Modeling">
+                                                                        <label for="avl_parts_modeling">Parts Modeling</label>
+                                                                    </li> -->
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="pix-form-footer">
+                                                    <button class="pix-btn btn-h60" type="submit"><span class="pix-btn-text">Save</span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+
+        {% include 'pixcoverapp/layout/footer.html' %}
+    </div><!-- /site-main -->
+
+    <!-- JS Links -->
+    {% include 'pixcoverapp/layout/js.html' %}
+</body>
+</html>

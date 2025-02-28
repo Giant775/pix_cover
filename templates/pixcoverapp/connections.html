@@ -1,0 +1,758 @@
+{% load static %}
+{% get_static_prefix as static_prefix %}
+{% include 'pixcoverapp/layout/profile_header.html' %}
+
+<body>
+    <div class="site-main">
+        <header id="mainHeader" class="site-header">
+            <div class="header-container">
+                <div class="container-fluid">
+                    <nav class="navbar">
+                        {% include 'pixcoverapp/layout/site_logo.html' %}
+                        {% include 'pixcoverapp/layout/main_menu.html' %}
+                        {% include 'pixcoverapp/layout/header_account_info.html' %}
+          
+
+                    </nav>
+                </div>
+            </div>
+        </header><!-- #Header -->
+
+        <!-- Mobile Main Menu Start -->
+        {% include 'pixcoverapp/layout/main_menu_mob.html' %}
+        <!-- Mobile Main Menu End -->
+
+        <main class="main-content pix-profile-page">
+            <div class="container">
+                {% include 'pixcoverapp/layout/pix_profile_header.html' with nav_title='connections' %}
+
+                <div class="pix-profile-content">
+                    <div class="profile-page-menu">
+                        {% include 'pixcoverapp/layout/profile_navbar.html' with nav_title='connections' %}
+
+                        <div class="pix-profile-tabmenu">
+                            <div class="pix-tab-menu">
+                                <ul>
+                                    <li>
+                                        <a class="pix-setting-menu-item active" data-pixtab="pixProfileFollowers" href="#">
+                                            <span class="tabmenu-text">Followers</span>
+                                            <span class="tabmenu-num">2M</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="pix-setting-menu-item" data-pixtab="pixProfileFollowing" href="#">
+                                            <span class="tabmenu-text">Following</span>
+                                            <span class="tabmenu-num">98</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% with profile5=static_prefix|add:'images/user-profile-img-5.png' profile4=static_prefix|add:'images/user-profile-img-4.png' profile3=static_prefix|add:'images/user-profile-img-3.png' profile1=static_prefix|add:'images/user-profile-img.png' profile2=static_prefix|add:'images/user-profile-img-2.png'  %}
+                    <div class="connection-page-content">
+                        <div class="pix-src-content">
+                            <div class="pix-post-container">
+                                <div id="pixProfileFollowers" class="pix-tab-content pix-collapse pix-show">
+                                    <div class="pix-profile-src-block pix-row">
+                                        <div class="pix-col-3 profile-src-col">
+                                            <div class="pix-profile-src-item pix-profile-img-item">
+                                                <div class="pix-profile-cover-img loading pix-lazyload-img">
+                                                    <span class="photo-mask"></span>
+                                                    <img class="lazyload" src="{% static 'images/profile-cover-img-01.jpg' %}" width="800" height="500" alt="Images">
+                                                    <div class="pix-profile-photo" style="background-image: url({{profile2}});"></div> 
+                                                </div>
+                                                <div class="pix-profile-src-desc">
+                                                    <h4 class="profile-name">Alexa P. <span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
+                                                    <span class="profile-title">Model</span>
+                                                </div>
+                                                <div class="pix-profile-src-foot">
+                                                    <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="pix-col-3 profile-src-col">
+                                            <div class="pix-profile-src-item">
+                                                <div class="pix-profile-cover-img loading pix-lazyload-img">
+                                                    <span class="photo-mask"></span>
+                                                    <img class="lazyload" src="{% static 'images/profile-cover-img-02.jpg' %}" width="800" height="500" alt="Images">
+                                                    <div class="pix-profile-photo" style="background-image: url({{profile3}});"></div>
+                                                </div>
+                                                <div class="pix-profile-src-desc">
+                                                    <h4 class="profile-name">Alexa P. <span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
+                                                    <span class="profile-title">Actors</span>
+                                                </div>
+                                                <div class="pix-profile-src-foot">
+                                                    <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="pix-col-3 profile-src-col">
+                                            <div class="pix-profile-src-item">
+                                                <div class="pix-profile-cover-img loading pix-lazyload-img">
+                                                    <span class="photo-mask"></span>
+                                                    <img class="lazyload" src="{% static 'images/profile-cover-img-03.jpg' %}" width="800" height="500" alt="Images">
+                                                    <div class="pix-profile-photo" style="background-image: url({{profile4}});"></div>
+                                                </div>
+                                                <div class="pix-profile-src-desc">
+                                                    <h4 class="profile-name">Alexa P. <span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
+                                                    <span class="profile-title">Artists</span>
+                                                </div>
+                                                <div class="pix-profile-src-foot">
+                                                    <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="pix-col-3 profile-src-col">
+                                            <div class="pix-profile-src-item">
+                                                <div class="pix-profile-cover-img loading pix-lazyload-img">
+                                                    <span class="photo-mask"></span>
+                                                    <img class="lazyload" src="{% static 'images/profile-cover-img-04.jpg' %}" width="800" height="500" alt="Images">
+                                                    <div class="pix-profile-photo" style="background-image: url({{profile5}});"></div>
+                                                </div>
+                                                <div class="pix-profile-src-desc">
+                                                    <h4 class="profile-name">Alexa P. <span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
+                                                    <span class="profile-title">Photographers</span>
+                                                </div>
+                                                <div class="pix-profile-src-foot">
+                                                    <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="pix-col-3 profile-src-col">
+                                            <div class="pix-profile-src-item">
+                                                <div class="pix-profile-cover-img loading pix-lazyload-img">
+                                                    <span class="photo-mask"></span>
+                                                    <img class="lazyload" src="{% static 'images/profile-cover-img-05.jpg' %}" width="800" height="500" alt="Images">
+                                                    <div class="pix-profile-photo" style="background-image: url({{profile2}});"></div>
+                                                </div>
+                                                <div class="pix-profile-src-desc">
+                                                    <h4 class="profile-name">Alexa P. <span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
+                                                    <span class="profile-title">Model</span>
+                                                </div>
+                                                <div class="pix-profile-src-foot">
+                                                    <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="pix-col-3 profile-src-col">
+                                            <div class="pix-profile-src-item">
+                                                <div class="pix-profile-cover-img loading pix-lazyload-img">
+                                                    <span class="photo-mask"></span>
+                                                    <img class="lazyload" src="{% static 'images/profile-cover-img-06.jpg' %}" width="800" height="500" alt="Images">
+                                                    <div class="pix-profile-photo" style="background-image: url({{profile3}});"></div>
+                                                </div>
+                                                <div class="pix-profile-src-desc">
+                                                    <h4 class="profile-name">Alexa P. <span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
+                                                    <span class="profile-title">Designers</span>
+                                                </div>
+                                                <div class="pix-profile-src-foot">
+                                                    <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="pix-col-3 profile-src-col">
+                                            <div class="pix-profile-src-item">
+                                                <div class="pix-profile-cover-img loading pix-lazyload-img">
+                                                    <span class="photo-mask"></span>
+                                                    <img class="lazyload" src="{% static 'images/profile-cover-img-07.jpg' %}" width="800" height="500" alt="Images">
+                                                    <div class="pix-profile-photo" style="background-image: url({{profile3}});"></div>
+                                                </div>
+                                                <div class="pix-profile-src-desc">
+                                                    <h4 class="profile-name">Alexa P. <span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
+                                                    <span class="profile-title">Agencies</span>
+                                                </div>
+                                                <div class="pix-profile-src-foot">
+                                                    <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="pix-col-3 profile-src-col">
+                                            <div class="pix-profile-src-item">
+                                                <div class="pix-profile-cover-img loading pix-lazyload-img">
+                                                    <span class="photo-mask"></span>
+                                                    <img class="lazyload" src="{% static 'images/profile-cover-img-08.jpg' %}" width="800" height="500" alt="Images">
+                                                    <div class="pix-profile-photo" style="background-image: url({{profile5}});"></div>
+                                                </div>
+                                                <div class="pix-profile-src-desc">
+                                                    <h4 class="profile-name">Alexa P. <span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
+                                                    <span class="profile-title">Model</span>
+                                                </div>
+                                                <div class="pix-profile-src-foot">
+                                                    <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="pix-col-3 profile-src-col">
+                                            <div class="pix-profile-src-item">
+                                                <div class="pix-profile-cover-img loading pix-lazyload-img">
+                                                    <span class="photo-mask"></span>
+                                                    <img class="lazyload" src="{% static 'images/profile-cover-img-09.jpg' %}" width="800" height="500" alt="Images">
+                                                    <div class="pix-profile-photo" style="background-image: url({{profile4}});"></div>
+                                                </div>
+                                                <div class="pix-profile-src-desc">
+                                                    <h4 class="profile-name">Alexa P. <span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
+                                                    <span class="profile-title">Makeup Artist</span>
+                                                </div>
+                                                <div class="pix-profile-src-foot">
+                                                    <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="pix-col-3 profile-src-col">
+                                            <div class="pix-profile-src-item">
+                                                <div class="pix-profile-cover-img loading pix-lazyload-img">
+                                                    <span class="photo-mask"></span>
+                                                    <img class="lazyload" src="{% static 'images/profile-cover-img-10.jpg' %}" width="800" height="500" alt="Images">
+                                                    <div class="pix-profile-photo" style="background-image: url({{profile1}});"></div>
+                                                </div>
+                                                <div class="pix-profile-src-desc">
+                                                    <h4 class="profile-name">Alexa P. <span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
+                                                    <span class="profile-title">Artists</span>
+                                                </div>
+                                                <div class="pix-profile-src-foot">
+                                                    <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="pix-col-3 profile-src-col">
+                                            <div class="pix-profile-src-item">
+                                                <div class="pix-profile-cover-img loading pix-lazyload-img">
+                                                    <span class="photo-mask"></span>
+                                                    <img class="lazyload" src="{% static 'images/profile-cover-img-11.jpg' %}" width="800" height="500" alt="Images">
+                                                    <div class="pix-profile-photo" style="background-image: url({{profile2}});"></div>
+                                                </div>
+                                                <div class="pix-profile-src-desc">
+                                                    <h4 class="profile-name">Alexa P. <span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
+                                                    <span class="profile-title">Photographers</span>
+                                                </div>
+                                                <div class="pix-profile-src-foot">
+                                                    <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="pix-col-3 profile-src-col">
+                                            <div class="pix-profile-src-item">
+                                                <div class="pix-profile-cover-img loading pix-lazyload-img">
+                                                    <span class="photo-mask"></span>
+                                                    <img class="lazyload" src="{% static 'images/profile-cover-img-12.jpg' %}" width="800" height="500" alt="Images">
+                                                    <div class="pix-profile-photo" style="background-image: url({{profile5}});"></div>
+                                                </div>
+                                                <div class="pix-profile-src-desc">
+                                                    <h4 class="profile-name">Alexa P. <span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
+                                                    <span class="profile-title">Influencers</span>
+                                                </div>
+                                                <div class="pix-profile-src-foot">
+                                                    <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="pix-col-3 profile-src-col">
+                                            <div class="pix-profile-src-item">
+                                                <div class="pix-profile-cover-img loading pix-lazyload-img">
+                                                    <span class="photo-mask"></span>
+                                                    <img class="lazyload" src="{% static 'images/profile-cover-img-07.jpg' %}" width="800" height="500" alt="Images">
+                                                    <div class="pix-profile-photo" style="background-image: url({{profile4}});"></div>
+                                                </div>
+                                                <div class="pix-profile-src-desc">
+                                                    <h4 class="profile-name">Alexa P. <span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
+                                                    <span class="profile-title">Agencies</span>
+                                                </div>
+                                                <div class="pix-profile-src-foot">
+                                                    <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="pix-col-3 profile-src-col">
+                                            <div class="pix-profile-src-item">
+                                                <div class="pix-profile-cover-img loading pix-lazyload-img">
+                                                    <span class="photo-mask"></span>
+                                                    <img class="lazyload" src="{% static 'images/profile-cover-img-08.jpg' %}" width="800" height="500" alt="Images">
+                                                    <div class="pix-profile-photo" style="background-image: url({{profile5}});"></div>
+                                                </div>
+                                                <div class="pix-profile-src-desc">
+                                                    <h4 class="profile-name">Alexa P. <span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
+                                                    <span class="profile-title">Model</span>
+                                                </div>
+                                                <div class="pix-profile-src-foot">
+                                                    <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="pix-col-3 profile-src-col">
+                                            <div class="pix-profile-src-item">
+                                                <div class="pix-profile-cover-img loading pix-lazyload-img">
+                                                    <span class="photo-mask"></span>
+                                                    <img class="lazyload" src="{% static 'images/profile-cover-img-09.jpg' %}" width="800" height="500" alt="Images">
+                                                    <div class="pix-profile-photo" style="background-image: url({{profile4}});"></div>
+                                                </div>
+                                                <div class="pix-profile-src-desc">
+                                                    <h4 class="profile-name">Alexa P. <span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
+                                                    <span class="profile-title">Makeup Artist</span>
+                                                </div>
+                                                <div class="pix-profile-src-foot">
+                                                    <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="pix-col-3 profile-src-col">
+                                            <div class="pix-profile-src-item pix-profile-img-item">
+                                                <div class="pix-profile-cover-img loading pix-lazyload-img">
+                                                    <span class="photo-mask"></span>
+                                                    <img class="lazyload" src="{% static 'images/profile-cover-img-01.jpg' %}" width="800" height="500" alt="Images">
+                                                    <div class="pix-profile-photo" style="background-image: url({{profile2}});"></div>
+                                                </div>
+                                                <div class="pix-profile-src-desc">
+                                                    <h4 class="profile-name">Alexa P. <span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
+                                                    <span class="profile-title">Model</span>
+                                                </div>
+                                                <div class="pix-profile-src-foot">
+                                                    <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="pix-col-3 profile-src-col">
+                                            <div class="pix-profile-src-item">
+                                                <div class="pix-profile-cover-img loading pix-lazyload-img">
+                                                    <span class="photo-mask"></span>
+                                                    <img class="lazyload" src="{% static 'images/profile-cover-img-02.jpg' %}" width="800" height="500" alt="Images">
+                                                    <div class="pix-profile-photo" style="background-image: url({{profile3}});"></div>
+                                                </div>
+                                                <div class="pix-profile-src-desc">
+                                                    <h4 class="profile-name">Alexa P. <span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
+                                                    <span class="profile-title">Actors</span>
+                                                </div>
+                                                <div class="pix-profile-src-foot">
+                                                    <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="pix-col-3 profile-src-col">
+                                            <div class="pix-profile-src-item">
+                                                <div class="pix-profile-cover-img loading pix-lazyload-img">
+                                                    <span class="photo-mask"></span>
+                                                    <img class="lazyload" src="{% static 'images/profile-cover-img-03.jpg' %}" width="800" height="500" alt="Images">
+                                                    <div class="pix-profile-photo" style="background-image: url({{profile4}});"></div>
+                                                </div>
+                                                <div class="pix-profile-src-desc">
+                                                    <h4 class="profile-name">Alexa P. <span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
+                                                    <span class="profile-title">Artists</span>
+                                                </div>
+                                                <div class="pix-profile-src-foot">
+                                                    <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="pix-col-3 profile-src-col">
+                                            <div class="pix-profile-src-item">
+                                                <div class="pix-profile-cover-img loading pix-lazyload-img">
+                                                    <span class="photo-mask"></span>
+                                                    <img class="lazyload" src="{% static 'images/profile-cover-img-04.jpg' %}" width="800" height="500" alt="Images">
+                                                    <div class="pix-profile-photo" style="background-image: url({{profile5}});"></div>
+                                                </div>
+                                                <div class="pix-profile-src-desc">
+                                                    <h4 class="profile-name">Alexa P. <span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
+                                                    <span class="profile-title">Photographers</span>
+                                                </div>
+                                                <div class="pix-profile-src-foot">
+                                                    <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="pix-col-3 profile-src-col">
+                                            <div class="pix-profile-src-item">
+                                                <div class="pix-profile-cover-img loading pix-lazyload-img">
+                                                    <span class="photo-mask"></span>
+                                                    <img class="lazyload" src="{% static 'images/profile-cover-img-05.jpg' %}" width="800" height="500" alt="Images">
+                                                    <div class="pix-profile-photo" style="background-image: url({{profile2}});"></div>
+                                                </div>
+                                                <div class="pix-profile-src-desc">
+                                                    <h4 class="profile-name">Alexa P. <span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
+                                                    <span class="profile-title">Model</span>
+                                                </div>
+                                                <div class="pix-profile-src-foot">
+                                                    <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="pixProfileFollowing" class="pix-tab-content pix-collapse">
+                                    <div class="pix-profile-src-block pix-row">
+                                        <div class="pix-col-3 profile-src-col">
+                                            <div class="pix-profile-src-item">
+                                                <div class="pix-profile-cover-img loading pix-lazyload-img">
+                                                    <span class="photo-mask"></span>
+                                                    <img class="lazyload" src="{% static 'images/profile-cover-img-03.jpg' %}" width="800" height="500" alt="Images">
+                                                    <div class="pix-profile-photo" style="background-image: url({{profile4}});"></div>
+                                                </div>
+                                                <div class="pix-profile-src-desc">
+                                                    <h4 class="profile-name">Alexa P. <span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
+                                                    <span class="profile-title">Artists</span>
+                                                </div>
+                                                <div class="pix-profile-src-foot">
+                                                    <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="pix-col-3 profile-src-col">
+                                            <div class="pix-profile-src-item">
+                                                <div class="pix-profile-cover-img loading pix-lazyload-img">
+                                                    <span class="photo-mask"></span>
+                                                    <img class="lazyload" src="{% static 'images/profile-cover-img-04.jpg' %}" width="800" height="500" alt="Images">
+                                                    <div class="pix-profile-photo" style="background-image: url({{profile5}});"></div>
+                                                </div>
+                                                <div class="pix-profile-src-desc">
+                                                    <h4 class="profile-name">Alexa P. <span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
+                                                    <span class="profile-title">Photographers</span>
+                                                </div>
+                                                <div class="pix-profile-src-foot">
+                                                    <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="pix-col-3 profile-src-col">
+                                            <div class="pix-profile-src-item">
+                                                <div class="pix-profile-cover-img loading pix-lazyload-img">
+                                                    <span class="photo-mask"></span>
+                                                    <img class="lazyload" src="{% static 'images/profile-cover-img-05.jpg' %}" width="800" height="500" alt="Images">
+                                                    <div class="pix-profile-photo" style="background-image: url({{profile2}});"></div>
+                                                </div>
+                                                <div class="pix-profile-src-desc">
+                                                    <h4 class="profile-name">Alexa P. <span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
+                                                    <span class="profile-title">Model</span>
+                                                </div>
+                                                <div class="pix-profile-src-foot">
+                                                    <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="pix-col-3 profile-src-col">
+                                            <div class="pix-profile-src-item">
+                                                <div class="pix-profile-cover-img loading pix-lazyload-img">
+                                                    <span class="photo-mask"></span>
+                                                    <img class="lazyload" src="{% static 'images/profile-cover-img-06.jpg' %}" width="800" height="500" alt="Images">
+                                                    <div class="pix-profile-photo" style="background-image: url({{profile3}});"></div>
+                                                </div>
+                                                <div class="pix-profile-src-desc">
+                                                    <h4 class="profile-name">Alexa P. <span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
+                                                    <span class="profile-title">Designers</span>
+                                                </div>
+                                                <div class="pix-profile-src-foot">
+                                                    <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="pix-col-3 profile-src-col">
+                                            <div class="pix-profile-src-item">
+                                                <div class="pix-profile-cover-img loading pix-lazyload-img">
+                                                    <span class="photo-mask"></span>
+                                                    <img class="lazyload" src="{% static 'images/profile-cover-img-07.jpg' %}" width="800" height="500" alt="Images">
+                                                    <div class="pix-profile-photo" style="background-image: url({{profile4}});"></div>
+                                                </div>
+                                                <div class="pix-profile-src-desc">
+                                                    <h4 class="profile-name">Alexa P. <span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
+                                                    <span class="profile-title">Agencies</span>
+                                                </div>
+                                                <div class="pix-profile-src-foot">
+                                                    <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="pix-col-3 profile-src-col">
+                                            <div class="pix-profile-src-item">
+                                                <div class="pix-profile-cover-img loading pix-lazyload-img">
+                                                    <span class="photo-mask"></span>
+                                                    <img class="lazyload" src="{% static 'images/profile-cover-img-08.jpg' %}" width="800" height="500" alt="Images">
+                                                    <div class="pix-profile-photo" style="background-image: url({{profile5}});"></div>
+                                                </div>
+                                                <div class="pix-profile-src-desc">
+                                                    <h4 class="profile-name">Alexa P. <span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
+                                                    <span class="profile-title">Model</span>
+                                                </div>
+                                                <div class="pix-profile-src-foot">
+                                                    <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="pix-col-3 profile-src-col">
+                                            <div class="pix-profile-src-item">
+                                                <div class="pix-profile-cover-img loading pix-lazyload-img">
+                                                    <span class="photo-mask"></span>
+                                                    <img class="lazyload" src="{% static 'images/profile-cover-img-09.jpg' %}" width="800" height="500" alt="Images">
+                                                    <div class="pix-profile-photo" style="background-image: url({{profile4}});"></div>
+                                                </div>
+                                                <div class="pix-profile-src-desc">
+                                                    <h4 class="profile-name">Alexa P. <span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
+                                                    <span class="profile-title">Makeup Artist</span>
+                                                </div>
+                                                <div class="pix-profile-src-foot">
+                                                    <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="pix-col-3 profile-src-col">
+                                            <div class="pix-profile-src-item">
+                                                <div class="pix-profile-cover-img loading pix-lazyload-img">
+                                                    <span class="photo-mask"></span>
+                                                    <img class="lazyload" src="{% static 'images/profile-cover-img-10.jpg' %}" width="800" height="500" alt="Images">
+                                                    <div class="pix-profile-photo" style="background-image: url({{profile3}});"></div>
+                                                </div>
+                                                <div class="pix-profile-src-desc">
+                                                    <h4 class="profile-name">Alexa P. <span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
+                                                    <span class="profile-title">Artists</span>
+                                                </div>
+                                                <div class="pix-profile-src-foot">
+                                                    <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="pix-col-3 profile-src-col">
+                                            <div class="pix-profile-src-item pix-profile-img-item">
+                                                <div class="pix-profile-cover-img loading pix-lazyload-img">
+                                                    <span class="photo-mask"></span>
+                                                    <img class="lazyload" src="{% static 'images/profile-cover-img-01.jpg' %}" width="800" height="500" alt="Images">
+                                                    <div class="pix-profile-photo" style="background-image: url({{profile2}});"></div>
+                                                </div>
+                                                <div class="pix-profile-src-desc">
+                                                    <h4 class="profile-name">Alexa P. <span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
+                                                    <span class="profile-title">Model</span>
+                                                </div>
+                                                <div class="pix-profile-src-foot">
+                                                    <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="pix-col-3 profile-src-col">
+                                            <div class="pix-profile-src-item">
+                                                <div class="pix-profile-cover-img loading pix-lazyload-img">
+                                                    <span class="photo-mask"></span>
+                                                    <img class="lazyload" src="{% static 'images/profile-cover-img-02.jpg' %}" width="800" height="500" alt="Images">
+                                                    <div class="pix-profile-photo" style="background-image: url({{profile3}});"></div>
+                                                </div>
+                                                <div class="pix-profile-src-desc">
+                                                    <h4 class="profile-name">Alexa P. <span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
+                                                    <span class="profile-title">Actors</span>
+                                                </div>
+                                                <div class="pix-profile-src-foot">
+                                                    <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="pix-col-3 profile-src-col">
+                                            <div class="pix-profile-src-item">
+                                                <div class="pix-profile-cover-img loading pix-lazyload-img">
+                                                    <span class="photo-mask"></span>
+                                                    <img class="lazyload" src="{% static 'images/profile-cover-img-11.jpg' %}" width="800" height="500" alt="Images">
+                                                    <div class="pix-profile-photo" style="background-image: url({{profile2}});"></div>
+                                                </div>
+                                                <div class="pix-profile-src-desc">
+                                                    <h4 class="profile-name">Alexa P. <span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
+                                                    <span class="profile-title">Photographers</span>
+                                                </div>
+                                                <div class="pix-profile-src-foot">
+                                                    <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="pix-col-3 profile-src-col">
+                                            <div class="pix-profile-src-item">
+                                                <div class="pix-profile-cover-img loading pix-lazyload-img">
+                                                    <span class="photo-mask"></span>
+                                                    <img class="lazyload" src="{% static 'images/profile-cover-img-12.jpg' %}" width="800" height="500" alt="Images">
+                                                    <div class="pix-profile-photo" style="background-image: url({{profile5}});"></div>
+                                                </div>
+                                                <div class="pix-profile-src-desc">
+                                                    <h4 class="profile-name">Alexa P. <span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
+                                                    <span class="profile-title">Influencers</span>
+                                                </div>
+                                                <div class="pix-profile-src-foot">
+                                                    <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="pix-col-3 profile-src-col">
+                                            <div class="pix-profile-src-item">
+                                                <div class="pix-profile-cover-img loading pix-lazyload-img">
+                                                    <span class="photo-mask"></span>
+                                                    <img class="lazyload" src="{% static 'images/profile-cover-img-07.jpg' %}" width="800" height="500" alt="Images">
+                                                    <div class="pix-profile-photo" style="background-image: url({{profile4}});"></div>
+                                                </div>
+                                                <div class="pix-profile-src-desc">
+                                                    <h4 class="profile-name">Alexa P. <span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
+                                                    <span class="profile-title">Agencies</span>
+                                                </div>
+                                                <div class="pix-profile-src-foot">
+                                                    <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="pix-col-3 profile-src-col">
+                                            <div class="pix-profile-src-item">
+                                                <div class="pix-profile-cover-img loading pix-lazyload-img">
+                                                    <span class="photo-mask"></span>
+                                                    <img class="lazyload" src="{% static 'images/profile-cover-img-08.jpg' %}" width="800" height="500" alt="Images">
+                                                    <div class="pix-profile-photo" style="background-image: url({{profile5}});"></div>
+                                                </div>
+                                                <div class="pix-profile-src-desc">
+                                                    <h4 class="profile-name">Alexa P. <span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
+                                                    <span class="profile-title">Model</span>
+                                                </div>
+                                                <div class="pix-profile-src-foot">
+                                                    <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="pix-col-3 profile-src-col">
+                                            <div class="pix-profile-src-item">
+                                                <div class="pix-profile-cover-img loading pix-lazyload-img">
+                                                    <span class="photo-mask"></span>
+                                                    <img class="lazyload" src="{% static 'images/profile-cover-img-09.jpg' %}" width="800" height="500" alt="Images">
+                                                    <div class="pix-profile-photo" style="background-image: url({{profile4}});"></div>
+                                                </div>
+                                                <div class="pix-profile-src-desc">
+                                                    <h4 class="profile-name">Alexa P. <span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
+                                                    <span class="profile-title">Makeup Artist</span>
+                                                </div>
+                                                <div class="pix-profile-src-foot">
+                                                    <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="pix-col-3 profile-src-col">
+                                            <div class="pix-profile-src-item pix-profile-img-item">
+                                                <div class="pix-profile-cover-img loading pix-lazyload-img">
+                                                    <span class="photo-mask"></span>
+                                                    <img class="lazyload" src="{% static 'images/profile-cover-img-01.jpg' %}" width="800" height="500" alt="Images">
+                                                    <div class="pix-profile-photo" style="background-image: url({{profile2}});"></div>
+                                                </div>
+                                                <div class="pix-profile-src-desc">
+                                                    <h4 class="profile-name">Alexa P. <span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
+                                                    <span class="profile-title">Model</span>
+                                                </div>
+                                                <div class="pix-profile-src-foot">
+                                                    <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="pix-col-3 profile-src-col">
+                                            <div class="pix-profile-src-item">
+                                                <div class="pix-profile-cover-img loading pix-lazyload-img">
+                                                    <span class="photo-mask"></span>
+                                                    <img class="lazyload" src="{% static 'images/profile-cover-img-02.jpg' %}" width="800" height="500" alt="Images">
+                                                    <div class="pix-profile-photo" style="background-image: url({{profile3}});"></div>
+                                                </div>
+                                                <div class="pix-profile-src-desc">
+                                                    <h4 class="profile-name">Alexa P. <span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
+                                                    <span class="profile-title">Actors</span>
+                                                </div>
+                                                <div class="pix-profile-src-foot">
+                                                    <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="pix-col-3 profile-src-col">
+                                            <div class="pix-profile-src-item">
+                                                <div class="pix-profile-cover-img loading pix-lazyload-img">
+                                                    <span class="photo-mask"></span>
+                                                    <img class="lazyload" src="{% static 'images/profile-cover-img-03.jpg' %}" width="800" height="500" alt="Images">
+                                                    <div class="pix-profile-photo" style="background-image: url({{profile4}});"></div>
+                                                </div>
+                                                <div class="pix-profile-src-desc">
+                                                    <h4 class="profile-name">Alexa P. <span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
+                                                    <span class="profile-title">Artists</span>
+                                                </div>
+                                                <div class="pix-profile-src-foot">
+                                                    <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="pix-col-3 profile-src-col">
+                                            <div class="pix-profile-src-item">
+                                                <div class="pix-profile-cover-img loading pix-lazyload-img">
+                                                    <span class="photo-mask"></span>
+                                                    <img class="lazyload" src="{% static 'images/profile-cover-img-04.jpg' %}" width="800" height="500" alt="Images">
+                                                    <div class="pix-profile-photo" style="background-image: url({{profile5}});"></div>
+                                                </div>
+                                                <div class="pix-profile-src-desc">
+                                                    <h4 class="profile-name">Alexa P. <span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
+                                                    <span class="profile-title">Photographers</span>
+                                                </div>
+                                                <div class="pix-profile-src-foot">
+                                                    <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="pix-col-3 profile-src-col">
+                                            <div class="pix-profile-src-item">
+                                                <div class="pix-profile-cover-img loading pix-lazyload-img">
+                                                    <span class="photo-mask"></span>
+                                                    <img class="lazyload" src="{% static 'images/profile-cover-img-05.jpg' %}" width="800" height="500" alt="Images">
+                                                    <div class="pix-profile-photo" style="background-image: url({{profile2}});"></div>
+                                                </div>
+                                                <div class="pix-profile-src-desc">
+                                                    <h4 class="profile-name">Alexa P. <span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
+                                                    <span class="profile-title">Model</span>
+                                                </div>
+                                                <div class="pix-profile-src-foot">
+                                                    <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {%endwith%}
+                </div>
+            </div>
+        </main>
+
+        {% include 'pixcoverapp/layout/footer.html' %}
+    </div><!-- /site-main -->
+
+    <!-- JS Links -->
+    {% include 'pixcoverapp/layout/js.html' %}
+</body>
+</html>

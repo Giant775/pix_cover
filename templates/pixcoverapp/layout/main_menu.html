@@ -1,0 +1,43 @@
+{% load static %}
+{% get_static_prefix as static_prefix %}
+
+<div class="main-manu">
+    <ul class="navbar-nav">
+        <li class="menu-item-has-children">
+            <a href="/profile-search">Find Talent</a>
+            <ul class="sub-menu">
+                <li><a href="#">Actors</a></li>
+                <li><a href="#">Artists</a></li>
+                <li><a href="#">Makeup Atrists</a></li>
+                <li><a href="#">Videographers</a></li>
+                <li><a href="#">Photographers</a></li>
+                <li><a href="#">Models</a></li>
+                <li><a href="#">Fashion Designers</a></li>
+                <li><a href="#">Agencies</a></li>
+                <li><a href="#">Influencers</a></li>
+                <li><a href="#">Hair Stylists</a></li>
+            </ul>
+        </li>
+        <li class="menu-item-has-children">
+            <a href="/profile-visitor">Find Work</a>
+            <ul class="sub-menu">
+                <li><a href="/profile-visitor">Profile Visitor</a></li>
+                <li><a href="/profile-edit">Profile Edit</a></li>
+                <li><a href="/profile-search">Profile Search</a></li>
+                <li><a href="/profile-messenger">Profile Messenger</a></li>
+                <li><a href="/plans">Plans</a></li>
+                <li><a href="/signin">Sign In</a></li>
+                <li><a href="/settings">Work Settings</a></li>
+                <li><a href="/stats">Stats</a></li>
+                <li><a href="/reviews">Reviews</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/connections">Connetions</a></li>
+            </ul>
+        </li>
+        <li class="pix-search">
+            <div class="header-search">
+                <input class="pix-form-control" type="text" placeholder="Search for jobs, talents or agencies" name="pixsearch">
+            </div>
+        </li>
+    </ul>
+</div>

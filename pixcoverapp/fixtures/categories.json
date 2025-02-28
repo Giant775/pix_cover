@@ -1,0 +1,72 @@
+[
+    {
+      "model": "pixcoverapp.categories",
+      "pk": 1,
+      "fields": {
+        "category": "Actors"
+      }
+    },
+    {
+        "model": "pixcoverapp.categories",
+        "pk": 2,
+        "fields": {
+          "category": "Artists"
+        }
+    },
+    {
+      "model": "pixcoverapp.categories",
+      "pk": 3,
+      "fields": {
+        "category": "Makeup Atrists"
+      }
+    },
+    {
+        "model": "pixcoverapp.categories",
+        "pk": 4,
+        "fields": {
+          "category": "Videographers"
+        }
+    },
+    {
+        "model": "pixcoverapp.categories",
+        "pk": 5,
+        "fields": {
+          "category": "Photographers"
+        }
+    },
+    {
+        "model": "pixcoverapp.categories",
+        "pk": 6,
+        "fields": {
+          "category": "Models"
+        }
+    },
+    {
+        "model": "pixcoverapp.categories",
+        "pk": 7,
+        "fields": {
+          "category": "Fashion Designers"
+        }
+    },
+    {
+        "model": "pixcoverapp.categories",
+        "pk": 8,
+        "fields": {
+          "category": "Agencies"
+        }
+    },
+    {
+        "model": "pixcoverapp.categories",
+        "pk": 9,
+        "fields": {
+          "category": "Influencers"
+        }
+    },
+    {
+        "model": "pixcoverapp.categories",
+        "pk": 10,
+        "fields": {
+          "category": "Hair Stylists"
+        }
+    }
+]

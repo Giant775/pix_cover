@@ -1,0 +1,1200 @@
+{% load static %}
+{% get_static_prefix as static_prefix %}
+{% include 'pixcoverapp/layout/profile_header.html' %}
+<body>
+    <div class="site-main">
+        <header id="mainHeader" class="site-header">
+            <div class="header-container">
+                <div class="container-fluid">
+                    <nav class="navbar">
+                        {% include 'pixcoverapp/layout/site_logo.html' %}
+                        {% include 'pixcoverapp/layout/main_menu.html' %}
+                        {% include 'pixcoverapp/layout/header_account_info.html' %}
+                    </nav>
+                </div>
+            </div>
+        </header><!-- #Header -->
+
+        <!-- Mobile Main Menu Start -->
+        {% include 'pixcoverapp/layout/main_menu_mob.html' %}
+        <!-- Mobile Main Menu End -->
+
+        <main class="main-content pix-profile-page">
+            <div class="container">
+                {% include 'pixcoverapp/layout/pix_profile_header.html' with nav_title='profile-visitor' %}
+
+                <div class="pix-profile-content">
+                    <div class="profile-page-menu">
+                        {% include 'pixcoverapp/layout/profile_navbar.html'  with nav_title='profile-visitor'%}
+
+                        <div class="profile-select-filter">
+                            <select id="profileFilterCat" class="pix-form-control pixSelect2" name="pix_profile_filter">
+                                <option value="*">Photos & Videos</option>
+                                <option value=".pix-profile-photo">Photos Only</option>
+                                <option value=".pix-profile-video">Videos Only</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div id="pixProfileFilter" class="pix-profile-filter pix-row">
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-video">
+                            <div class="pix-profile-item">
+                                <a href="#" class="pix-video-item pixDataModalItem" data-modal="pixVideoModalOne">
+                                    <div class="loading pix-lazyload-img">
+                                        <span class="photo-mask"></span>
+                                        <img class="lazyload" src="./images/2645789918.jpg" alt="Images" width="1080" height="1920">
+                                    </div>
+                                    <span class="pix-video-btn"><i class="fas fa-play"></i></span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-photo">
+                            <div class="pix-profile-item">
+                                <a href="#" class="pix-photo-item pixDataModalItem" data-modal="pixPhotoModalOne">
+                                    <div class="loading pix-lazyload-img">
+                                        <span class="photo-mask"></span>
+                                        <img class="lazyload" src="./images/profile-img-04.jpg" alt="Images" width="1200" height="900">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-photo">
+                            <div class="pix-profile-item">
+                                <a href="#" class="pix-photo-item pixDataModalItem" data-modal="pixPhotoModalOne">
+                                    <div class="loading pix-lazyload-img">
+                                        <span class="photo-mask"></span>
+                                        <img class="lazyload" src="./images/profile-img-07-1280x1920.jpg" alt="Images" width="1280" height="1920">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-video">
+                            <div class="pix-profile-item">
+                                <a href="#" class="pix-video-item pixDataModalItem" data-modal="pixVideoModalOne">
+                                    <div class="loading pix-lazyload-img">
+                                        <span class="photo-mask"></span>
+                                        <img class="lazyload" src="./images/profile-img-08-800x1000.jpg" alt="Images" width="800" height="1000">
+                                    </div>
+                                    <span class="pix-video-btn"><i class="fas fa-play"></i></span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-photo">
+                            <div class="pix-profile-item">
+                                <a href="#" class="pix-photo-item pixDataModalItem" data-modal="pixPhotoModalOne">
+                                    <div class="loading pix-lazyload-img">
+                                        <span class="photo-mask"></span>
+                                        <img class="lazyload" src="./images/profile-img-09-1280x1920.jpg" alt="Images" width="1280" height="1920">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-video">
+                            <div class="pix-profile-item">
+                                <a href="#" class="pix-video-item pixDataModalItem" data-modal="pixVideoModalOne">
+                                    <div class="loading pix-lazyload-img">
+                                        <span class="photo-mask"></span>
+                                        <img class="lazyload" src="./images/profile-img-10-1920x1280.jpg" alt="Images" width="1920" height="1280">
+                                    </div>
+                                    <span class="pix-video-btn"><i class="fas fa-play"></i></span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-photo">
+                            <div class="pix-profile-item">
+                                <a href="#" class="pix-photo-item pixDataModalItem" data-modal="pixPhotoModalOne">
+                                    <div class="loading pix-lazyload-img">
+                                        <span class="photo-mask"></span>
+                                        <img class="lazyload" src="./images/profile-img-11-844x1200.jpg" alt="Images" width="844" height="1200">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-photo">
+                            <div class="pix-profile-item">
+                                <a href="#" class="pix-photo-item pixDataModalItem" data-modal="pixPhotoModalOne">
+                                    <div class="loading pix-lazyload-img">
+                                        <span class="photo-mask"></span>
+                                        <img class="lazyload" src="./images/profile-img-12-1920x1280.jpg" alt="Images" width="1920" height="1280">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-photo">
+                            <div class="pix-profile-item">
+                                <a href="#" class="pix-photo-item pixDataModalItem" data-modal="pixPhotoModalOne">
+                                    <div class="loading pix-lazyload-img">
+                                        <span class="photo-mask"></span>
+                                        <img class="lazyload" src="./images/profile-img-13-1600x1282.jpg" alt="Images" width="1600" height="1282">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-video">
+                            <div class="pix-profile-item">
+                                <a href="#" class="pix-video-item pixDataModalItem" data-modal="pixVideoModalOne">
+                                    <div class="loading pix-lazyload-img">
+                                        <span class="photo-mask"></span>
+                                        <img class="lazyload" src="./images/profile-img-14-1460x1600.jpg" alt="Images" width="1460" height="1600">
+                                    </div>
+                                    <span class="pix-video-btn"><i class="fas fa-play"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        {% include 'pixcoverapp/layout/footer.html' %}
+    </div><!-- /site-main -->
+
+    <div id="pixPhotoModalOne" class="pixDetailsModal">
+        <div class="profile-details-content">
+            <div class="pixDetailsSlider">
+                <div class="pixProfileDetailsSlider">
+                    <span class="pixModalClose"></span>
+                    <div class="pix-edit-opt">
+                        <span class="edit-dot"></span>
+                        <ul class="pix-opt-lists">
+                            <li><a href="#"><span class="pix-option-icon pix-icon-edit"></span> Edit</a></li>
+                            <li><a href="#"><span class="pix-option-icon pix-icon-delete"></span> Delete</a></li>
+                        </ul>
+                    </div>
+                    <div class="profileDetailsSlider owl-carousel">
+                        <div class="item">
+                            <div class="pix-profile-details-item">
+                                <div class="slidePhoto">
+                                    <div class="profile-slide-img"><img src="./images/profile-img-04.jpg" width="1200" height="900" alt="Images"></div>
+                                </div>
+                                <div class="slideDetails pix-custom-scrollbar">
+                                    <div class="profile-descBox">
+                                        <div class="profile-desc-head">
+                                            <h3 class="font-s24">01 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam</h3>
+                                            <div class="profile-photo-action">
+                                                <button class="pix-btn tag-btn"><span class="pix-icon-heart-alt"></span> 124</button>
+                                            </div>
+                                        </div>
+                                        <p class="font-s16">Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit</p>
+
+                                        <div class="pix-work-with-list">
+                                            <h3 class="font-s24">Worked with</h3>
+                                            <div class="pix-inline-profile-lists">
+                                                <a href="#" class="inline-profile-item">
+                                                    <div class="inline-profile-photo" style="background-image: url(./images/user-profile-img.png)"></div>
+                                                    <span class="inline-profile-title font-s16"><strong>Nike, Inc.</strong> Agency</span>
+                                                </a>
+                                                <a href="#" class="inline-profile-item">
+                                                    <div class="inline-profile-photo" style="background-image: url(./images/user-profile-img-2.png)"></div>
+                                                    <span class="inline-profile-title font-s16"><strong>Johnathan B. </strong> Photographer</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="pix-profile-details-item">
+                                <div class="slidePhoto">
+                                    <div class="profile-slide-img"><img src="./images/profile-img-02.jpg" width="900" height="1200" alt="Images"></div>
+                                </div>
+                                <div class="slideDetails pix-custom-scrollbar">
+                                    <div class="profile-descBox">
+                                        <div class="profile-desc-head">
+                                            <h3 class="font-s24">02 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam</h3>
+                                            <div class="profile-photo-action">
+                                                <button class="pix-btn tag-btn"><span class="pix-icon-heart-alt"></span> 100</button>
+                                            </div>
+                                        </div>
+                                        <p class="font-s16">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. </p>
+
+                                        <div class="pix-work-with-list">
+                                            <h3 class="font-s24">Worked with</h3>
+                                            <div class="pix-inline-profile-lists">
+                                                <a href="#" class="inline-profile-item">
+                                                    <div class="inline-profile-photo" style="background-image: url(./images/user-profile-img-2.png)"></div>
+                                                    <span class="inline-profile-title font-s16"><strong>Johnathan B. </strong> Photographer</span>
+                                                </a>
+                                                <a href="#" class="inline-profile-item">
+                                                    <div class="inline-profile-photo" style="background-image: url(./images/user-profile-img.png)"></div>
+                                                    <span class="inline-profile-title font-s16"><strong>Nike, Inc.</strong> Agency</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="pix-profile-details-item">
+                                <div class="slidePhoto">
+                                    <div class="profile-slide-img"><img src="./images/explore-category-slider-img-02.jpg" width="900" height="655" alt="Images"></div>
+                                </div>
+                                <div class="slideDetails pix-custom-scrollbar">
+                                    <div class="profile-descBox">
+                                        <div class="profile-desc-head">
+                                            <h3 class="font-s24">03 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam</h3>
+                                            <div class="profile-photo-action">
+                                                <button class="pix-btn tag-btn"><span class="pix-icon-heart-alt"></span> 84</button>
+                                            </div>
+                                        </div>
+                                        <p class="font-s16">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+
+                                        <div class="pix-work-with-list">
+                                            <h3 class="font-s24">Worked with</h3>
+                                            <div class="pix-inline-profile-lists">
+                                                <a href="#" class="inline-profile-item">
+                                                    <div class="inline-profile-photo" style="background-image: url(./images/user-profile-img.png)"></div>
+                                                    <span class="inline-profile-title font-s16"><strong>Nike, Inc.</strong> Agency</span>
+                                                </a>
+                                                <a href="#" class="inline-profile-item">
+                                                    <div class="inline-profile-photo" style="background-image: url(./images/user-profile-img-2.png)"></div>
+                                                    <span class="inline-profile-title font-s16"><strong>Johnathan B. </strong> Photographer</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="pix-profile-details-item">
+                                <div class="slidePhoto">
+                                    <div class="profile-slide-img"><img src="./images/talent-profile-img-02.jpg" width="900" height="1200" alt="Images"></div>
+                                </div>
+                                <div class="slideDetails pix-custom-scrollbar">
+                                    <div class="profile-descBox">
+                                        <div class="profile-desc-head">
+                                            <h3 class="font-s24">04 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam</h3>
+                                            <div class="profile-photo-action">
+                                                <button class="pix-btn tag-btn"><span class="pix-icon-heart-alt"></span> 384</button>
+                                            </div>
+                                        </div>
+                                        <p class="font-s16">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+
+                                        <div class="pix-work-with-list">
+                                            <h3 class="font-s24">Worked with</h3>
+                                            <div class="pix-inline-profile-lists">
+                                                <a href="#" class="inline-profile-item">
+                                                    <div class="inline-profile-photo" style="background-image: url(./images/user-profile-img.png)"></div>
+                                                    <span class="inline-profile-title font-s16"><strong>Nike, Inc.</strong> Agency</span>
+                                                </a>
+                                                <a href="#" class="inline-profile-item">
+                                                    <div class="inline-profile-photo" style="background-image: url(./images/user-profile-img-2.png)"></div>
+                                                    <span class="inline-profile-title font-s16"><strong>Johnathan B. </strong> Photographer</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="pix-profile-details-item">
+                                <div class="slidePhoto">
+                                    <div class="profile-slide-img"><img src="./images/explore-category-slider-img-01.jpg" width="900" height="655" alt="Images"></div>
+                                </div>
+                                <div class="slideDetails pix-custom-scrollbar">
+                                    <div class="profile-descBox">
+                                        <div class="profile-desc-head">
+                                            <h3 class="font-s24">05 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam</h3>
+                                            <div class="profile-photo-action">
+                                                <button class="pix-btn tag-btn"><span class="pix-icon-heart-alt"></span> 105</button>
+                                            </div>
+                                        </div>
+                                        <p class="font-s16">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+
+                                        <div class="pix-work-with-list">
+                                            <h3 class="font-s24">Worked with</h3>
+                                            <div class="pix-inline-profile-lists">
+                                                <a href="#" class="inline-profile-item">
+                                                    <div class="inline-profile-photo" style="background-image: url(./images/user-profile-img.png)"></div>
+                                                    <span class="inline-profile-title font-s16"><strong>Nike, Inc.</strong> Agency</span>
+                                                </a>
+                                                <a href="#" class="inline-profile-item">
+                                                    <div class="inline-profile-photo" style="background-image: url(./images/user-profile-img-2.png)"></div>
+                                                    <span class="inline-profile-title font-s16"><strong>Johnathan B. </strong> Photographer</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pixModalProfileLists">
+                    <h2 class="font-s30">More like this</h2>
+                    <div class="pix-profile-filter pix-row">
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-photo">
+                            <div class="pix-profile-item">
+                                <a href="#" class="pix-photo-item pixDataModalItem" data-modal="pixPhotoNestedModal">
+                                    <div class="loading pix-lazyload-img">
+                                        <span class="photo-mask"></span>
+                                        <img class="lazyload" src="./images/profile-img-01.jpg" alt="Images" width="900" height="1200">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-photo">
+                            <div class="pix-profile-item">
+                                <a href="#" class="pix-photo-item pixDataModalItem" data-modal="pixPhotoNestedModal">
+                                    <div class="loading pix-lazyload-img">
+                                        <span class="photo-mask"></span>
+                                        <img class="lazyload" src="./images/profile-img-03.jpg" alt="Images" width="900" height="1200">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-photo">
+                            <div class="pix-profile-item">
+                                <a href="#" class="pix-photo-item pixDataModalItem" data-modal="pixPhotoNestedModal">
+                                    <div class="loading pix-lazyload-img">
+                                        <span class="photo-mask"></span>
+                                        <img class="lazyload" src="./images/profile-img-02.jpg" alt="Images" width="900" height="1200">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-photo">
+                            <div class="pix-profile-item">
+                                <a href="#" class="pix-photo-item pixDataModalItem" data-modal="pixPhotoNestedModal">
+                                    <div class="loading pix-lazyload-img">
+                                        <span class="photo-mask"></span>
+                                        <img class="lazyload" src="./images/explore-category-slider-img-03.jpg" alt="Images" width="900" height="655">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-photo">
+                            <div class="pix-profile-item">
+                                <a href="#" class="pix-photo-item pixDataModalItem" data-modal="pixPhotoNestedModal">
+                                    <div class="loading pix-lazyload-img">
+                                        <span class="photo-mask"></span>
+                                        <img class="lazyload" src="./images/profile-img-05.jpg" alt="Images" width="900" height="1320">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-photo">
+                            <div class="pix-profile-item">
+                                <a href="#" class="pix-photo-item pixDataModalItem" data-modal="pixPhotoNestedModal">
+                                    <div class="loading pix-lazyload-img">
+                                        <span class="photo-mask"></span>
+                                        <img class="lazyload" src="./images/explore-category-slider-img-01.jpg" alt="Images" width="900" height="655">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-photo">
+                            <div class="pix-profile-item">
+                                <a href="#" class="pix-photo-item pixDataModalItem" data-modal="pixPhotoNestedModal">
+                                    <div class="loading pix-lazyload-img">
+                                        <span class="photo-mask"></span>
+                                        <img class="lazyload" src="./images/explore-category-slider-img-04.jpg" alt="Images" width="900" height="655">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-photo">
+                            <div class="pix-profile-item">
+                                <a href="#" class="pix-photo-item pixDataModalItem" data-modal="pixPhotoNestedModal">
+                                    <div class="loading pix-lazyload-img">
+                                        <span class="photo-mask"></span>
+                                        <img class="lazyload" src="./images/profile-img-06.jpg" alt="Images" width="1200" height="900">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="pixVideoModalOne" class="pixDetailsModal">
+        <div class="profile-details-content">
+            <div class="pixDetailsSlider">
+                <div class="pixProfileDetailsSlider">
+                    <span class="pixModalClose"></span>
+                    <div class="pix-edit-opt">
+                        <span class="edit-dot"></span>
+                        <ul class="pix-opt-lists">
+                            <li><a href="#"><span class="pix-option-icon pix-icon-edit"></span> Edit</a></li>
+                            <li><a href="#"><span class="pix-option-icon pix-icon-delete"></span> Delete</a></li>
+                        </ul>
+                    </div>
+                    <div class="profileDetailsSlider owl-carousel">
+                        <div class="item">
+                            <div class="pix-profile-details-item">
+                                <div class="slidePhoto video-lenth-y">
+                                    <div class="profile-slide-img">
+                                        <video controls muted autoplay preload="auto" class="modalVideo">
+                                            <source src="./video/2645789918.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                                <div class="slideDetails pix-custom-scrollbar">
+                                    <div class="profile-descBox">
+                                        <div class="profile-desc-head">
+                                            <h3 class="font-s24">A Hair Stylist Spraying a Hair Product on Customers Hair</h3>
+                                            <div class="profile-photo-action">
+                                                <button class="pix-btn tag-btn"><span class="pix-icon-heart-alt"></span> 124</button>
+                                            </div>
+                                        </div>
+                                        <p class="font-s16">Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit</p>
+
+                                        <div class="pix-work-with-list">
+                                            <h3 class="font-s24">Worked with</h3>
+                                            <div class="pix-inline-profile-lists">
+                                                <a href="#" class="inline-profile-item">
+                                                    <div class="inline-profile-photo" style="background-image: url(./images/user-profile-img.png)"></div>
+                                                    <span class="inline-profile-title font-s16"><strong>ArtHouse Studio</strong> Agency</span>
+                                                </a>
+                                                <a href="#" class="inline-profile-item">
+                                                    <div class="inline-profile-photo" style="background-image: url(./images/user-profile-img-2.png)"></div>
+                                                    <span class="inline-profile-title font-s16"><strong>Johnathan B. </strong> Photographer</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="pix-profile-details-item">
+                                <div class="slidePhoto video-lenth-y">
+                                    <div class="profile-slide-img">
+                                        <video controls muted autoplay preload="auto" class="modalVideo">
+                                            <source src="./video/1707678218.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                                <div class="slideDetails pix-custom-scrollbar">
+                                    <div class="profile-descBox">
+                                        <div class="profile-desc-head">
+                                            <h3 class="font-s24">01 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam</h3>
+                                            <div class="profile-photo-action">
+                                                <button class="pix-btn tag-btn"><span class="pix-icon-heart-alt"></span> 124</button>
+                                            </div>
+                                        </div>
+                                        <p class="font-s16">Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit</p>
+
+                                        <div class="pix-work-with-list">
+                                            <h3 class="font-s24">Worked with</h3>
+                                            <div class="pix-inline-profile-lists">
+                                                <a href="#" class="inline-profile-item">
+                                                    <div class="inline-profile-photo" style="background-image: url(./images/user-profile-img.png)"></div>
+                                                    <span class="inline-profile-title font-s16"><strong>Nike, Inc.</strong> Agency</span>
+                                                </a>
+                                                <a href="#" class="inline-profile-item">
+                                                    <div class="inline-profile-photo" style="background-image: url(./images/user-profile-img-2.png)"></div>
+                                                    <span class="inline-profile-title font-s16"><strong>Johnathan B. </strong> Photographer</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="pix-profile-details-item">
+                                <div class="slidePhoto video-lenth-y">
+                                    <div class="profile-slide-img">
+                                        <video controls muted autoplay preload="auto" class="modalVideo">
+                                            <source src="./video/2645789918.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                                <div class="slideDetails pix-custom-scrollbar">
+                                    <div class="profile-descBox">
+                                        <div class="profile-desc-head">
+                                            <h3 class="font-s24">A Hair Stylist Spraying a Hair Product on Customers Hair</h3>
+                                            <div class="profile-photo-action">
+                                                <button class="pix-btn tag-btn"><span class="pix-icon-heart-alt"></span> 124</button>
+                                            </div>
+                                        </div>
+                                        <p class="font-s16">Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit</p>
+
+                                        <div class="pix-work-with-list">
+                                            <h3 class="font-s24">Worked with</h3>
+                                            <div class="pix-inline-profile-lists">
+                                                <a href="#" class="inline-profile-item">
+                                                    <div class="inline-profile-photo" style="background-image: url(./images/user-profile-img.png)"></div>
+                                                    <span class="inline-profile-title font-s16"><strong>ArtHouse Studio</strong> Agency</span>
+                                                </a>
+                                                <a href="#" class="inline-profile-item">
+                                                    <div class="inline-profile-photo" style="background-image: url(./images/user-profile-img-2.png)"></div>
+                                                    <span class="inline-profile-title font-s16"><strong>Johnathan B. </strong> Photographer</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="pix-profile-details-item">
+                                <div class="slidePhoto video-lenth-x">
+                                    <div class="profile-slide-img">
+                                        <video controls muted autoplay preload="auto" class="modalVideo">
+                                            <source src="./video/1740140202.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                                <div class="slideDetails pix-custom-scrollbar">
+                                    <div class="profile-descBox">
+                                        <div class="profile-desc-head">
+                                            <h3 class="font-s24">02 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam</h3>
+                                            <div class="profile-photo-action">
+                                                <button class="pix-btn tag-btn"><span class="pix-icon-heart-alt"></span> 124</button>
+                                            </div>
+                                        </div>
+                                        <p class="font-s16">Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+
+                                        <div class="pix-work-with-list">
+                                            <h3 class="font-s24">Worked with</h3>
+                                            <div class="pix-inline-profile-lists">
+                                                <a href="#" class="inline-profile-item">
+                                                    <div class="inline-profile-photo" style="background-image: url(./images/user-profile-img.png)"></div>
+                                                    <span class="inline-profile-title font-s16"><strong>Nike, Inc.</strong> Agency</span>
+                                                </a>
+                                                <a href="#" class="inline-profile-item">
+                                                    <div class="inline-profile-photo" style="background-image: url(./images/user-profile-img-2.png)"></div>
+                                                    <span class="inline-profile-title font-s16"><strong>Johnathan B. </strong> Photographer</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pixModalProfileLists">
+                    <h2 class="font-s30">More like this</h2>
+                    <div class="pix-profile-filter pix-row">
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-video">
+                            <div class="pix-profile-item">
+                                <a href="#" class="pix-video-item pixDataModalItem" data-modal="pixVideoNestedModal">
+                                    <div class="loading pix-lazyload-img">
+                                        <span class="photo-mask"></span>
+                                        <img class="lazyload" src="./images/2645789918.jpg" alt="Images" width="1920" height="1080">
+                                    </div>
+                                    <span class="pix-video-btn"><i class="fas fa-play"></i></span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-video">
+                            <div class="pix-profile-item">
+                                <a href="#" class="pix-video-item pixDataModalItem" data-modal="pixVideoNestedModal">
+                                    <div class="loading pix-lazyload-img">
+                                        <span class="photo-mask"></span>
+                                        <img class="lazyload" src="./images/explore-category-slider-img-03.jpg" alt="Images" width="900" height="655">
+                                    </div>
+                                    <span class="pix-video-btn"><i class="fas fa-play"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-video">
+                            <div class="pix-profile-item">
+                                <a href="#" class="pix-video-item pixDataModalItem" data-modal="pixVideoNestedModal">
+                                    <div class="loading pix-lazyload-img">
+                                        <span class="photo-mask"></span>
+                                        <img class="lazyload" src="./images/profile-img-01.jpg" alt="Images" width="900" height="1200">
+                                    </div>
+                                    <span class="pix-video-btn"><i class="fas fa-play"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-video">
+                            <div class="pix-profile-item">
+                                <a href="#" class="pix-video-item pixDataModalItem" data-modal="pixVideoNestedModal">
+                                    <div class="loading pix-lazyload-img">
+                                        <span class="photo-mask"></span>
+                                        <img class="lazyload" src="./images/profile-img-03.jpg" alt="Images" width="900" height="1200">
+                                    </div>
+                                    <span class="pix-video-btn"><i class="fas fa-play"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-video">
+                            <div class="pix-profile-item">
+                                <a href="#" class="pix-video-item pixDataModalItem" data-modal="pixVideoNestedModal">
+                                    <div class="loading pix-lazyload-img">
+                                        <span class="photo-mask"></span>
+                                        <img class="lazyload" src="./images/explore-category-slider-img-04.jpg" alt="Images" width="900" height="655">
+                                    </div>
+                                    <span class="pix-video-btn"><i class="fas fa-play"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-video">
+                            <div class="pix-profile-item">
+                                <a href="#" class="pix-video-item pixDataModalItem" data-modal="pixVideoNestedModal">
+                                    <div class="loading pix-lazyload-img">
+                                        <span class="photo-mask"></span>
+                                        <img class="lazyload" src="./images/profile-img-03.jpg" alt="Images" width="900" height="1200">
+                                    </div>
+                                    <span class="pix-video-btn"><i class="fas fa-play"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-video">
+                            <div class="pix-profile-item">
+                                <a href="#" class="pix-video-item pixDataModalItem" data-modal="pixVideoNestedModal">
+                                    <div class="loading pix-lazyload-img">
+                                        <span class="photo-mask"></span>
+                                        <img class="lazyload" src="./images/profile-img-06.jpg" alt="Images" width="1200" height="900">
+                                    </div>
+                                    <span class="pix-video-btn"><i class="fas fa-play"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="pixPhotoNestedModal" class="pixDetailsModal">
+        <div class="profile-details-content">
+            <div class="pixDetailsSlider">
+                <div class="pixProfileDetailsSlider">
+                    <span class="pixModalClose"></span>
+                    <div class="pix-edit-opt">
+                        <span class="edit-dot"></span>
+                        <ul class="pix-opt-lists">
+                            <li><a href="#"><span class="pix-option-icon pix-icon-edit"></span> Edit</a></li>
+                            <li><a href="#"><span class="pix-option-icon pix-icon-delete"></span> Delete</a></li>
+                        </ul>
+                    </div>
+                    <div class="profileDetailsSlider owl-carousel">
+                        <div class="item">
+                            <div class="pix-profile-details-item">
+                                <div class="slidePhoto">
+                                    <div class="profile-slide-img"><img src="./images/profile-img-01.jpg" alt="Images" width="900" height="1200" alt="Images"></div>
+                                </div>
+                                <div class="slideDetails pix-custom-scrollbar">
+                                    <div class="profile-descBox">
+                                        <div class="profile-desc-head">
+                                            <h3 class="font-s24">01 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam</h3>
+                                            <div class="profile-photo-action">
+                                                <button class="pix-btn tag-btn"><span class="pix-icon-heart-alt"></span> 124</button>
+                                            </div>
+                                        </div>
+                                        <p class="font-s16">Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit</p>
+
+                                        <div class="pix-work-with-list">
+                                            <h3 class="font-s24">Worked with</h3>
+                                            <div class="pix-inline-profile-lists">
+                                                <a href="#" class="inline-profile-item">
+                                                    <div class="inline-profile-photo" style="background-image: url(./images/user-profile-img.png)"></div>
+                                                    <span class="inline-profile-title font-s16"><strong>Nike, Inc.</strong> Agency</span>
+                                                </a>
+                                                <a href="#" class="inline-profile-item">
+                                                    <div class="inline-profile-photo" style="background-image: url(./images/user-profile-img-2.png)"></div>
+                                                    <span class="inline-profile-title font-s16"><strong>Johnathan B. </strong> Photographer</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="pix-profile-details-item">
+                                <div class="slidePhoto">
+                                    <div class="profile-slide-img"><img src="./images/profile-img-02.jpg" width="900" height="1200" alt="Images"></div>
+                                </div>
+                                <div class="slideDetails pix-custom-scrollbar">
+                                    <div class="profile-descBox">
+                                        <div class="profile-desc-head">
+                                            <h3 class="font-s24">02 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam</h3>
+                                            <div class="profile-photo-action">
+                                                <button class="pix-btn tag-btn"><span class="pix-icon-heart-alt"></span> 100</button>
+                                            </div>
+                                        </div>
+                                        <p class="font-s16">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. </p>
+
+                                        <div class="pix-work-with-list">
+                                            <h3 class="font-s24">Worked with</h3>
+                                            <div class="pix-inline-profile-lists">
+                                                <a href="#" class="inline-profile-item">
+                                                    <div class="inline-profile-photo" style="background-image: url(./images/user-profile-img-2.png)"></div>
+                                                    <span class="inline-profile-title font-s16"><strong>Johnathan B. </strong> Photographer</span>
+                                                </a>
+                                                <a href="#" class="inline-profile-item">
+                                                    <div class="inline-profile-photo" style="background-image: url(./images/user-profile-img.png)"></div>
+                                                    <span class="inline-profile-title font-s16"><strong>Nike, Inc.</strong> Agency</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="pix-profile-details-item">
+                                <div class="slidePhoto">
+                                    <div class="profile-slide-img"><img src="./images/explore-category-slider-img-02.jpg" width="900" height="655" alt="Images"></div>
+                                </div>
+                                <div class="slideDetails pix-custom-scrollbar">
+                                    <div class="profile-descBox">
+                                        <div class="profile-desc-head">
+                                            <h3 class="font-s24">03 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam</h3>
+                                            <div class="profile-photo-action">
+                                                <button class="pix-btn tag-btn"><span class="pix-icon-heart-alt"></span> 84</button>
+                                            </div>
+                                        </div>
+                                        <p class="font-s16">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+
+                                        <div class="pix-work-with-list">
+                                            <h3 class="font-s24">Worked with</h3>
+                                            <div class="pix-inline-profile-lists">
+                                                <a href="#" class="inline-profile-item">
+                                                    <div class="inline-profile-photo" style="background-image: url(./images/user-profile-img.png)"></div>
+                                                    <span class="inline-profile-title font-s16"><strong>Nike, Inc.</strong> Agency</span>
+                                                </a>
+                                                <a href="#" class="inline-profile-item">
+                                                    <div class="inline-profile-photo" style="background-image: url(./images/user-profile-img-2.png)"></div>
+                                                    <span class="inline-profile-title font-s16"><strong>Johnathan B. </strong> Photographer</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="pix-profile-details-item">
+                                <div class="slidePhoto">
+                                    <div class="profile-slide-img"><img src="./images/talent-profile-img-02.jpg" width="900" height="1200" alt="Images"></div>
+                                </div>
+                                <div class="slideDetails pix-custom-scrollbar">
+                                    <div class="profile-descBox">
+                                        <div class="profile-desc-head">
+                                            <h3 class="font-s24">04 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam</h3>
+                                            <div class="profile-photo-action">
+                                                <button class="pix-btn tag-btn"><span class="pix-icon-heart-alt"></span> 384</button>
+                                            </div>
+                                        </div>
+                                        <p class="font-s16">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+
+                                        <div class="pix-work-with-list">
+                                            <h3 class="font-s24">Worked with</h3>
+                                            <div class="pix-inline-profile-lists">
+                                                <a href="#" class="inline-profile-item">
+                                                    <div class="inline-profile-photo" style="background-image: url(./images/user-profile-img.png)"></div>
+                                                    <span class="inline-profile-title font-s16"><strong>Nike, Inc.</strong> Agency</span>
+                                                </a>
+                                                <a href="#" class="inline-profile-item">
+                                                    <div class="inline-profile-photo" style="background-image: url(./images/user-profile-img-2.png)"></div>
+                                                    <span class="inline-profile-title font-s16"><strong>Johnathan B. </strong> Photographer</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="pix-profile-details-item">
+                                <div class="slidePhoto">
+                                    <div class="profile-slide-img"><img src="./images/explore-category-slider-img-01.jpg" width="900" height="655" alt="Images"></div>
+                                </div>
+                                <div class="slideDetails pix-custom-scrollbar">
+                                    <div class="profile-descBox">
+                                        <div class="profile-desc-head">
+                                            <h3 class="font-s24">05 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam</h3>
+                                            <div class="profile-photo-action">
+                                                <button class="pix-btn tag-btn"><span class="pix-icon-heart-alt"></span> 105</button>
+                                            </div>
+                                        </div>
+                                        <p class="font-s16">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+
+                                        <div class="pix-work-with-list">
+                                            <h3 class="font-s24">Worked with</h3>
+                                            <div class="pix-inline-profile-lists">
+                                                <a href="#" class="inline-profile-item">
+                                                    <div class="inline-profile-photo" style="background-image: url(./images/user-profile-img.png)"></div>
+                                                    <span class="inline-profile-title font-s16"><strong>Nike, Inc.</strong> Agency</span>
+                                                </a>
+                                                <a href="#" class="inline-profile-item">
+                                                    <div class="inline-profile-photo" style="background-image: url(./images/user-profile-img-2.png)"></div>
+                                                    <span class="inline-profile-title font-s16"><strong>Johnathan B. </strong> Photographer</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pixModalProfileLists">
+                    <h2 class="font-s30">More like this</h2>
+                    <div class="pix-profile-filter pix-row">
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-photo">
+                            <div class="pix-profile-item">
+                                <a href="#" class="pix-photo-item pixDataModalItem" data-modal="pixPhotoModalOne">
+                                    <div class="loading pix-lazyload-img">
+                                        <span class="photo-mask"></span>
+                                        <img class="lazyload" src="./images/explore-category-slider-img-03.jpg" alt="Images" width="900" height="655">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-photo">
+                            <div class="pix-profile-item">
+                                <a href="#" class="pix-photo-item pixDataModalItem" data-modal="pixPhotoModalOne">
+                                    <div class="loading pix-lazyload-img">
+                                        <span class="photo-mask"></span>
+                                        <img class="lazyload" src="./images/profile-img-05.jpg" alt="Images" width="900" height="1320">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-photo">
+                            <div class="pix-profile-item">
+                                <a href="#" class="pix-photo-item pixDataModalItem" data-modal="pixPhotoModalOne">
+                                    <div class="loading pix-lazyload-img">
+                                        <span class="photo-mask"></span>
+                                        <img class="lazyload" src="./images/explore-category-slider-img-01.jpg" alt="Images" width="900" height="655">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-photo">
+                            <div class="pix-profile-item">
+                                <a href="#" class="pix-photo-item pixDataModalItem" data-modal="pixPhotoModalOne">
+                                    <div class="loading pix-lazyload-img">
+                                        <span class="photo-mask"></span>
+                                        <img class="lazyload" src="./images/explore-category-slider-img-04.jpg" alt="Images" width="900" height="655">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-photo">
+                            <div class="pix-profile-item">
+                                <a href="#" class="pix-photo-item pixDataModalItem" data-modal="pixPhotoModalOne">
+                                    <div class="loading pix-lazyload-img">
+                                        <span class="photo-mask"></span>
+                                        <img class="lazyload" src="./images/profile-img-06.jpg" alt="Images" width="1200" height="900">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-photo">
+                            <div class="pix-profile-item">
+                                <a href="#" class="pix-photo-item pixDataModalItem" data-modal="pixPhotoModalOne">
+                                    <div class="loading pix-lazyload-img">
+                                        <span class="photo-mask"></span>
+                                        <img class="lazyload" src="./images/profile-img-01.jpg" alt="Images" width="900" height="1200">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-photo">
+                            <div class="pix-profile-item">
+                                <a href="#" class="pix-photo-item pixDataModalItem" data-modal="pixPhotoModalOne">
+                                    <div class="loading pix-lazyload-img">
+                                        <span class="photo-mask"></span>
+                                        <img class="lazyload" src="./images/profile-img-03.jpg" alt="Images" width="900" height="1200">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-photo">
+                            <div class="pix-profile-item">
+                                <a href="#" class="pix-photo-item pixDataModalItem" data-modal="pixPhotoModalOne">
+                                    <div class="loading pix-lazyload-img">
+                                        <span class="photo-mask"></span>
+                                        <img class="lazyload" src="./images/profile-img-02.jpg" alt="Images" width="900" height="1200">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="pixVideoNestedModal" class="pixDetailsModal">
+        <div class="profile-details-content">
+            <div class="pixDetailsSlider">
+                <div class="pixProfileDetailsSlider">
+                    <span class="pixModalClose"></span>
+                    <div class="pix-edit-opt">
+                        <span class="edit-dot"></span>
+                        <ul class="pix-opt-lists">
+                            <li><a href="#"><span class="pix-option-icon pix-icon-edit"></span> Edit</a></li>
+                            <li><a href="#"><span class="pix-option-icon pix-icon-delete"></span> Delete</a></li>
+                        </ul>
+                    </div>
+                    <div class="profileDetailsSlider owl-carousel">
+                        <div class="item">
+                            <div class="pix-profile-details-item">
+                                <div class="slidePhoto video-lenth-x">
+                                    <div class="profile-slide-img">
+                                        <video controls muted autoplay preload="auto" class="modalVideo">
+                                            <source src="./video/1740140202.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                                <div class="slideDetails pix-custom-scrollbar">
+                                    <div class="profile-descBox">
+                                        <div class="profile-desc-head">
+                                            <h3 class="font-s24">02 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam</h3>
+                                            <div class="profile-photo-action">
+                                                <button class="pix-btn tag-btn"><span class="pix-icon-heart-alt"></span> 124</button>
+                                            </div>
+                                        </div>
+                                        <p class="font-s16">Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+
+                                        <div class="pix-work-with-list">
+                                            <h3 class="font-s24">Worked with</h3>
+                                            <div class="pix-inline-profile-lists">
+                                                <a href="#" class="inline-profile-item">
+                                                    <div class="inline-profile-photo" style="background-image: url(./images/user-profile-img.png)"></div>
+                                                    <span class="inline-profile-title font-s16"><strong>Nike, Inc.</strong> Agency</span>
+                                                </a>
+                                                <a href="#" class="inline-profile-item">
+                                                    <div class="inline-profile-photo" style="background-image: url(./images/user-profile-img-2.png)"></div>
+                                                    <span class="inline-profile-title font-s16"><strong>Johnathan B. </strong> Photographer</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="pix-profile-details-item">
+                                <div class="slidePhoto video-lenth-y">
+                                    <div class="profile-slide-img">
+                                        <video controls muted autoplay preload="auto" class="modalVideo">
+                                            <source src="./video/2645789918.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                                <div class="slideDetails pix-custom-scrollbar">
+                                    <div class="profile-descBox">
+                                        <div class="profile-desc-head">
+                                            <h3 class="font-s24">A Hair Stylist Spraying a Hair Product on Customers Hair</h3>
+                                            <div class="profile-photo-action">
+                                                <button class="pix-btn tag-btn"><span class="pix-icon-heart-alt"></span> 124</button>
+                                            </div>
+                                        </div>
+                                        <p class="font-s16">Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit</p>
+
+                                        <div class="pix-work-with-list">
+                                            <h3 class="font-s24">Worked with</h3>
+                                            <div class="pix-inline-profile-lists">
+                                                <a href="#" class="inline-profile-item">
+                                                    <div class="inline-profile-photo" style="background-image: url(./images/user-profile-img.png)"></div>
+                                                    <span class="inline-profile-title font-s16"><strong>ArtHouse Studio</strong> Agency</span>
+                                                </a>
+                                                <a href="#" class="inline-profile-item">
+                                                    <div class="inline-profile-photo" style="background-image: url(./images/user-profile-img-2.png)"></div>
+                                                    <span class="inline-profile-title font-s16"><strong>Johnathan B. </strong> Photographer</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="pix-profile-details-item">
+                                <div class="slidePhoto video-lenth-y">
+                                    <div class="profile-slide-img">
+                                        <video controls muted autoplay preload="auto" class="modalVideo">
+                                            <source src="./video/1707678218.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                                <div class="slideDetails pix-custom-scrollbar">
+                                    <div class="profile-descBox">
+                                        <div class="profile-desc-head">
+                                            <h3 class="font-s24">01 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam</h3>
+                                            <div class="profile-photo-action">
+                                                <button class="pix-btn tag-btn"><span class="pix-icon-heart-alt"></span> 124</button>
+                                            </div>
+                                        </div>
+                                        <p class="font-s16">Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit</p>
+
+                                        <div class="pix-work-with-list">
+                                            <h3 class="font-s24">Worked with</h3>
+                                            <div class="pix-inline-profile-lists">
+                                                <a href="#" class="inline-profile-item">
+                                                    <div class="inline-profile-photo" style="background-image: url(./images/user-profile-img.png)"></div>
+                                                    <span class="inline-profile-title font-s16"><strong>Nike, Inc.</strong> Agency</span>
+                                                </a>
+                                                <a href="#" class="inline-profile-item">
+                                                    <div class="inline-profile-photo" style="background-image: url(./images/user-profile-img-2.png)"></div>
+                                                    <span class="inline-profile-title font-s16"><strong>Johnathan B. </strong> Photographer</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="pix-profile-details-item">
+                                <div class="slidePhoto video-lenth-y">
+                                    <div class="profile-slide-img">
+                                        <video controls muted autoplay preload="auto" class="modalVideo">
+                                            <source src="./video/2645789918.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                                <div class="slideDetails pix-custom-scrollbar">
+                                    <div class="profile-descBox">
+                                        <div class="profile-desc-head">
+                                            <h3 class="font-s24">A Hair Stylist Spraying a Hair Product on Customers Hair</h3>
+                                            <div class="profile-photo-action">
+                                                <button class="pix-btn tag-btn"><span class="pix-icon-heart-alt"></span> 124</button>
+                                            </div>
+                                        </div>
+                                        <p class="font-s16">Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit</p>
+
+                                        <div class="pix-work-with-list">
+                                            <h3 class="font-s24">Worked with</h3>
+                                            <div class="pix-inline-profile-lists">
+                                                <a href="#" class="inline-profile-item">
+                                                    <div class="inline-profile-photo" style="background-image: url(./images/user-profile-img.png)"></div>
+                                                    <span class="inline-profile-title font-s16"><strong>ArtHouse Studio</strong> Agency</span>
+                                                </a>
+                                                <a href="#" class="inline-profile-item">
+                                                    <div class="inline-profile-photo" style="background-image: url(./images/user-profile-img-2.png)"></div>
+                                                    <span class="inline-profile-title font-s16"><strong>Johnathan B. </strong> Photographer</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="pixModalProfileLists">
+                    <h2 class="font-s30">More like this</h2>
+                    <div class="pix-profile-filter pix-row">
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-video">
+                            <div class="pix-profile-item">
+                                <a href="#" class="pix-video-item pixDataModalItem" data-modal="pixVideoModalOne">
+                                    <div class="loading pix-lazyload-img">
+                                        <span class="photo-mask"></span>
+                                        <img class="lazyload" src="./images/2645789918.jpg" alt="Images" width="1920" height="1080">
+                                    </div>
+                                    <span class="pix-video-btn"><i class="fas fa-play"></i></span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-video">
+                            <div class="pix-profile-item">
+                                <a href="#" class="pix-video-item pixDataModalItem" data-modal="pixVideoModalOne">
+                                    <div class="loading pix-lazyload-img">
+                                        <span class="photo-mask"></span>
+                                        <img class="lazyload" src="./images/explore-category-slider-img-03.jpg" alt="Images" width="900" height="655">
+                                    </div>
+                                    <span class="pix-video-btn"><i class="fas fa-play"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-video">
+                            <div class="pix-profile-item">
+                                <a href="#" class="pix-video-item pixDataModalItem" data-modal="pixVideoModalOne">
+                                    <div class="loading pix-lazyload-img">
+                                        <span class="photo-mask"></span>
+                                        <img class="lazyload" src="./images/profile-img-01.jpg" alt="Images" width="900" height="1200">
+                                    </div>
+                                    <span class="pix-video-btn"><i class="fas fa-play"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-video">
+                            <div class="pix-profile-item">
+                                <a href="#" class="pix-video-item pixDataModalItem" data-modal="pixVideoModalOne">
+                                    <div class="loading pix-lazyload-img">
+                                        <span class="photo-mask"></span>
+                                        <img class="lazyload" src="./images/profile-img-03.jpg" alt="Images" width="900" height="1200">
+                                    </div>
+                                    <span class="pix-video-btn"><i class="fas fa-play"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-video">
+                            <div class="pix-profile-item">
+                                <a href="#" class="pix-video-item pixDataModalItem" data-modal="pixVideoModalOne">
+                                    <div class="loading pix-lazyload-img">
+                                        <span class="photo-mask"></span>
+                                        <img class="lazyload" src="./images/explore-category-slider-img-04.jpg" alt="Images" width="900" height="655">
+                                    </div>
+                                    <span class="pix-video-btn"><i class="fas fa-play"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-video">
+                            <div class="pix-profile-item">
+                                <a href="#" class="pix-video-item pixDataModalItem" data-modal="pixVideoModalOne">
+                                    <div class="loading pix-lazyload-img">
+                                        <span class="photo-mask"></span>
+                                        <img class="lazyload" src="./images/profile-img-03.jpg" alt="Images" width="900" height="1200">
+                                    </div>
+                                    <span class="pix-video-btn"><i class="fas fa-play"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-video">
+                            <div class="pix-profile-item">
+                                <a href="#" class="pix-video-item pixDataModalItem" data-modal="pixVideoModalOne">
+                                    <div class="loading pix-lazyload-img">
+                                        <span class="photo-mask"></span>
+                                        <img class="lazyload" src="./images/profile-img-06.jpg" alt="Images" width="1200" height="900">
+                                    </div>
+                                    <span class="pix-video-btn"><i class="fas fa-play"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- JS Links -->
+    {% include 'pixcoverapp/layout/js.html' %}
+
+</body>
+</html>

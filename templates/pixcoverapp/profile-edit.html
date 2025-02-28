@@ -1,0 +1,191 @@
+{% load static %}
+{% get_static_prefix as static_prefix %}
+{% include 'pixcoverapp/layout/profile_header.html' %}
+<body>
+    <div class="site-main">
+        <header id="mainHeader" class="site-header">
+            <div class="header-container">
+                <div class="container-fluid">
+                    <nav class="navbar">
+                        {% include 'pixcoverapp/layout/site_logo.html' %}
+                        {% include 'pixcoverapp/layout/main_menu.html' %}
+                        {% include 'pixcoverapp/layout/header_account_info.html' %}
+                    </nav>
+                </div>
+            </div>
+        </header><!-- #Header -->
+
+        <!-- Mobile Main Menu Start -->
+        {% include 'pixcoverapp/layout/main_menu_mob.html' %}
+        <!-- Mobile Main Menu End -->
+
+        <main class="main-content pix-profile-page">
+            <div class="container">
+{% include 'pixcoverapp/layout/pix_profile_header.html' with nav_title='profile-edit' %}
+
+                <div class="pix-profile-content">
+                    <div class="profile-page-menu">
+
+                        {% include 'pixcoverapp/layout/profile_navbar.html'  with nav_title='profile-edit'%}
+                        <div class="profile-select-filter">
+                            <select id="profileFilterCat" class="pix-form-control pixSelect2" name="pix_profile_filter">
+                                <option value="*">Photos & Videos</option>
+                                <option value=".pix-profile-photo">Photos Only</option>
+                                <option value=".pix-profile-video">Videos Only</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div id="pixProfileFilter" class="pix-profile-filter pix-row">
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-video">
+                            <div class="pix-profile-item">
+                                <img src="./images/profile-img-01.jpg" alt="Images" width="900" height="1200">
+
+                                <a class="pix-video-btn" href="#"><i class="fas fa-play"></i></a>
+
+                                <div class="pix-edit-opt">
+                                    <span class="edit-dot"></span>
+                                    <ul class="pix-opt-lists">
+                                        <li><a href="#"><span class="pix-option-icon pix-icon-edit"></span><span class="pix-option-text">Edit</span></a></li>
+                                        <li><a href="#"><span class="pix-option-icon pix-icon-delete"></span> <span class="pix-option-text">Delete</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-photo">
+                            <div class="pix-profile-item">
+                                <img src="./images/profile-img-04.jpg" alt="Images" width="1200" height="900">
+                                <div class="pix-edit-opt">
+                                    <span class="edit-dot"></span>
+                                    <ul class="pix-opt-lists">
+                                        <li><a href="#"><span class="pix-option-icon pix-icon-edit"></span><span class="pix-option-text">Edit</span></a></li>
+                                        <li><a href="#"><span class="pix-option-icon pix-icon-delete"></span> <span class="pix-option-text">Delete</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-photo">
+                            <div class="pix-profile-item">
+                                <img src="./images/talent-profile-img-02.jpg" alt="Images" width="900" height="1200">
+                                <div class="pix-edit-opt">
+                                    <span class="edit-dot"></span>
+                                    <ul class="pix-opt-lists">
+                                        <li><a href="#"><span class="pix-option-icon pix-icon-edit"></span><span class="pix-option-text">Edit</span></a></li>
+                                        <li><a href="#"><span class="pix-option-icon pix-icon-delete"></span> <span class="pix-option-text">Delete</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-video">
+                            <div class="pix-profile-item">
+                                <img src="./images/profile-img-03.jpg" alt="Images" width="900" height="1200">
+                                <a class="pix-video-btn" href="#"><i class="fas fa-play"></i></a>
+                                <div class="pix-edit-opt">
+                                    <span class="edit-dot"></span>
+                                    <ul class="pix-opt-lists">
+                                        <li><a href="#"><span class="pix-option-icon pix-icon-edit"></span><span class="pix-option-text">Edit</span></a></li>
+                                        <li><a href="#"><span class="pix-option-icon pix-icon-delete"></span> <span class="pix-option-text">Delete</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-photo">
+                            <div class="pix-profile-item">
+                                <img src="./images/profile-img-02.jpg" alt="Images" width="900" height="1200">
+                                <div class="pix-edit-opt">
+                                    <span class="edit-dot"></span>
+                                    <ul class="pix-opt-lists">
+                                        <li><a href="#"><span class="pix-option-icon pix-icon-edit"></span><span class="pix-option-text">Edit</span></a></li>
+                                        <li><a href="#"><span class="pix-option-icon pix-icon-delete"></span> <span class="pix-option-text">Delete</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-video">
+                            <div class="pix-profile-item">
+                                <img src="./images/explore-category-slider-img-03.jpg" alt="Images" width="900" height="655">
+                                <a class="pix-video-btn" href="#"><i class="fas fa-play"></i></a>
+                                <div class="pix-edit-opt">
+                                    <span class="edit-dot"></span>
+                                    <ul class="pix-opt-lists">
+                                        <li><a href="#"><span class="pix-option-icon pix-icon-edit"></span><span class="pix-option-text">Edit</span></a></li>
+                                        <li><a href="#"><span class="pix-option-icon pix-icon-delete"></span> <span class="pix-option-text">Delete</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-photo">
+                            <div class="pix-profile-item">
+                                <img src="./images/explore-category-slider-img-02.jpg" alt="Images" width="900" height="655">
+                                <div class="pix-edit-opt">
+                                    <span class="edit-dot"></span>
+                                    <ul class="pix-opt-lists">
+                                        <li><a href="#"><span class="pix-option-icon pix-icon-edit"></span><span class="pix-option-text">Edit</span></a></li>
+                                        <li><a href="#"><span class="pix-option-icon pix-icon-delete"></span> <span class="pix-option-text">Delete</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="pix-col-4 pix-profile-filter-item pix-profile-video">
+                            <div class="pix-profile-item">
+                                <img src="./images/profile-img-05.jpg" alt="Images" width="900" height="1320">
+                                <a class="pix-video-btn" href="#"><i class="fas fa-play"></i></a>
+                                <div class="pix-edit-opt">
+                                    <span class="edit-dot"></span>
+                                    <ul class="pix-opt-lists">
+                                        <li><a href="#"><span class="pix-option-icon pix-icon-edit"></span><span class="pix-option-text">Edit</span></a></li>
+                                        <li><a href="#"><span class="pix-option-icon pix-icon-delete"></span> <span class="pix-option-text">Delete</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-photo">
+                            <div class="pix-profile-item">
+                                <img src="./images/explore-category-slider-img-01.jpg" alt="Images" width="900" height="655">
+                                <div class="pix-edit-opt">
+                                    <span class="edit-dot"></span>
+                                    <ul class="pix-opt-lists">
+                                        <li><a href="#"><span class="pix-option-icon pix-icon-edit"></span><span class="pix-option-text">Edit</span></a></li>
+                                        <li><a href="#"><span class="pix-option-icon pix-icon-delete"></span> <span class="pix-option-text">Delete</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-video">
+                            <div class="pix-profile-item">
+                                <img src="./images/explore-category-slider-img-04.jpg" alt="Images" width="900" height="655">
+                                <a class="pix-video-btn" href="#"><i class="fas fa-play"></i></a>
+                                <div class="pix-edit-opt">
+                                    <span class="edit-dot"></span>
+                                    <ul class="pix-opt-lists">
+                                        <li><a href="#"><span class="pix-option-icon pix-icon-edit"></span><span class="pix-option-text">Edit</span></a></li>
+                                        <li><a href="#"><span class="pix-option-icon pix-icon-delete"></span> <span class="pix-option-text">Delete</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pix-col-4 pix-profile-filter-item pix-profile-video">
+                            <div class="pix-profile-item">
+                                <img src="./images/profile-img-06.jpg" alt="Images" width="1200" height="900">
+                                <a class="pix-video-btn" href="#"><i class="fas fa-play"></i></a>
+                                <div class="pix-edit-opt">
+                                    <span class="edit-dot"></span>
+                                    <ul class="pix-opt-lists">
+                                        <li><a href="#"><span class="pix-option-icon pix-icon-edit"></span><span class="pix-option-text">Edit</span></a></li>
+                                        <li><a href="#"><span class="pix-option-icon pix-icon-delete"></span> <span class="pix-option-text">Delete</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    {% include 'pixcoverapp/layout/footer.html' %}
+</div><!-- /site-main -->
+
+<!-- JS Links -->
+{% include 'pixcoverapp/layout/js.html' %}
+</body>
+</html>

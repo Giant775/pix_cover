@@ -1,0 +1,65 @@
+[
+    {
+      "model": "pixcoverapp.skills",
+      "pk": 1,
+      "fields": {
+        "skill": "Fashon/Editorial"
+      }
+    },
+    {
+        "model": "pixcoverapp.skills",
+        "pk": 2,
+        "fields": {
+          "skill": "Runway"
+        }
+    },
+    {
+      "model": "pixcoverapp.skills",
+      "pk": 3,
+      "fields": {
+        "skill": "Sport"
+      }
+    },
+    {
+        "model": "pixcoverapp.skills",
+        "pk": 4,
+        "fields": {
+          "skill": "Casual"
+        }
+    },
+    {
+        "model": "pixcoverapp.skills",
+        "pk": 5,
+        "fields": {
+          "skill": "Swimwear"
+        }
+    },
+    {
+        "model": "pixcoverapp.skills",
+        "pk": 6,
+        "fields": {
+          "skill": "Print"
+        }
+    },
+    {
+        "model": "pixcoverapp.skills",
+        "pk": 7,
+        "fields": {
+          "skill": "Hair"
+        }
+    },
+    {
+        "model": "pixcoverapp.skills",
+        "pk": 8,
+        "fields": {
+          "skill": "Makeup"
+        }
+    },
+    {
+        "model": "pixcoverapp.skills",
+        "pk": 9,
+        "fields": {
+          "skill": "Parts Modeling"
+        }
+    }
+]

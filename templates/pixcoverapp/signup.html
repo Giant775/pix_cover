@@ -1,0 +1,121 @@
+{% load static %}
+{% get_static_prefix as static_prefix %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1" />
+    <meta name="googlebot" content="noindex" />
+    <meta name="robots" content="noindex, nofollow" />
+
+    <title>Sign In - Pix Cover</title>
+    <meta name="title" content="Profile - Pix Cover" />
+    <meta name="description" content="Talents and agencies around the world showcase their portfolio work on Pixcover - the home to the world’s best professionals." />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="{{URLL}}" />
+    <meta property="og:url" content="{{URLL}}" />
+    <meta property="og:title" content="Profile - Pix Cover" />
+    <meta property="og:site_name" content="Profile - Pix Cover" />
+    <meta property="og:description" content="Talents and agencies around the world showcase their portfolio work on Pixcover - the home to the world’s best professionals." />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="300" />
+    <meta property="og:image:height" content="300" />
+    <meta property="og:image:alt" content="Talents and agencies around the world showcase their portfolio work on Pixcover - the home to the world’s best professionals." />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="{{URLL}}" />
+    <meta property="twitter:title" content="Profile - Pix Cover" />
+    <meta property="twitter:description" content="Talents and agencies around the world showcase their portfolio work on Pixcover - the home to the world’s best professionals." />
+
+    <!-- Schema.org for Google -->
+    <meta itemprop="name" content="Profile - Pix Cover" />
+    <meta itemprop="description" content="Talents and agencies around the world showcase their portfolio work on Pixcover - the home to the world’s best professionals." />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.png'%}" />
+
+    <!-- Fonts Links -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="{% static  'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+
+    <meta name="msapplication-TileColor" content="#2b5797" />
+    <meta name="theme-color" content="#333333" />
+</head>
+
+<body>
+    <div class="pix-signin-page">
+        <div class="signin-header">
+            <div class="container">
+                <div class="signin-logo">
+                    <a href="/"><img src="{% static  'images/pixcover-logo-white.svg'%}" alt="Logo"></a>
+                </div>
+            </div>
+        </div>
+
+        <form method="post" class="psignup">
+            {% csrf_token %}
+            <div class="pix-signin-container">
+                {% with image_url=static_prefix|add:'images/about-img.jpg' %}
+                <div class="pix-about-img loading pix-lazyload-bgi" style="background-image:url({{image_url}})">
+                    {% endwith %}
+                    <span class="photo-mask"></span>
+                    <img class="lazyload hide" src="{% static  'images/about-img.jpg'%}" alt="Banner Image">
+                </div>
+                <div class="pix-signin-content">
+                    <div class="site-sign-in">
+                        <div class="pix-signin-head">
+                            <h2 class="font-s40">Sign Up</h2>
+                            <button class="btn-sign-google"><span class="icon-google-g"></span> Sign up with Google</button>
+                        </div>
+
+                        <div class="pix-sep-block">
+                            <span class="pix-sep-text">or</span>
+                        </div>
+
+
+                        <div class="pix-form-content">
+                            {% if error and error == 1 %} 
+                            <h4 class="clr-red">{{ message }}</h4>
+                           {% endif%}
+                           {% if error and error == 2 %} 
+                           <h4 >{{ message }}</h4>
+                          {% endif%}
+                            <div class="pix-form-group">
+                                <label class="input-label">Your email</label>
+                                <input class="pix-form-control" type="email" name="email" placeholder="Email address">
+                            </div>
+                            <div class="pix-form-group">
+                                <label class="input-label">Your password</label>
+                                <input class="pix-form-control" type="password" name="password" placeholder="Password">
+                            </div>
+                            <div class="pix-form-group">
+                                <label class="input-label">Confirmation password</label>
+                                <input class="pix-form-control" type="password" name="password1" placeholder="Confirm Password">
+                            </div>
+                            <div class="pix-form-group">
+                                <button type="submit" class="pix-btn pix-signin-btn"><span class="">Sign Up</span></button>
+                                
+                            </div>
+                        </div>
+
+                        <div class="pix-signin-footer">
+                            <p>Already have an account? <a class="clr-red" href="/signin">Sign In</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div><!-- /pix-signin-content -->
+
+    <!-- JS Links -->
+    {% include 'pixcoverapp/layout/js.html' %}
+</body>
+</html>

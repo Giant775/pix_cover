@@ -1,0 +1,114 @@
+{% load static %}
+{% get_static_prefix as static_prefix %}
+{% include 'pixcoverapp/layout/profile_header.html' %}
+{% load abcfilter %}
+
+<body>
+    <div class="site-main">
+        <header id="mainHeader" class="site-header">
+            <div class="header-container">
+                <div class="container-fluid">
+                    <nav class="navbar">
+                        {% include 'pixcoverapp/layout/site_logo.html' %}
+                        {% include 'pixcoverapp/layout/main_menu.html' %}
+                        {% include 'pixcoverapp/layout/header_account_info.html' %}
+                    </nav>
+                </div>
+            </div>
+        </header><!-- #Header -->
+
+        <!-- Mobile Main Menu Start -->
+        {% include 'pixcoverapp/layout/main_menu_mob.html' %}
+        <!-- Mobile Main Menu End -->
+
+        <main class="main-content pix-profile-page">
+            <div class="container">
+                {% include 'pixcoverapp/layout/pix_profile_header.html' with nav_title='about' %}
+                <div class="pix-profile-content">
+                    <div class="profile-page-menu">
+                        {% include 'pixcoverapp/layout/profile_navbar.html'  with nav_title='about'%}
+                        <div class="stats-select-filter">
+                            <select id="statsFilterDays" class="pix-form-control pixSelect2" name="pix_stats_day_filter">
+                                <option value="30days">30 Days</option>
+                                <option value="last-day">Last Day</option>
+                                <option value="last-month">Last Month</option>
+                                <option value="last-year">Last Year</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="stats-page-content pix-about-page">
+                        <div class="pix-border-box">
+                            <div class="stats-box-head pb-0">
+                                <div class="flex-item">
+                                    <h3>{{user.fullname|getabname}}</h3>
+                                </div>
+                                <div class="flex-item">
+                                    <h4><i class="fas fa-star"></i></h4>
+                                    <h3>4.9</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pix-border-box no-border mb-0">
+                            <div class="pix-review-item pix-about-content">
+                                <div class="pix-review-head">
+                                    <h4>About</h4>
+                                    <div class="pix-edit-opt">
+                                        <span class="edit-dot"></span>
+                                        <ul class="pix-opt-lists">
+                                            <li><a href="#"><span class="pix-option-icon pix-icon-edit"></span> Edit</a></li>
+                                            <li><a href="#"><span class="pix-option-icon pix-icon-delete"></span> Delete</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <p>{{user.description}}</p>
+                            </div>
+
+                            <div class="pix-about-info about-sec-pad">
+                                <div class="pix-row">
+                                    <div class="pix-col-4">
+                                        <div class="pix-about-info-item">
+                                            <span class="about-info-icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="30" height="30" fill="none"/><circle cx="128" cy="104" r="32" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/><path d="M208,104c0,72-80,128-80,128S48,176,48,104a80,80,0,0,1,160,0Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/></svg>
+                                            </span>
+                                            <h4>Location</h4>
+                                            <p>{{user.location4}}, {{user.location3}}, {{user.location2}}, {{user.location1}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="pix-col-4">
+                                        <div class="pix-about-info-item">
+                                            <span class="about-info-icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="30" height="30" fill="none"/><circle cx="128" cy="104" r="32" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/><path d="M208,104c0,72-80,128-80,128S48,176,48,104a80,80,0,0,1,160,0Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"/></svg>
+                                            </span>
+                                            <h4>Profession</h4>
+                                            <p>{{mycategory.category}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="pix-about-available about-sec-pad">
+                                <h4>Available for</h4>
+                                <ul>
+                                    {% for skill in user.skills %} 
+                                    {% for rskill in skills %}
+                                    {% if skill == rskill.id %}
+                                        <li>{{rskill.skill}}</li>
+                                    {% endif %}
+                                    {%endfor%} {%endfor%}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        {% include 'pixcoverapp/layout/footer.html' %}
+    </div><!-- /site-main -->
+
+    <!-- JS Links -->
+    {% include 'pixcoverapp/layout/js.html' %}
+</body>
+</html>

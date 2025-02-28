@@ -1,0 +1,239 @@
+{% load static %}
+{% get_static_prefix as static_prefix %}
+{% include 'pixcoverapp/layout/profile_header.html' %}
+
+<body>
+    <div class="site-main">
+        <header id="mainHeader" class="site-header">
+            <div class="header-container">
+                <div class="container-fluid">
+                    <nav class="navbar">
+                        {% include 'pixcoverapp/layout/site_logo.html' %}
+                        {% include 'pixcoverapp/layout/main_menu.html' %}
+                        {% include 'pixcoverapp/layout/header_account_info.html' %}
+                    </nav>
+                </div>
+            </div>
+        </header><!-- #Header -->
+
+        <!-- Mobile Main Menu Start -->
+        {% include 'pixcoverapp/layout/main_menu_mob.html' %}
+        <!-- Mobile Main Menu End -->
+
+        <main class="main-content pix-profile-page">
+            <div class="container">
+                {% include 'pixcoverapp/layout/pix_profile_header.html' with nav_title='stats' %}
+
+                <div class="pix-profile-content">
+                    <div class="profile-page-menu">
+                        {% include 'pixcoverapp/layout/profile_navbar.html'  with nav_title='stats'%}
+                    </div>
+
+                    <div class="stats-page-content">
+                        <div class="pix-border-box">
+                            <div class="stats-live-view">
+                                <h4>Live views</h4>
+                                <h2>25,993,583</h2>
+                            </div>
+                        </div>
+
+                        <div class="pix-border-box">
+                            <div class="stats-box-head">
+                                <h4>Overview</h4>
+                                <div class="stats-select-filter">
+                                    <select id="statsFilterDays" class="pix-form-control pixSelect2" name="pix_stats_day_filter">
+                                        <option value="30days">30 Days</option>
+                                        <option value="last-day">Last Day</option>
+                                        <option value="last-month">Last Month</option>
+                                        <option value="last-year">Last Year</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="stats-overview-sec">
+                                <div class="pix-row">
+                                    <div class="pix-col-4">
+                                        <div class="stats-overview-item">
+                                            <p>Profile Visits</p>
+                                            <h3>40K</h3>
+                                        </div>
+                                    </div>
+                                    <div class="pix-col-4">
+                                        <div class="stats-overview-item">
+                                            <p>Followers</p>
+                                            <h3>325K</h3>
+                                        </div>
+                                    </div>
+                                    <div class="pix-col-4">
+                                        <div class="stats-overview-item">
+                                            <p>Likes</p>
+                                            <h3>2.1K</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pix-border-box">
+                            <div class="stats-box-head">
+                                <h4>Overview</h4>
+                                <div class="stats-select-filter">
+                                    <select id="statsFilterViews" class="pix-form-control pixSelect2" name="pix_stats_views_filter">
+                                        <option value="mostview">Most Views</option>
+                                        <option value="topview">Top View</option>
+                                        <option value="lowestview">Lowest View</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            {% with stats_img8=static_prefix|add:'images/stats-img-08.jpg' stats_img7=static_prefix|add:'images/stats-img-07.jpg' stats_img6=static_prefix|add:'images/stats-img-06.jpg' stats_img5=static_prefix|add:'images/stats-img-05.jpg' stats_img4=static_prefix|add:'images/stats-img-04.jpg' stats_img3=static_prefix|add:'images/stats-img-03.jpg' stats_img2=static_prefix|add:'images/stats-img-02.jpg' stats_img1=static_prefix|add:'images/stats-img-01.jpg' %}
+                            <div class="stats-portfolio-sec">
+                                <div class="pix-row">
+                                    <div class="pix-col-3">
+                                        <div class="stats-portfolio-item loading pix-lazyload-bgi" style="background-image: url({{stats_img1}});">
+                                            <span class="photo-mask"></span>
+                                            <img class="lazyload hide" src="{{stats_img1}}" alt="Images">
+                                            <div class="stats-overview-info">
+                                                <div class="stov-item">
+                                                    <p>Views</p>
+                                                    <h3>9M</h3>
+                                                </div>
+                                                <div class="stov-item">
+                                                    <p>Likes</p>
+                                                    <h3>2.1K</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="pix-col-3">
+                                        <div class="stats-portfolio-item loading pix-lazyload-bgi" style="background-image: url({{stats_img2}});">
+                                            <span class="photo-mask"></span>
+                                            <img class="lazyload hide" src="{{stats_img2}}" alt="Images">
+                                            <div class="stats-overview-info">
+                                                <div class="stov-item">
+                                                    <p>Views</p>
+                                                    <h3>5.8M</h3>
+                                                </div>
+                                                <div class="stov-item">
+                                                    <p>Likes</p>
+                                                    <h3>2.1K</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="pix-col-3">
+                                        <div class="stats-portfolio-item loading pix-lazyload-bgi" style="background-image: url({{stats_img3}});">
+                                            <span class="photo-mask"></span>
+                                            <img class="lazyload hide" src="{{stats_img3}}" alt="Images">
+                                            <div class="stats-overview-info">
+                                                <div class="stov-item">
+                                                    <p>Views</p>
+                                                    <h3>2.2K</h3>
+                                                </div>
+                                                <div class="stov-item">
+                                                    <p>Likes</p>
+                                                    <h3>1.7K</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="pix-col-3">
+                                        <div class="stats-portfolio-item loading pix-lazyload-bgi" style="background-image: url({{stats_img4}});">
+                                            <span class="photo-mask"></span>
+                                            <img class="lazyload hide" src="{{stats_img4}}" alt="Images">
+                                            <div class="stats-overview-info">
+                                                <div class="stov-item">
+                                                    <p>Views</p>
+                                                    <h3>1M</h3>
+                                                </div>
+                                                <div class="stov-item">
+                                                    <p>Likes</p>
+                                                    <h3>2.1K</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="pix-col-3">
+                                        <div class="stats-portfolio-item loading pix-lazyload-bgi" style="background-image: url({{stats_img5}});">
+                                            <span class="photo-mask"></span>
+                                            <img class="lazyload hide" src="{{stats_img5}}" alt="Images">
+                                            <div class="stats-overview-info">
+                                                <div class="stov-item">
+                                                    <p>Views</p>
+                                                    <h3>3.5M</h3>
+                                                </div>
+                                                <div class="stov-item">
+                                                    <p>Likes</p>
+                                                    <h3>3.1K</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="pix-col-3">
+                                        <div class="stats-portfolio-item loading pix-lazyload-bgi" style="background-image: url({{stats_img6}});">
+                                            <span class="photo-mask"></span>
+                                            <img class="lazyload hide" src="{{stats_img6}}" alt="Images">
+                                            <div class="stats-overview-info">
+                                                <div class="stov-item">
+                                                    <p>Views</p>
+                                                    <h3>40K</h3>
+                                                </div>
+                                                <div class="stov-item">
+                                                    <p>Likes</p>
+                                                    <h3>2.8K</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="pix-col-3">
+                                        <div class="stats-portfolio-item loading pix-lazyload-bgi" style="background-image: url({{stats_img7}});">
+                                            <span class="photo-mask"></span>
+                                            <img class="lazyload hide" src="{{stats_img7}}" alt="Images">
+                                            <div class="stats-overview-info">
+                                                <div class="stov-item">
+                                                    <p>Views</p>
+                                                    <h3>3078</h3>
+                                                </div>
+                                                <div class="stov-item">
+                                                    <p>Likes</p>
+                                                    <h3>1.1K</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="pix-col-3">
+                                        <div class="stats-portfolio-item loading pix-lazyload-bgi" style="background-image: url({{stats_img8}});">
+                                            <span class="photo-mask"></span>
+                                            <img class="lazyload hide" src="{{stats_img8}}" alt="Images">
+                                            <div class="stats-overview-info">
+                                                <div class="stov-item">
+                                                    <p>Views</p>
+                                                    <h3>840K</h3>
+                                                </div>
+                                                <div class="stov-item">
+                                                    <p>Likes</p>
+                                                    <h3>945</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="pix-loadmore-btn-sec flex-center">
+                                    <button class="btn-loadmore">Load More</button>
+                                </div>
+                            </div>
+                            {%endwith%}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        {% include 'pixcoverapp/layout/footer.html' %}
+    </div><!-- /site-main -->
+
+    <!-- JS Links -->
+    {% include 'pixcoverapp/layout/js.html' %}
+</body>
+</html>

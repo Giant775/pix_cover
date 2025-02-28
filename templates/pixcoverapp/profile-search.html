@@ -1,0 +1,320 @@
+{% load static %}
+{% get_static_prefix as static_prefix %}
+{% include 'pixcoverapp/layout/profile_header.html' %}
+{% load abcfilter %}
+
+<body class="bg-gray">
+    <div class="site-main">
+        <header id="mainHeader" class="site-header">
+            <div class="header-container">
+                <div class="container-fluid">
+                    <nav class="navbar">
+                        {% include 'pixcoverapp/layout/site_logo.html' %}
+                        {% include 'pixcoverapp/layout/main_menu.html' %}
+                        {% include 'pixcoverapp/layout/header_account_info.html' %}
+                    </nav>
+                </div>
+            </div>
+        </header><!-- #Header -->
+
+        <!-- Mobile Main Menu Start -->
+        {% include 'pixcoverapp/layout/main_menu_mob.html' %}
+        <!-- Mobile Main Menu End -->
+
+        <form method="post">
+            {%csrf_token%}
+        <main class="main-content pix-search-page">
+            <div class="container">
+                <div class="pix-page-content">
+                    <div class="profile-search-container">
+                        <div class="pix-row">
+                            <div class="pix-col-3">
+                                <div class="pix-src-sidebar">
+                                    <div class="sidebar-filter">
+                                        <div class="pix-src-head">
+                                            <h2 class="font-s40">SEARCH</h2>
+
+                                            <button class="pix-mobile-src-filter-btn resView">
+                                                <span class="pix-filter-text">Filter</span>
+                                                <span class="pix-fiter-icon">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" height="12px" viewBox="0 0 512 512"><path d="M3.9 54.9C10.5 40.9 24.5 32 40 32H472c15.5 0 29.5 8.9 36.1 22.9s4.6 30.5-5.2 42.5L320 320.9V448c0 12.1-6.8 23.2-17.7 28.6s-23.8 4.3-33.5-3l-64-48c-8.1-6-12.8-15.5-12.8-25.6V320.9L9 97.3C-.7 85.4-2.8 68.8 3.9 54.9z"/></svg>
+                                                </span>
+                                            </button>
+                                        </div>
+                                        <div class="pix-form-content">
+                                            <div class="sidebar-form-block">
+                                                <span class="pix-clear-btn" id="clear">Clear</span>
+                                                <div class="pix-form-group">
+                                                    <label class="input-label pl-0">Gender</label>
+                                                    <select id="gender" class="pix-form-control pixSelect2" name="gender">
+                                                        <option value="0"{%if gender == '0' %} selected {%endif%}>Any</option>
+                                                        <option value="male"{%if gender == 'male' %} selected {%endif%}>Male</option>
+                                                        <option value="female"{%if gender == 'female' %} selected {%endif%}>Female</option>
+                                                    </select>
+                                                </div>
+                                                <div class="pix-form-group">
+                                                    <label class="input-label pl-0">Location</label>
+                                                    <select id="location" name="location" class="pix-form-control pixSelect2">
+                                                        <option value="0" {%if country == '0' %} selected {%endif%}>Any</option>
+                                                        {% for x in countries %}
+                                                              <option value="{{x}}" {% if x == country %} selected {%endif%}>{% if "United Kingdom" in x %} United Kingom {% else %} {{x}} {% endif%}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="pix-form-group">
+                                                <label class="input-label pl-0">Availibility</label>
+                                                
+                                                <div class="pix-select-box">
+                                                    <span class="select-list-title">Any/All</span>
+                                                    <div class="pix-select-dropdown">
+                                                        <ul class="select-lists">
+                                                            <li class="select-list-item">                                                             
+                                                                <input id="checkall" name="checkall" type="checkbox">
+                                                                <label for="checkall" style="font-weight: bold;">Check/Uncheck All</label>
+                                                             </li>
+
+                                                            {% for skill in skills %} 
+                                                            <li class="select-list-item">                                                             
+                                                               <input id="skill_{{skill.id}}" name="checkbox_{{skill.skill}}" type="checkbox" {% if skill.id in search_skills %} checked {% endif %}>
+                                                                <label for="skill_{{skill.id}}">{{skill.skill}}</label>
+                                                            </li>
+                                                            {% endfor %} 
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                                <button class="pix-btn btn-h60" style="width:100%" type="submit"><span class="pix-btn-text">Search</span></button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="pix-col-9">
+                                <div class="pix-src-content">
+                                    <div class="pix-src-head">
+                                        <div class="src-top-filter">
+                                            <div class="pix-form-group">
+                                                <select class="pix-form-control pixSelect2">
+                                                    <option value="*">Models</option>
+                                                    <option value="Photographer">Photographer</option>
+                                                    <option value="MakeupArtist">Makeup Artist</option>
+                                                    <option value="Singer">Singer</option>
+                                                </select>
+                                            </div>
+                                            <div class="pix-form-group">
+                                                <select class="pix-form-control pixSelect2">
+                                                    <option value="*">Rating</option>
+                                                    <option value="htol">High to Low</option>
+                                                    <option value="ltoh">Low to High</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="pix-post-container">
+                                        <div class="pix-profile-src-block pix-row">
+                                            {% for user_list in user_lists %} 
+                                            <div class="pix-col-4 profile-src-col">
+                                                <div class="pix-profile-src-item pix-profile-img-item">
+                                                    <div class="pix-profile-cover-img loading pix-lazyload-img">
+                                                        <span class="photo-mask"></span>
+                                                        <img class="lazyload" src="{{ MEDIA_URL }}{{user_list.avatar}}" width="800" height="500" alt="Images">
+                                                        <div class="pix-profile-photo" style="background-image: url({{ MEDIA_URL }}{{user_list.avatar}});"></div>
+                                                    </div>
+                                                    <div class="pix-profile-src-desc">
+                                                        <h4 class="profile-name">{{user_list.fullname|getabname}}<span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
+                                                        <span class="profile-title">{{user_list.category|getcategoryname}}</span>
+                                                        <span class="profile-location"><i class="fas fa-map-marker-alt"></i> {{user_list.location2}}, {{user_list.location1}}</span>
+                                                    </div>
+                                                    <div class="pix-profile-src-foot">
+                                                        <span class="profile-rating flex-center">4.6 <i class="fas fa-star"></i></span>
+                                                        <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% endfor%}
+
+                                            <!-- {% for profileImg in profileImgs %} 
+                                            <div class="pix-col-4 profile-src-col">
+                                                <div class="pix-profile-src-item pix-profile-img-item">
+                                                    <div class="pix-profile-cover-img loading pix-lazyload-img">
+                                                        <span class="photo-mask"></span>
+                                                        <img class="lazyload" src="{{profileImg}}" width="800" height="500" alt="Images">
+                                                        <div class="pix-profile-photo" style="background-image: url({{profileImg}});"></div>
+                                                    </div>
+                                                    <div class="pix-profile-src-desc">
+                                                        <h4 class="profile-name">Alexa P. <span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
+                                                        <span class="profile-title">Makeup Artist</span>
+                                                        <span class="profile-location"><i class="fas fa-map-marker-alt"></i> Miami, FL</span>
+                                                    </div>
+                                                    <div class="pix-profile-src-foot">
+                                                        <span class="profile-rating flex-center">4.6 <i class="fas fa-star"></i></span>
+                                                        <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% endfor%} -->
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </form>
+
+        {% include 'pixcoverapp/layout/footer.html' %}
+    </div><!-- /site-main -->
+
+    <div class="pix-filter-modal">
+        <span class="pix-filter-mask"></span>
+        <div class="pix-filter-modal-content">
+            <button class="pix-mobile-src-filter-btn">
+                <span class="pix-filter-text">Close</span>
+                <span class="pix-fiter-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="12px" viewBox="0 0 384 512"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
+                </span>
+            </button>
+
+            <div class="pix-form-group">
+                <label class="input-label pl-0">Gender</label>
+                <select class="pix-form-control pixSelect2">
+                    <option value="0">Any</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+
+            <div class="pix-form-group">
+                <label class="input-label pl-0">Location</label>
+                <select class="pix-form-control pixSelect2">
+                    <option value="0">Any</option>
+                    <option value="usa">USA</option>
+                    <option value="canada">Canada</option>
+                    <option value="uk">UK</option>
+                    <option value="france">France</option>
+                </select>
+            </div>
+
+            <div class="pix-form-group">
+                <label class="input-label pl-0">Availibility</label>
+                <div class="pix-select-box">
+                    <span class="select-list-title">Any/All</span>
+                    <div class="pix-select-dropdown">
+                        <ul class="select-lists">
+                            <li class="select-list-item">
+                                <input id="avl_fashon_editorial" type="checkbox">
+                                <label for="avl_fashon_editorial">Fashon/Editorial</label>
+                            </li>
+                            <li class="select-list-item">
+                                <input id="avl_runway" type="checkbox">
+                                <label for="avl_runway">Runway</label>
+                            </li>
+                            <li class="select-list-item">
+                                <input id="avl_sport" type="checkbox">
+                                <label for="avl_sport">Sport</label>
+                            </li>
+                            <li class="select-list-item">
+                                <input id="avl_casual" type="checkbox">
+                                <label for="avl_casual">Casual</label>
+                            </li>
+                            <li class="select-list-item">
+                                <input id="avl_swimwear" type="checkbox">
+                                <label for="avl_swimwear">Swimwear</label>
+                            </li>
+                            <li class="select-list-item">
+                                <input id="avl_print" type="checkbox">
+                                <label for="avl_print">Print</label>
+                            </li>
+                            <li class="select-list-item">
+                                <input id="avl_hair" type="checkbox">
+                                <label for="avl_hair">Hair</label>
+                            </li>
+                            <li class="select-list-item">
+                                <input id="avl_makeup" type="checkbox">
+                                <label for="avl_makeup">Makeup</label>
+                            </li>
+                            <li class="select-list-item">
+                                <input id="avl_parts_modeling" type="checkbox">
+                                <label for="avl_parts_modeling">Parts Modeling</label>
+                            </li>
+                            <li class="select-list-item">
+                                <input id="avl_photogrpher" type="checkbox">
+                                <label for="avl_photogrpher">Photogrpher</label>
+                            </li>
+                            <li class="select-list-item">
+                                <input id="avl_actors" type="checkbox">
+                                <label for="avl_actors">Actors</label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pix-filter-modal-footer">
+                <button id="modalFilterSubmit" class="pix-btn btn-white btn-border">
+                    <span class="btn-text-normal">Submit</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- JS Links -->
+    {% include 'pixcoverapp/layout/js.html' %}
+    <script type="text/javascript">
+        $("#clear").click(function () { 
+            $('#gender').val('0').trigger('change');
+            $('#location').val('0').trigger('change');
+            var skills1 = []
+            {% for skill in skills %}
+                skills1.push({'id': `{{skill.id}}`, 'skill':`{{skill.skill}}`})
+            {% endfor %}
+            console.log(skills1)
+            for (var k = 0; k< skills1.length; k++) {
+                $('#skill_'+ skills1[k].id)[0].checked = false;
+            }
+            $('#checkall')[0].checked = false;
+        });
+
+        init_check();
+        function init_check() {
+            var skills1 = []
+            {% for skill in skills %}
+                skills1.push({'id': `{{skill.id}}`, 'skill':`{{skill.skill}}`})
+            {% endfor %}
+            console.log(skills1)
+            var cc = true;
+            for (var k = 0; k< skills1.length; k++) {
+                if ($('#skill_'+ skills1[k].id)[0].checked == false) {
+                    cc = false;
+                }
+            }
+            $('#checkall')[0].checked = cc;
+        }
+
+        $("#checkall").click(function () { 
+            var skills1 = []
+            {% for skill in skills %}
+                skills1.push({'id': `{{skill.id}}`, 'skill':`{{skill.skill}}`})
+            {% endfor %}
+            var cc = true;
+            for (var k = 0; k< skills1.length; k++) {
+                if ($('#skill_'+ skills1[k].id)[0].checked == false) {
+                    cc = false;
+                }
+            }
+            for (var k = 0; k< skills1.length; k++) {
+                $('#skill_'+ skills1[k].id)[0].checked = !cc;
+            }
+        })
+    </script>
+</body>
+</html>
