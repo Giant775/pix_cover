@@ -198,7 +198,6 @@ def aboutView(request):
     skills = Skills.objects.filter().values()
     template_name = 'pixcoverapp/about.html'
     context = {'user': user, 'skills': skills, 'mycategory': category}
-    println("here")
     return render(request, template_name, context)
 
 def reviewsView(request):
