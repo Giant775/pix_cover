@@ -42,7 +42,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'pixcoverapp',
     'crispy_forms',
-    'crispy_bootstrap5'
+    'crispy_bootstrap5',
+    'connections',
+    'jobs',
+    'messaging',
+    'notifications',
+    'payments',
+    'portfolio',
+    'reviews',
+    'users',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap5'

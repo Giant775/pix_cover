@@ -22,7 +22,15 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('pixcoverapp.urls'))
+    path('', include('pixcoverapp.urls')), # landing page
+    path('users/', include('users.urls')), #User authentication and profiles
+    path('jobs/', include('jobs.urls')), #Job postings and search
+    path('connections/', include('connections.urls')), #User connections
+    path('messaging/', include('messaging.urls')), #Messaging
+    path('portfolio/', include('portfolio.urls')), #Freelancer portfolios
+    path('reviews/', include('reviews.urls')), #Reviews and ratings
+    path('payments/', include('payments.urls')), #Payments and subscriptions
+    path('notifications/', include('notifications.urls')), #Notifications
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:
