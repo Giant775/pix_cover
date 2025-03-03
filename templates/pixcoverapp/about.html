@@ -91,12 +91,11 @@
                             <div class="pix-about-available about-sec-pad">
                                 <h4>Available for</h4>
                                 <ul>
-                                    {% for skill in user.skills %} 
                                     {% for rskill in skills %}
-                                    {% if skill == rskill.id %}
-                                        <li>{{rskill.skill}}</li>
-                                    {% endif %}
-                                    {%endfor%} {%endfor%}
+                                        {% if rskill.id in user.skills %}
+                                            <li>{{ rskill.skill }}</li>
+                                        {% endif %}
+                                    {% endfor %}
                                 </ul>
                             </div>
                         </div>
@@ -111,4 +110,10 @@
     <!-- JS Links -->
     {% include 'pixcoverapp/layout/js.html' %}
 </body>
+<script>
+    var skills = "{{skills}}"
+    var user_skills = "{{user.skills}}"
+    console.log("skills:", skills)
+    console.log("user skills:", user_skills)
+</script>
 </html>

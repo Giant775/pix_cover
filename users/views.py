@@ -155,3 +155,25 @@ def settingsView(request):
         return render(request, template_name, {'countries': countries, 'error': error, 'message': message, 'user': user, 'categories': categories, 'skills': skills})
 
     return render(request, template_name, {'countries': countries, 'user': exist, 'categories': categories, 'skills': skills})
+
+def aboutView(request):
+    if not request.user.is_authenticated:
+        return redirect('signin_url')
+
+    user = Users.objects.get(email=request.user.email)
+    print(f"This is user Id:{user.id}")
+    # user.skills = list(user.skills)
+    # user.skills = user.skills
+    # Ensure user.skills is a list
+    if isinstance(user.skills, str):  # If it's a string, convert to a list
+        user.skills = json.loads(user.skills)  
+    else:
+        user.skills = list(user.skills)  # Ensure it's a list if it's a queryset
+    category = Categories.objects.get(id=user.category)
+    # skills = Skills.objects.filter().values()
+    skills = list(Skills.objects.values("id", "skill"))
+    # print(f"This is the skills:{skills}")
+    # print(f"This is user skills:{user.skills}")
+    template_name = 'pixcoverapp/about.html'
+    context = {'user': user, 'skills': skills, 'mycategory': category}
+    return render(request, template_name, context)
