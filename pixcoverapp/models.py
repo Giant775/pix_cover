@@ -1,6 +1,6 @@
 from django.db import models
-from pixcoverapp.database import Users
-from pixcoverapp.database import Categories
+# from pixcoverapp.database import Users
+# from pixcoverapp.database import Categories
 
 # Create your models here.
 class Orders(models.Model):

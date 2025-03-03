@@ -1,8 +1,9 @@
 from django.shortcuts import redirect, render
 from .forms import OrderForm
 from .models import Orders
+from users.models import Users
 from .constants import *
-from pixcoverapp.database import Users
+# from pixcoverapp.database import Users
 from pixcoverapp.database import Categories
 from pixcoverapp.database import Skills
 from django.contrib.auth import authenticate, login, logout

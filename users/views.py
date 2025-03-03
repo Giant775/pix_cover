@@ -5,6 +5,7 @@ from pixcoverapp.database import Skills
 from django.contrib.auth import authenticate, login, logout
 from django.utils.crypto import get_random_string
 from django_countries.data import COUNTRIES
+from .constants import *
 
 import json
 from .models import Users
@@ -14,15 +15,17 @@ def signinView(request):
 
     if request.method == 'POST':
         email = request.POST.get("email")
-        password = request.POST.get("password")
+        password= request.POST.get("password")
         message = ''
-        if email is None or len(email) == 0:
+        if email ==None or len(email) == 0:
             message = VALIDATIONERROR_EMPTY_FIELD
         
         exist = Users.objects.filter(email=email).values()
         if len(exist) < 1:
             message = EMAIL_NOT_EXIST
         else:
+            print(exist[0])
+            # Authenticate the user
             user1 = authenticate(request, username=exist[0]['username'], password=password)
             if user1 is not None:
                 login(request, user1, backend='django.contrib.auth.backends.ModelBackend')
@@ -31,13 +34,13 @@ def signinView(request):
                 message = EMAIL_PASSWORD_INCORRECT
                 return render(request, template_name, {'error': 1, 'message': message})
         
-        if message != '':
+        if message !='':
             return render(request, template_name, {'error': 1, 'message': message})
         
     return render(request, template_name, {})
 
 def signupView(request):
-    template_name = 'users/signup.html'
+    template_name = 'pixcoverapp/signup.html'
     if request.method == 'POST':
         email = request.POST.get("email")
         password = request.POST.get("password")
@@ -64,7 +67,8 @@ def signupView(request):
                 user.set_password(password)
                 user.save()
                 message = REGISTER_SUCCESS
-                return render(request, template_name, {'error': 2, 'message': message})
+                return redirect('settings_url')
+                # return render(request, template_name, {'error': 2, 'message': message})
         
     return render(request, template_name, {})
 
@@ -77,11 +81,12 @@ def settingsView(request):
         return redirect('signin_url')
     
     exist = Users.objects.get(email=request.user.email)
-    exist.skills = json.loads(exist.skills)
+    print(f"exist:{{exist}}")
+    exist.skills = exist.skills
     categories = Categories.objects.filter().values()
     skills = Skills.objects.filter().values()
     
-    template_name = 'users/settings.html'
+    template_name = 'pixcoverapp/work-settings.html'
 
     countries = []
     for key in COUNTRIES:
