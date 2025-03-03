@@ -1,14 +1,16 @@
 from django.shortcuts import redirect, render
-from pixcoverapp.database import Users
-from pixcoverapp.database import Categories
-from pixcoverapp.database import Skills
+# from pixcoverapp.database import Users
+from .models import Users
+# from pixcoverapp.database import Categories
+from .models import Categories
+# from pixcoverapp.database import Skills
+from .models import Skills
 from django.contrib.auth import authenticate, login, logout
 from django.utils.crypto import get_random_string
 from django_countries.data import COUNTRIES
 from .constants import *
 
 import json
-from .models import Users
 
 def signinView(request):
     template_name = 'pixcoverapp/signin.html'
@@ -81,7 +83,6 @@ def settingsView(request):
         return redirect('signin_url')
     
     exist = Users.objects.get(email=request.user.email)
-    print(f"exist:{{exist}}")
     exist.skills = exist.skills
     categories = Categories.objects.filter().values()
     skills = Skills.objects.filter().values()

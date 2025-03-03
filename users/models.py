@@ -31,3 +31,20 @@ class Users(AbstractUser):
 
 Users._meta.get_field('groups').remote_field.related_name = 'custom_user_groups'
 Users._meta.get_field('user_permissions').remote_field.related_name = 'custom_user_user_permissions'
+
+
+class Skills(models.Model):
+    id = models.IntegerField(primary_key=True)
+    skill = models.CharField(max_length=5000)
+    
+    def __str__(self):
+        return f'{self.skill}'
+    
+
+class Categories(models.Model):
+    id = models.IntegerField(primary_key=True)
+    category = models.CharField(max_length=5000)
+    
+    def __str__(self):
+        return f'{self.category}'
+    
