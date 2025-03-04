@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.contrib.auth import get_user_model
 from django.utils.crypto import get_random_string
 
 # Create your models here.
@@ -48,3 +49,19 @@ class Categories(models.Model):
     def __str__(self):
         return f'{self.category}'
     
+
+class Review(models.Model):
+    User = get_user_model()
+    id = models.AutoField(primary_key=True)
+    reviewer = models.ForeignKey(Users, on_delete=models.CASCADE, related_name='given_reviews')
+    reviewed_user = models.ForeignKey(Users, on_delete=models.CASCADE, related_name='received_reviews')
+    rating = models.IntegerField()
+    comment = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        unique_together = ('reviewer', 'reviewed_user')
+
+    def __str__(self):
+        return f"Review by {self.reviewer.fullname} for {self.reviewed_user.fullname}"

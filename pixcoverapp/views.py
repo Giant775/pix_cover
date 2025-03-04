@@ -2,6 +2,7 @@ from django.shortcuts import redirect, render
 from .forms import OrderForm
 from .models import Orders
 from users.models import Users
+from users.models import Skills
 from .constants import *
 # from pixcoverapp.database import Users
 # from pixcoverapp.database import Categories
@@ -240,91 +241,91 @@ def statsView(request):
     context = {'form': form}
     return render(request, template_name, context)
 
-# def profileSearchView(request):
-#     if not request.user.is_authenticated:
-#         return redirect('signin_url')
+def profileSearchView(request):
+    if not request.user.is_authenticated:
+        return redirect('signin_url')
 
-#     template_name = 'pixcoverapp/profile-search.html'
-#     skills = Skills.objects.filter().values()
-#     countries = []
-#     for key in COUNTRIES:
-#         countries.append(COUNTRIES[key])
-#     context = {'profileImgs': ['/static/images/profile-cover-img-01.jpg', 
-#             '/static/images/profile-cover-img-02.jpg',
-#             '/static/images/profile-cover-img-03.jpg',
-#             '/static/images/profile-cover-img-04.jpg',
-#             '/static/images/profile-cover-img-05.jpg',
-#             '/static/images/profile-cover-img-06.jpg',
-#             '/static/images/profile-cover-img-07.jpg',
-#             '/static/images/profile-cover-img-08.jpg',
-#             '/static/images/profile-cover-img-09.jpg',
-#             '/static/images/profile-cover-img-10.jpg',
-#             '/static/images/profile-cover-img-11.jpg',
-#             '/static/images/profile-cover-img-12.jpg'],
-#             'skills': skills,
-#             'countries': countries,
-#             'search_skills': [],
-#             'gender': '0',
-#             'country': '0',
-#             'user_lists': []}
+    template_name = 'pixcoverapp/profile-search.html'
+    skills = Skills.objects.filter().values()
+    countries = []
+    for key in COUNTRIES:
+        countries.append(COUNTRIES[key])
+    context = {'profileImgs': ['/static/images/profile-cover-img-01.jpg', 
+            '/static/images/profile-cover-img-02.jpg',
+            '/static/images/profile-cover-img-03.jpg',
+            '/static/images/profile-cover-img-04.jpg',
+            '/static/images/profile-cover-img-05.jpg',
+            '/static/images/profile-cover-img-06.jpg',
+            '/static/images/profile-cover-img-07.jpg',
+            '/static/images/profile-cover-img-08.jpg',
+            '/static/images/profile-cover-img-09.jpg',
+            '/static/images/profile-cover-img-10.jpg',
+            '/static/images/profile-cover-img-11.jpg',
+            '/static/images/profile-cover-img-12.jpg'],
+            'skills': skills,
+            'countries': countries,
+            'search_skills': [],
+            'gender': '0',
+            'country': '0',
+            'user_lists': []}
     
-#     if request.method == 'POST':
-#         location = request.POST.get("location")
-#         gender = request.POST.get("gender")
-#         print(location)
-#         print(gender)
-#         if location == '0':
-#             print('location is 0')
+    if request.method == 'POST':
+        location = request.POST.get("location")
+        gender = request.POST.get("gender")
+        print(location)
+        print(gender)
+        if location == '0':
+            print('location is 0')
         
-#         search_skills = []
-#         for x in skills:
-#             if (request.POST.get("checkbox_" + x['skill']) == "on"):
-#                 search_skills.append(x['id'])
+        search_skills = []
+        for x in skills:
+            if (request.POST.get("checkbox_" + x['skill']) == "on"):
+                search_skills.append(x['id'])
         
         
-#         print(search_skills)
-#         context['search_skills'] = search_skills
-#         context['country'] = location
-#         context['gender'] = gender
+        print(search_skills)
+        context['search_skills'] = search_skills
+        context['country'] = location
+        context['gender'] = gender
 
-#         user_lists = Users.objects.filter().values()
+        user_lists = Users.objects.filter().values()
         
-#         fresh_lists = []
+        fresh_lists = []
 
-#         for user_list in user_lists:
-#             if gender == "male":
-#                 if (user_list['gender'] == 0):
-#                     fresh_lists.append(user_list)
-#             elif gender == "female":
-#                 if (user_list['gender'] == 1):
-#                     fresh_lists.append(user_list)
-#             else:
-#                 fresh_lists.append(user_list)
+        for user_list in user_lists:
+            if gender == "male":
+                if (user_list['gender'] == 0):
+                    fresh_lists.append(user_list)
+            elif gender == "female":
+                if (user_list['gender'] == 1):
+                    fresh_lists.append(user_list)
+            else:
+                fresh_lists.append(user_list)
             
         
-#         fresh_location_lists = []
-#         for fresh_list in fresh_lists:
-#             if location == "0":
-#                 fresh_location_lists.append(fresh_list)
-#             else:
-#                 if fresh_list['location1'] == location:
-#                     fresh_location_lists.append(fresh_list)
+        fresh_location_lists = []
+        for fresh_list in fresh_lists:
+            if location == "0":
+                fresh_location_lists.append(fresh_list)
+            else:
+                if fresh_list['location1'] == location:
+                    fresh_location_lists.append(fresh_list)
 
-#         fresh_category_lists = []
-#         for fresh_location_list in fresh_location_lists:
-#             fresh_skills = json.loads(fresh_location_list['skills'])
-#             exist = False
-#             for x1 in fresh_skills:
-#                 if x1 in search_skills:
-#                     exist = True
-#             if exist == True:
-#                 fresh_category_lists.append(fresh_location_list)
+        fresh_category_lists = []
+        for fresh_location_list in fresh_location_lists:
+            fresh_skills = json.loads(fresh_location_list['skills'])
+            exist = False
+            for x1 in fresh_skills:
+                if x1 in search_skills:
+                    exist = True
+            if exist == True:
+                fresh_category_lists.append(fresh_location_list)
        
-#         print('final list', fresh_category_lists)
-#         context['user_lists'] = fresh_category_lists
-#         return render(request, template_name, context)
+        print('final list', fresh_category_lists)
+        context['user_lists'] = fresh_category_lists
+        return render(request, template_name, context)
 
-#     return render(request, template_name, context)
+    return render(request, template_name, context)
 
 def profileEditView(request):
     if not request.user.is_authenticated:

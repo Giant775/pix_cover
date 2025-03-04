@@ -5,7 +5,11 @@ from .models import Users
 from .models import Categories
 # from pixcoverapp.database import Skills
 from .models import Skills
+from .models import Review
+from .forms import ReviewForm
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
 from django.utils.crypto import get_random_string
 from django_countries.data import COUNTRIES
 from .constants import *
@@ -177,3 +181,6 @@ def aboutView(request):
     template_name = 'pixcoverapp/about.html'
     context = {'user': user, 'skills': skills, 'mycategory': category}
     return render(request, template_name, context)
+
+def create_review(request, user_id):
+    reviewed_user = get_object
