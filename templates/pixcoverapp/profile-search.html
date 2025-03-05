@@ -33,7 +33,6 @@
                                     <div class="sidebar-filter">
                                         <div class="pix-src-head">
                                             <h2 class="font-s40">SEARCH</h2>
-
                                             <button class="pix-mobile-src-filter-btn resView">
                                                 <span class="pix-filter-text">Filter</span>
                                                 <span class="pix-fiter-icon">
@@ -98,11 +97,14 @@
                                     <div class="pix-src-head">
                                         <div class="src-top-filter">
                                             <div class="pix-form-group">
-                                                <select class="pix-form-control pixSelect2">
-                                                    <option value="*">Models</option>
+                                                <select class="pix-form-control pixSelect2" name="category" id="category">
+                                                    {% for x in categories %}
+                                                        <option value="{{ x.id }}" {% if x.id == category|add:0 %} selected {% endif %}>{{ x.category }}</option>
+                                                    {% endfor %}
+                                                    <!-- <option value="*">Models</option>
                                                     <option value="Photographer">Photographer</option>
                                                     <option value="MakeupArtist">Makeup Artist</option>
-                                                    <option value="Singer">Singer</option>
+                                                    <option value="Singer">Singer</option> -->
                                                 </select>
                                             </div>
                                             <div class="pix-form-group">
@@ -127,7 +129,13 @@
                                                     </div>
                                                     <div class="pix-profile-src-desc">
                                                         <h4 class="profile-name">{{user_list.fullname|getabname}}<span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
-                                                        <span class="profile-title">{{user_list.category|getcategoryname}}</span>
+                                                        <!-- <p>user debug: {{user_list.category}}</p> -->
+                                                        <!-- <span class="profile-title">{{user_list.category|getcategoryname}}</span> -->
+                                                         {% for categ in categories %}
+                                                            {% if categ.id == user_list.category %}
+                                                                <span class="profile-title">{{ categ.category }}</span>
+                                                            {% endif %}
+                                                         {% endfor %}
                                                         <span class="profile-location"><i class="fas fa-map-marker-alt"></i> {{user_list.location2}}, {{user_list.location1}}</span>
                                                     </div>
                                                     <div class="pix-profile-src-foot">

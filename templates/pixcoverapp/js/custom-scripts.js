@@ -359,10 +359,10 @@ jQuery(document).ready(function() {
  */
 (function($) {
 	$(document).ready(function(){
-        $('.pix-mobile-src-filter-btn').click(function(){
-            $('body').toggleClass('scrollOff');
-            $('.pix-filter-modal').toggleClass('filterOpen');
-        });
+        // $('.pix-mobile-src-filter-btn').click(function(){
+        //     $('body').toggleClass('scrollOff');
+        //     $('.pix-filter-modal').toggleClass('filterOpen');
+        // });
         $('#modalFilterSubmit, .pix-filter-mask').click(function(){
             $('body').removeClass('scrollOff');
             $('.pix-filter-modal').removeClass('filterOpen');

@@ -55,7 +55,7 @@ class Review(models.Model):
     id = models.AutoField(primary_key=True)
     reviewer = models.ForeignKey(Users, on_delete=models.CASCADE, related_name='given_reviews')
     reviewed_user = models.ForeignKey(Users, on_delete=models.CASCADE, related_name='received_reviews')
-    rating = models.IntegerField()
+    rating = models.FloatField()
     comment = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

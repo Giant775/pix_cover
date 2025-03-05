@@ -27,22 +27,63 @@
                     <div class="profile-page-menu">
                         {% include 'pixcoverapp/layout/profile_navbar.html'  with nav_title='reviews'%}
                     </div>
-
+                    <!-- <p>reviews debug: {{ reviews }}</p>
+                    <p>reviewd user debug: {{ reviewed_user }}</p> -->
                     <div class="stats-page-content">
                         <div class="pix-border-box">
                             <div class="stats-box-head pb-0">
                                 <div class="flex-item">
-                                    <h3>240</h3>
+                                    <h3>{{ reviews.count }}</h3>
                                     <h4>Reviews</h4>
                                 </div>
                                 <div class="flex-item">
                                     <h4><i class="fas fa-star"></i></h4>
-                                    <h3>4.9</h3>
+                                    <h3>{{ ave_rating }}</h3>
                                 </div>
                             </div>
                         </div>
-
                         <div class="pix-border-box no-border">
+                        {% for review in reviews %}
+                            <div class="pix-review-item">
+                                <div class="pix-review-head">
+                                    <h4>{{ review.reviewer.fullname }}</h4>
+                                    <h4 class="flex-item">
+                                        <small><i class="fas fa-star"></i></small>
+                                        <span>{{review.rating}}</span>
+                                    </h4>
+
+                                    <div class="pix-edit-opt">
+                                        <span class="edit-dot"></span>
+                                        <ul class="pix-opt-lists">
+                                            <li><a href="{% url 'edit_review_url' review.id %}"><span class="pix-option-icon pix-icon-edit"></span> Edit</a></li>
+                                            <li><a href="{% url 'delete_review_url' review.id %}"><span class="pix-option-icon pix-icon-delete"></span> Delete</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <p>{{ review.comment }}</p>
+                            </div>
+                            {% empty %}
+                                <p>No reviews yet.</p>
+                            {% endfor %}
+                            <!-- <div class="pix-review-item">
+                                <div class="pix-review-head">
+                                    <h4>jayciekim</h4>
+                                    <h4 class="flex-item">
+                                        <small><i class="fas fa-star"></i></small>
+                                        <span>4.8</span>
+                                    </h4>
+
+                                    <div class="pix-edit-opt">
+                                        <span class="edit-dot"></span>
+                                        <ul class="pix-opt-lists">
+                                            <li><a href="#"><span class="pix-option-icon pix-icon-edit"></span> Edit</a></li>
+                                            <li><a href="#"><span class="pix-option-icon pix-icon-delete"></span> Delete</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <p>Great work, he provided a lot of options and was receptive of feedback.</p>
+                            </div>
+
                             <div class="pix-review-item">
                                 <div class="pix-review-head">
                                     <h4>pieradiganci</h4>
@@ -79,45 +120,7 @@
                                     </div>
                                 </div>
                                 <p>Great work, he provided a lot of options and was receptive of feedback.</p>
-                            </div>
-
-                            <div class="pix-review-item">
-                                <div class="pix-review-head">
-                                    <h4>pieradiganci</h4>
-                                    <h4 class="flex-item">
-                                        <small><i class="fas fa-star"></i></small>
-                                        <span>4.5</span>
-                                    </h4>
-
-                                    <div class="pix-edit-opt">
-                                        <span class="edit-dot"></span>
-                                        <ul class="pix-opt-lists">
-                                            <li><a href="#"><span class="pix-option-icon pix-icon-edit"></span> Edit</a></li>
-                                            <li><a href="#"><span class="pix-option-icon pix-icon-delete"></span> Delete</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet</p>
-                            </div>
-
-                            <div class="pix-review-item">
-                                <div class="pix-review-head">
-                                    <h4>jayciekim</h4>
-                                    <h4 class="flex-item">
-                                        <small><i class="fas fa-star"></i></small>
-                                        <span>4.8</span>
-                                    </h4>
-
-                                    <div class="pix-edit-opt">
-                                        <span class="edit-dot"></span>
-                                        <ul class="pix-opt-lists">
-                                            <li><a href="#"><span class="pix-option-icon pix-icon-edit"></span> Edit</a></li>
-                                            <li><a href="#"><span class="pix-option-icon pix-icon-delete"></span> Delete</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <p>Great work, he provided a lot of options and was receptive of feedback.</p>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>

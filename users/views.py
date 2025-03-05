@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 # from pixcoverapp.database import Users
 from .models import Users
 # from pixcoverapp.database import Categories
@@ -7,12 +7,13 @@ from .models import Categories
 from .models import Skills
 from .models import Review
 from .forms import ReviewForm
+from .constants import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.utils.crypto import get_random_string
 from django_countries.data import COUNTRIES
-from .constants import *
+from django.db.models import Q
 
 import json
 
@@ -35,6 +36,10 @@ def signinView(request):
             user1 = authenticate(request, username=exist[0]['username'], password=password)
             if user1 is not None:
                 login(request, user1, backend='django.contrib.auth.backends.ModelBackend')
+                context = {
+                    'user': user1
+                }
+                # return redirect('settings_url', context)
                 return redirect('settings_url')
             else:
                 message = EMAIL_PASSWORD_INCORRECT
@@ -173,6 +178,7 @@ def aboutView(request):
         user.skills = json.loads(user.skills)  
     else:
         user.skills = list(user.skills)  # Ensure it's a list if it's a queryset
+    print('user category id:', user.category)
     category = Categories.objects.get(id=user.category)
     # skills = Skills.objects.filter().values()
     skills = list(Skills.objects.values("id", "skill"))
@@ -182,5 +188,153 @@ def aboutView(request):
     context = {'user': user, 'skills': skills, 'mycategory': category}
     return render(request, template_name, context)
 
-def create_review(request, user_id):
-    reviewed_user = get_object
+# def reviewsView(request):
+#     if not request.user.is_authenticated:
+#         return redirect('signin_url')
+#     form = OrderForm()
+#     if request.method == 'POST':
+#         form = OrderForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('show_url')
+#     template_name = 'pixcoverapp/reviews.html'
+#     context = {'form': form}
+#     return render(request, template_name, context)
+
+def reviewsView(request, user_id):
+    if not request.user.is_authenticated:
+        return redirect('signin_url')
+    template_name = 'pixcoverapp/reviews.html'
+    reviewed_user = get_object_or_404(Users, id=user_id)
+    reviews = Review.objects.filter(reviewed_user=reviewed_user)
+    total_rating = 0
+    ave_rating = 0
+    for review in reviews:
+        total_rating += review.rating
+    if reviews.count() > 0:
+        ave_rating = total_rating / reviews.count()
+    context = {
+        'reviews': reviews,
+        'reviewed_user': reviewed_user,
+        'ave_rating': ave_rating,
+    }
+    return render(request, template_name, context)
+
+def createReviewView(request, user_id):
+    if not request.user.is_authenticated:
+        return redirect('signin_url')
+    reviewed_user = get_object_or_404(Users, id=user_id)
+    template_name = 'pixcoverapp/review_form.html'
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_vaild():
+            review = form.save(commit=False)
+            review.reviewer = request.user
+            review.reviewed_user = reviewed_user
+            review.save()
+            return redirect('reviews_url', user_id=user_id)
+        else:
+            form = ReviewForm()
+        return render(request, template_name, {'reviewed_user': reviewed_user})
+    
+def editReviewView(request, review_id):
+    review = get_object_or_404(Review, id=review_id, reviewer=request.user)
+    template_name = 'pixcoverapp/review_form.html'
+    if request.method == 'POST':
+        form = ReviewForm(request.POST, instance=review)
+        if form.is_valid():
+            form.save()
+            return redirect('reviews_url', user_id=review.reviewed_user.id)
+    else:
+        form = ReviewForm(instance=review)
+    return render(request, template_name, {'form': form, 'review': review})
+
+def deleteReviewView(request, review_id):
+    review = get_object_or_404(Review, id=review_id, reviewer=request.user)
+    template_name = 'pixcoverapp/review_confirm_delete.html'
+    if request.method == 'POST':
+        review.delete()
+        return redirect('reviews_url', user_id=review.reviewed_user.id)
+    return render(request, template_name, {'review': review})
+
+def profileSearchView(request):
+    if not request.user.is_authenticated:
+        return redirect('signin_url')
+
+    template_name = 'pixcoverapp/profile-search.html'
+    skills = Skills.objects.filter().values()
+    categories = Categories.objects.filter().values()
+    countries = []
+    for key in COUNTRIES:
+        countries.append(COUNTRIES[key])
+    context = {'profileImgs': ['/static/images/profile-cover-img-01.jpg', 
+            '/static/images/profile-cover-img-02.jpg',
+            '/static/images/profile-cover-img-03.jpg',
+            '/static/images/profile-cover-img-04.jpg',
+            '/static/images/profile-cover-img-05.jpg',
+            '/static/images/profile-cover-img-06.jpg',
+            '/static/images/profile-cover-img-07.jpg',
+            '/static/images/profile-cover-img-08.jpg',
+            '/static/images/profile-cover-img-09.jpg',
+            '/static/images/profile-cover-img-10.jpg',
+            '/static/images/profile-cover-img-11.jpg',
+            '/static/images/profile-cover-img-12.jpg'],
+            'skills': skills,
+            'countries': countries,
+            'country': '0',
+            'categories': categories,
+            'category': 0,
+            'search_skills': [],
+            'gender': '0',
+            'user_lists': []}
+        
+    if request.method == 'POST':
+        location = request.POST.get("location")
+        gender = request.POST.get("gender")
+        category = request.POST.get('category')
+
+        search_skills = []
+        for x in skills:
+            if (request.POST.get("checkbox_" + x['skill']) == "on"):
+                search_skills.append(x['id'])
+        
+        
+        context['search_skills'] = search_skills
+        context['country'] = location
+        context['gender'] = gender
+        if category:
+            context['category'] = category
+
+        user_lists = Users.objects.exclude(id=request.user.id)  # Exclude current user
+
+        # Apply gender filter
+        if gender == "male":
+            user_lists = user_lists.filter(gender=0)
+        elif gender == "female":
+            user_lists = user_lists.filter(gender=1)
+
+        # Apply location filter
+        if location != "0":
+            user_lists = user_lists.filter(location1=location)
+
+        # Convert QuerySet to list of dictionaries
+        user_lists = list(user_lists.values())
+
+        # Filter users based on skills
+        fresh_skill_lists = []
+        for user in user_lists:
+            fresh_skills = user['skills']
+            if isinstance(fresh_skills, str):  
+                fresh_skills = json.loads(fresh_skills)  # Ensure skills are in list format
+            
+            # Check if search_skills exist in fresh_skills
+            if not search_skills or set(fresh_skills) & set(search_skills):
+                fresh_skill_lists.append(user)
+
+        # Filter users by category
+        fresh_category_lists = [user for user in fresh_skill_lists if int(user['category']) == int(category)]
+
+        context['user_lists'] = fresh_category_lists
+        return render(request, template_name, context)
+
+    return render(request, template_name, context)

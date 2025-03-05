@@ -13,7 +13,7 @@ urlpatterns = [
     path('stats/', views.statsView, name='stats_url'),
     path('profile-search/', views.profileSearchView, name='profile_search_url'),
     path('profile-edit/', views.profileEditView, name='profile_edit_url'),
-    # path('profile-visitor/', views.profileVisitorView, name='profile_visitor_url'),
+    path('profile-visitor/', views.profileVisitorView, name='profile_visitor_url'),
     path('profile-messenger/', views.profileMessengerView, name='profile_messenger_url'),
     path('plans/', views.plansView, name='plans_url'),
 

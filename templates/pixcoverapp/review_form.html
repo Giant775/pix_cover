@@ -1,0 +1,13 @@
+<!-- manually added -->
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>{% if review %}Edit{% else %}New{% endif %} Review</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}
