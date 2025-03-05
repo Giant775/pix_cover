@@ -133,14 +133,14 @@
                                                         <!-- <span class="profile-title">{{user_list.category|getcategoryname}}</span> -->
                                                          {% for categ in categories %}
                                                             {% if categ.id == user_list.category %}
-                                                                <span class="profile-title">{{ categ.category }}</span>
+                                                                <span class="profile-title">{{ categ.x }}</span>
                                                             {% endif %}
                                                          {% endfor %}
                                                         <span class="profile-location"><i class="fas fa-map-marker-alt"></i> {{user_list.location2}}, {{user_list.location1}}</span>
                                                     </div>
                                                     <div class="pix-profile-src-foot">
                                                         <span class="profile-rating flex-center">4.6 <i class="fas fa-star"></i></span>
-                                                        <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
+                                                        <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="{% url 'profile_detail_url' user_list.id %}"><span class="pix-btn-text">Profile</span></a>
                                                     </div>
                                                 </div>
                                             </div>

@@ -7,6 +7,7 @@ from .models import Categories
 from .models import Skills
 from .models import Review
 from .forms import ReviewForm
+from .forms import OrderForm
 from .constants import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -165,11 +166,15 @@ def settingsView(request):
 
     return render(request, template_name, {'countries': countries, 'user': exist, 'categories': categories, 'skills': skills})
 
-def aboutView(request):
+def aboutView(request, profile_id = None):
     if not request.user.is_authenticated:
         return redirect('signin_url')
-
-    user = Users.objects.get(email=request.user.email)
+    print('profile id:', profile_id)
+    print('request user_id:', request.user.id)
+    if profile_id:
+        user = Users.objects.get(id=profile_id)
+    else:
+        user = Users.objects.get(email=request.user.email)
     print(f"This is user Id:{user.id}")
     # user.skills = list(user.skills)
     # user.skills = user.skills
@@ -204,6 +209,7 @@ def aboutView(request):
 def reviewsView(request, user_id):
     if not request.user.is_authenticated:
         return redirect('signin_url')
+    user = Users.objects.get(id=user_id)
     template_name = 'pixcoverapp/reviews.html'
     reviewed_user = get_object_or_404(Users, id=user_id)
     reviews = Review.objects.filter(reviewed_user=reviewed_user)
@@ -217,6 +223,7 @@ def reviewsView(request, user_id):
         'reviews': reviews,
         'reviewed_user': reviewed_user,
         'ave_rating': ave_rating,
+        'user': user,
     }
     return render(request, template_name, context)
 
@@ -337,4 +344,21 @@ def profileSearchView(request):
         context['user_lists'] = fresh_category_lists
         return render(request, template_name, context)
 
+    return render(request, template_name, context)
+
+
+def profileDetailView(request, profile_id):
+    if not request.user.is_authenticated:
+        return redirect('signin_url')
+    print('user id:', request.user.id)
+    print('profile id:', profile_id)
+    form = OrderForm()
+    profile = Users.objects.get(id=profile_id)
+    if request.method == 'POST':
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('show_url')
+    template_name = 'pixcoverapp/profile-visitor.html'
+    context = {'form': form, 'user': profile, 'logged_in_user': request.user}
     return render(request, template_name, context)
