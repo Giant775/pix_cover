@@ -98,7 +98,8 @@ def settingsView(request):
     skills = Skills.objects.filter().values()
     
     template_name = 'pixcoverapp/work-settings.html'
-
+    mycategory = Categories.objects.get(id=request.user.category)
+    logged_in_user = request.user
     countries = []
     for key in COUNTRIES:
         countries.append(COUNTRIES[key])
@@ -162,20 +163,50 @@ def settingsView(request):
 
         user = Users.objects.get(id=user_id)
         user.skills = json.loads(user.skills)
-        return render(request, template_name, {'countries': countries, 'error': error, 'message': message, 'user': user, 'categories': categories, 'skills': skills})
+        mycategory = Categories.objects.get(id=user.category)
+        
+        return render(request, template_name, {'countries': countries, 'error': error, 'message': message, 'user': user, 'categories': categories, 'skills': skills, 'mycategory': mycategory, 'logged_in_user': user})
+    return render(request, template_name, {'countries': countries, 'user': exist, 'categories': categories, 'skills': skills, 'mycategory': mycategory, 'logged_in_user': logged_in_user})
 
-    return render(request, template_name, {'countries': countries, 'user': exist, 'categories': categories, 'skills': skills})
+def connectionView(origin_user_id, profile_user_id):
+    if origin_user_id == profile_user_id:
+        return
+        
+    origin_user = Users.objects.get(id=origin_user_id)
+    profile_user = Users.objects.get(id=profile_user_id)
+
+    # Ensure connections are lists
+    if not isinstance(origin_user.connections, list):
+        origin_user.connections = []
+    if not isinstance(profile_user_id, list):
+        profile_user.connections = []
+
+    # Add connection if not already added
+    if str(profile_user_id) not in map(str, origin_user.connections):
+        origin_user.connections.append(profile_user_id)
+        origin_user.save()
+        
+
+    if str(origin_user_id) not in map(str, profile_user.connections):
+        profile_user.connections.append(origin_user_id)
+        profile_user.save()
+
 
 def aboutView(request, profile_id = None):
     if not request.user.is_authenticated:
         return redirect('signin_url')
     print('profile id:', profile_id)
     print('request user_id:', request.user.id)
+    print('request receive')
+    if request.method == 'POST':
+        print('post profile id:', profile_id)
+        print('post reqeust user id:', request.user.id)
     if profile_id:
         user = Users.objects.get(id=profile_id)
     else:
         user = Users.objects.get(email=request.user.email)
     print(f"This is user Id:{user.id}")
+    logged_in_user = request.user
     # user.skills = list(user.skills)
     # user.skills = user.skills
     # Ensure user.skills is a list
@@ -190,7 +221,7 @@ def aboutView(request, profile_id = None):
     # print(f"This is the skills:{skills}")
     # print(f"This is user skills:{user.skills}")
     template_name = 'pixcoverapp/about.html'
-    context = {'user': user, 'skills': skills, 'mycategory': category}
+    context = {'user': user, 'skills': skills, 'mycategory': category, 'logged_in_user': logged_in_user}
     return render(request, template_name, context)
 
 # def reviewsView(request):
@@ -210,11 +241,13 @@ def reviewsView(request, user_id):
     if not request.user.is_authenticated:
         return redirect('signin_url')
     user = Users.objects.get(id=user_id)
+    logged_in_user = request.user
     template_name = 'pixcoverapp/reviews.html'
     reviewed_user = get_object_or_404(Users, id=user_id)
     reviews = Review.objects.filter(reviewed_user=reviewed_user)
     total_rating = 0
     ave_rating = 0
+    category = Categories.objects.get(id=user.category)
     for review in reviews:
         total_rating += review.rating
     if reviews.count() > 0:
@@ -224,6 +257,8 @@ def reviewsView(request, user_id):
         'reviewed_user': reviewed_user,
         'ave_rating': ave_rating,
         'user': user,
+        'logged_in_user': logged_in_user,
+        'mycategory': category,
     }
     return render(request, template_name, context)
 
@@ -263,6 +298,22 @@ def deleteReviewView(request, review_id):
         review.delete()
         return redirect('reviews_url', user_id=review.reviewed_user.id)
     return render(request, template_name, {'review': review})
+
+def profileEditView(request):
+    if not request.user.is_authenticated:
+        return redirect('signin_url')
+    form = OrderForm()
+    if request.method == 'POST':
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('show_url')
+    template_name = 'pixcoverapp/profile-edit.html'
+    user = request.user
+    logged_in_user = request.user
+    category = Categories.objects.get(id=user.category)
+    context = {'form': form, 'logged_in_user': logged_in_user, 'user': user, 'mycategory': category}
+    return render(request, template_name, context)
 
 def profileSearchView(request):
     if not request.user.is_authenticated:
@@ -352,13 +403,22 @@ def profileDetailView(request, profile_id):
         return redirect('signin_url')
     print('user id:', request.user.id)
     print('profile id:', profile_id)
-    form = OrderForm()
-    profile = Users.objects.get(id=profile_id)
+    user = request.user
     if request.method == 'POST':
-        form = OrderForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('show_url')
+        connectionView(user.id, profile_id)
+    form = OrderForm()
+    profile = get_object_or_404(Users, id=profile_id)
+        # form = OrderForm(request.POST)
+        # if form.is_valid():
+        #     form.save()
+        #     return redirect('show_url')
+    category = get_object_or_404(Categories, id=profile.category)
     template_name = 'pixcoverapp/profile-visitor.html'
-    context = {'form': form, 'user': profile, 'logged_in_user': request.user}
+    is_connected = str(profile_id) in map(str, user.connections)
+    context = {'form': form, 
+               'user': profile, 
+               'logged_in_user': user, 
+               'mycategory': category, 
+               'is_connected': is_connected
+               }
     return render(request, template_name, context)

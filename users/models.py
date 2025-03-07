@@ -21,6 +21,7 @@ class Users(AbstractUser):
     skills = models.JSONField(default=list)
     category = models.IntegerField(default=0)
     description = models.CharField(max_length=5000, default="I am an organised, efficient and hard working person, and am willing to discover and accept new ideas which can be put into practice effectively. I am a good listener and learner, able to communicate well with a group and on an individual level. I am able to motivate and direct my talents and skills to meet objectives.")
+    connections = models.JSONField(default=list)
     followers = models.JSONField(default=list)
     following = models.JSONField(default=list)
     avatar = models.ImageField(upload_to='avatar/', default='avatar/sample.jpg')

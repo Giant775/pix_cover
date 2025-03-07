@@ -17,7 +17,7 @@
 
     <div class="pix-user-profile">
         <span class="user-profile-pic">
-        <img id="user-avatar-img" src="{{ MEDIA_URL }}{{user.avatar}}" alt="Img"></span>
+        <img id="user-avatar-img" src="{{ MEDIA_URL }}{{logged_in_user.avatar}}" alt="Img"></span>
         <ul class="pix-opt-lists">
             <li><a href="/profile-edit"><span class="pix-option-icon pix-icon-edit"></span> Profile</a></li>
             <li><a href="/profile-messenger"><span class="pix-option-icon pix-icon-delete"></span> Messages</a></li>

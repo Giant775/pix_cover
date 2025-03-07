@@ -2,52 +2,71 @@
 {% get_static_prefix as static_prefix %}
 {% load abcfilter %}
 
-<form method='post' enctype="multipart/form-data">
+<form method='POST' enctype="multipart/form-data">
     {%csrf_token%}
 
 
-    <input class="pix-form-control"  type="text" style="display:none" name="user_id" value="{{user.id}}">
-    <input class="pix-form-control"  type="text" style="display:none" name="is_file_upload" value="1">
-<div class="pix-profile-header">
-    <div class="profile-info">
-        <div class="profile-picture pictureUploadDone">
+    <!-- <input class="pix-form-control"  type="text"  name="user_id" value="{{user.id}}"> -->
+    <p>logged_in_user:{{logged_in_user.id}}</p>
+    <p>profile_id:{{user.id}}</p>
+    <p>is_connected:{{is_connected}}</p>
+    <!-- <input class="pix-form-control"  type="text" style="display:none" name="is_file_upload" value="1"> -->
+    <div class="pix-profile-header">
+        <div class="profile-info">
+            <div class="profile-picture pictureUploadDone">
 
-            <img id="display-img" class="profile-picture pictureUploadDone" style="top:-5px;" src="{{ MEDIA_URL }}{{user.avatar}}"/>
-            <div class="edit-opt">
-                <span class="pix-camera-icon"></span>
-                <span class="change-text">Change Photo</span>
-                <input type="file" class="fileType" name="profile_photo" id="img-input" />
+                <img id="display-img" class="profile-picture pictureUploadDone" style="top:-5px;" src="{{ MEDIA_URL }}{{user.avatar}}"/>
+                <div class="edit-opt">
+                    <span class="pix-camera-icon"></span>
+                    <span class="change-text">Change Photo</span>
+                    <input type="file" class="fileType" name="profile_photo" id="img-input" />
+                </div>
             </div>
-        </div>
-        <div class="profile-desc">
-            <div class="profile-title">
-                <!-- {% if error and error == 1 %} 
-                <h4 class="clr-red">{{ message }}</h4>
-            {% endif%}
-            {% if error and error == 2 %} 
-            <h4 >{{ message }}</h4>
-            {% endif%} -->
-                <h2 class="font-s40">{{user.fullname|getabname}}</h2>
-                <span class="profile-status"><span class="pix-verify-tick-icon-black"></span></span>
-                <span class="profile-rating flex-center">4.6 <i class="fas fa-star"></i></span>
+            <div class="profile-desc">
+                <div class="profile-title">
+                    <!-- {% if error and error == 1 %} 
+                    <h4 class="clr-red">{{ message }}</h4>
+                {% endif%}
+                {% if error and error == 2 %} 
+                <h4 >{{ message }}</h4>
+                {% endif%} -->
+                    <h2 class="font-s40">{{user.fullname|getabname}}</h2>
+                    <span class="profile-status"><span class="pix-verify-tick-icon-black"></span></span>
+                    <span class="profile-rating flex-center">4.6 <i class="fas fa-star"></i></span>
+                </div>
+                <!-- <span class="profile-designation">{{user.category|getcategoryname}}</span> -->
+                <span class="profile-designation">{{mycategory}}</span>
+                <span class="profile-location"><i class="fas fa-map-marker-alt"></i> {{user.location2}}, {{user.location1}}</span>
             </div>
-            <!-- <span class="profile-designation">{{user.category|getcategoryname}}</span> -->
-            <span class="profile-designation">{{mycategory}}</span>
-            <span class="profile-location"><i class="fas fa-map-marker-alt"></i> {{user.location2}}, {{user.location1}}</span>
-        </div>
 
-        <div class="profile-head-right">
-            {% if nav_title == "settings" or nav_title == "profile-edit"%}
-            <!-- <div class="pix-upload-button btn-h50"> -->
-                <button type="submit" class="pix-upload-button btn-h50"><span class="upload-btn-text">Upload</span></button>
-            <!-- </div> -->
-            {% elif nav_title == "connections" or nav_title == "profile-visitor" %} 
-            <a class="pix-btn btn-white btn-border" href="#"><span class="btn-text-normal">FOLLOW</span></a>
-            <a class="pix-btn btn-white btn-border active" href="#"><span class="btn-text-normal"><i class="far fa-paper-plane"></i> MESSAGE</span></a>
-            {%endif%}
+            <div class="profile-head-right">
+                <!-- <p>debug logged_in_user: {{ logged_in_user }}</p>
+                <p>debug user: {{ user }}</p> -->
+                {% if logged_in_user and logged_in_user == user %}
+                <button type="submit" class="pix-upload-button btn-h50">
+                    <span class="upload-btn-text">Upload</span>
+                </button>
+                {% else %} 
+                <!-- <a class="pix-btn btn-white btn-border" href="#">
+                    <span class="btn-text-normal">FOLLOW</span>
+                </a> -->
+                    {% if not is_connected %}
+                        <button type="submit" class="pix-btn btn-white btn-border"> Connect </button>
+                    {% endif %}
+                <a class="pix-btn btn-white btn-border active" href="#">
+                    <span class="btn-text-normal"><i class="far fa-paper-plane"></i> MESSAGE</span>
+                </a>
+                {% endif %}
+            
+                <!-- {% if nav_title == "settings" or nav_title == "profile-edit"%}
+                    <button type="submit" class="pix-upload-button btn-h50"><span class="upload-btn-text">Upload</span></button>
+                {% elif nav_title == "connections" or nav_title == "profile-visitor" %} 
+                <a class="pix-btn btn-white btn-border" href="#"><span class="btn-text-normal">FOLLOW</span></a>
+                <a class="pix-btn btn-white btn-border active" href="#"><span class="btn-text-normal"><i class="far fa-paper-plane"></i> MESSAGE</span></a>
+                {%endif%} -->
+            </div>
         </div>
     </div>
-</div>
 </form>
 
 <script>
