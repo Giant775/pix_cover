@@ -51,7 +51,8 @@
                     <span class="btn-text-normal">FOLLOW</span>
                 </a> -->
                     {% if not is_connected %}
-                        <button type="submit" class="pix-btn btn-white btn-border"> Connect </button>
+                        <!-- <button type="submit" class="pix-btn btn-white btn-border" id="connect_btn"> Connect </button> -->
+                        <button class="pix-btn btn-white btn-border" id="connect_btn"> Connect </button>
                     {% endif %}
                 <a class="pix-btn btn-white btn-border active" href="#">
                     <span class="btn-text-normal"><i class="far fa-paper-plane"></i> MESSAGE</span>
@@ -70,10 +71,31 @@
 </form>
 
 <script>
-const imgInput = document.querySelector("#img-input")
-const displayImg = document.querySelector("#display-img")
-imgInput.addEventListener('change',(event)=>{
-   const imgObject = event.target.files[0]
-   displayImg.src = URL.createObjectURL(imgObject)})
+    const imgInput = document.querySelector("#img-input")
+    const displayImg = document.querySelector("#display-img")
+    imgInput.addEventListener('change', (event)=>{
+    const imgObject = event.target.files[0]
+    displayImg.src = URL.createObjectURL(imgObject)})
+    
+    // Add event listener to the connect button
+    document.getElementById('connect_btn').addEventListener('click', (event) => {
+        // alert('connection button clicked')
+        // fetch('users/manage-connection', {
+        fetch('manage_connction_url', {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': getCookie('csrftoken'), //Required for POST in Django
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringfy({
+                logged_in_userid: '{{logged_in_user.id}}',
+                profile_userid: '{{user.id}}'
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert(data)
+        })
+    })
 
 </script>

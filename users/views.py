@@ -168,23 +168,26 @@ def settingsView(request):
         return render(request, template_name, {'countries': countries, 'error': error, 'message': message, 'user': user, 'categories': categories, 'skills': skills, 'mycategory': mycategory, 'logged_in_user': user})
     return render(request, template_name, {'countries': countries, 'user': exist, 'categories': categories, 'skills': skills, 'mycategory': mycategory, 'logged_in_user': logged_in_user})
 
-def registerConnectionView(origin_user_id, profile_user_id):
+def manageConnectionView(request):
     if origin_user_id == profile_user_id:
         return
-        
-    origin_user = Users.objects.get(id=origin_user_id)
-    profile_user = Users.objects.get(id=profile_user_id)
+    
+    # Manage connection request
+    if request.method == 'POST':
+        print('connction request:', request.body)
+    # origin_user = Users.objects.get(id=origin_user_id)
+    # profile_user = Users.objects.get(id=profile_user_id)
 
-    # Ensure connections are lists
-    if not isinstance(origin_user.connections, list):
-        origin_user.connections = []
-    if not isinstance(profile_user_id, list):
-        profile_user.connections = []
+    # # Ensure connections are lists
+    # if not isinstance(origin_user.connections, list):
+    #     origin_user.connections = []
+    # if not isinstance(profile_user_id, list):
+    #     profile_user.connections = []
 
-    # Add connection if not already added
-    if str(profile_user_id) not in map(str, origin_user.connections):
-        origin_user.connections.append(profile_user_id)
-        origin_user.save()
+    # # Add connection if not already added
+    # if str(profile_user_id) not in map(str, origin_user.connections):
+    #     origin_user.connections.append(profile_user_id)
+    #     origin_user.save()
 
 def connectionsView(request):
     if not request.user.is_authenticated:
@@ -433,8 +436,8 @@ def profileDetailView(request, profile_id):
     print('user id:', request.user.id)
     print('profile id:', profile_id)
     user = request.user
-    if request.method == 'POST':
-        registerConnectionView(user.id, profile_id)
+    # if request.method == 'POST':
+    #     registerConnectionView(user.id, profile_id)
     form = OrderForm()
     profile = get_object_or_404(Users, id=profile_id)
         # form = OrderForm(request.POST)

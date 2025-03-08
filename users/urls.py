@@ -8,6 +8,7 @@ urlpatterns = [
     path('settings/', views.settingsView, name='settings_url'),
     path('about/', views.aboutView, name='about_url'),
     path('connections/', views.connectionsView, name='connections_url'),
+    path('manage-connection/', views.manageConnectionView, name='manage_connction_url'),
     path('profile-edit/', views.profileEditView, name='profile_edit_url'),
     path('profile-detail/<int:profile_id>/about', views.aboutView, name='profile_detail_about_url'),
     path('profile-detail/<int:profile_id>', views.profileDetailView, name='profile_detail_url'),
