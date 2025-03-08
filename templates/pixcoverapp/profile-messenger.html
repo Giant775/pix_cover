@@ -1,4 +1,5 @@
 {% load static %}
+{% load custom_filters %}
 {% get_static_prefix as static_prefix %}
 {% include 'pixcoverapp/layout/profile_header.html' %}
 <body class="bg-gray">
@@ -54,91 +55,6 @@
                                 </div>
                                 <div class="msng-chat-info">
                                     <h3>Alivia Trubia</h3>
-                                    <p>Lorem ipsum dolor sit amet, consetetur…</p>
-                                </div>
-                                <div class="chat-edit-opt">
-                                    <span class="edit-dot"></span>
-                                    <ul class="pix-opt-lists">
-                                        <li><a href="#"><span class="pix-option-icon pix-icon-edit"></span> Go to profile</a></li>
-                                        <li><a href="#"><span class="pix-option-icon pix-icon-delete"></span> Delete</a></li>
-                                        <li><a href="#"><span class="pix-option-icon pix-icon-edit"></span> Report</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="msng-chat-nav-item">
-                                <div class="msng-chat-photo">
-                                    <div class="msng-chat-profile-img" style="background-image: url(./images/m-user-profile-img-03.png)"></div>
-                                </div>
-                                <div class="msng-chat-info">
-                                    <h3>Robert Polian</h3>
-                                    <p>Lorem ipsum dolor sit amet, consetetur…</p>
-                                </div>
-                                <div class="chat-edit-opt">
-                                    <span class="edit-dot"></span>
-                                    <ul class="pix-opt-lists">
-                                        <li><a href="#"><span class="pix-option-icon pix-icon-edit"></span> Go to profile</a></li>
-                                        <li><a href="#"><span class="pix-option-icon pix-icon-delete"></span> Delete</a></li>
-                                        <li><a href="#"><span class="pix-option-icon pix-icon-edit"></span> Report</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="msng-chat-nav-item">
-                                <div class="msng-chat-photo">
-                                    <div class="msng-chat-profile-img" style="background-image: url(./images/m-user-profile-img-04.png)"></div>
-                                </div>
-                                <div class="msng-chat-info">
-                                    <h3>Hertbrom Brown</h3>
-                                    <p>Lorem ipsum dolor sit amet, consetetur…</p>
-                                </div>
-                                <div class="chat-edit-opt">
-                                    <span class="edit-dot"></span>
-                                    <ul class="pix-opt-lists">
-                                        <li><a href="#"><span class="pix-option-icon pix-icon-edit"></span> Go to profile</a></li>
-                                        <li><a href="#"><span class="pix-option-icon pix-icon-delete"></span> Delete</a></li>
-                                        <li><a href="#"><span class="pix-option-icon pix-icon-edit"></span> Report</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="msng-chat-nav-item">
-                                <div class="msng-chat-photo">
-                                    <div class="msng-chat-profile-img" style="background-image: url(./images/m-user-profile-img-05.png)"></div>
-                                </div>
-                                <div class="msng-chat-info">
-                                    <h3>Cutia Malika</h3>
-                                    <p>Lorem ipsum dolor sit amet, consetetur…</p>
-                                </div>
-                                <div class="chat-edit-opt">
-                                    <span class="edit-dot"></span>
-                                    <ul class="pix-opt-lists">
-                                        <li><a href="#"><span class="pix-option-icon pix-icon-edit"></span> Go to profile</a></li>
-                                        <li><a href="#"><span class="pix-option-icon pix-icon-delete"></span> Delete</a></li>
-                                        <li><a href="#"><span class="pix-option-icon pix-icon-edit"></span> Report</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="msng-chat-nav-item">
-                                <div class="msng-chat-photo">
-                                    <div class="msng-chat-profile-img" style="background-image: url(./images/m-user-profile-img-06.png)"></div>
-                                </div>
-                                <div class="msng-chat-info">
-                                    <h3>Johan Tonbiam</h3>
-                                    <p>Lorem ipsum dolor sit amet, consetetur…</p>
-                                </div>
-                                <div class="chat-edit-opt">
-                                    <span class="edit-dot"></span>
-                                    <ul class="pix-opt-lists">
-                                        <li><a href="#"><span class="pix-option-icon pix-icon-edit"></span> Go to profile</a></li>
-                                        <li><a href="#"><span class="pix-option-icon pix-icon-delete"></span> Delete</a></li>
-                                        <li><a href="#"><span class="pix-option-icon pix-icon-edit"></span> Report</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="msng-chat-nav-item">
-                                <div class="msng-chat-photo">
-                                    <div class="    msng-chat-profile-img" style="background-image: url(./images/m-user-profile-img-07.png)"></div>
-                                </div>
-                                <div class="msng-chat-info">
-                                    <h3>Woela Fuenoana</h3>
                                     <p>Lorem ipsum dolor sit amet, consetetur…</p>
                                 </div>
                                 <div class="chat-edit-opt">
@@ -363,19 +279,29 @@
                         </div>
                     </div>
                     <div class="pix-msng-container">
-                        <div class="msng-chat-lists">
+                        <div class="msng-chat-lists"> <!--assume left column -->
                             <div class="msng-chat-search">
                                 <input class="pix-form-control" type="text" placeholder="Search users">
                             </div>
-                            <div class="msng-chat-navbar">
+                            <div class="msng-chat-navbar"> 
                                 <ul class="msng-chat-nav pix-custom-scrollbar">
-                                    <li class="msng-chat-nav-item">
+                                    {% for partner in chat_partners %}
+                                    <li class="msng-chat-nav-item"
+                                        onclick="window.location.href='{% url 'profile_messenger_partner_url' partner.id %}'">
                                         <div class="msng-chat-photo">
-                                            <div class="msng-chat-profile-img" style="background-image: url(./images/m-user-profile-img-01.png)"></div>
+                                            <div class="msng-chat-profile-img" style="background-image: url('{{MEDIA}}{{partner.avatar}}')"></div>
                                         </div>
                                         <div class="msng-chat-info">
-                                            <h3>Elana Rose</h3>
-                                            <p>Lorem ipsum dolor sit amet, consetetur…</p>
+                                            <h3>{{ partner.fullname }}</h3>
+                                            <p>
+                                                {% with last_msg=last_messages|get_item:partner.id %}
+                                                    {% if last_msg %}
+                                                        {{ last_msg.content|truncatewords:6 }}
+                                                    {% else %}
+                                                        No messages yet
+                                                    {% endif %}
+                                                {% endwith %}
+                                            </p>
                                         </div>
                                         <div class="chat-edit-opt">
                                             <span class="edit-dot"></span>
@@ -386,7 +312,10 @@
                                             </ul>
                                         </div>
                                     </li>
-                                    <li class="msng-chat-nav-item">
+                                    {% empty %}
+                                    <li> No recent conversations</li>
+                                    {% endfor %}
+                                    <!-- <li class="msng-chat-nav-item">
                                         <div class="msng-chat-photo">
                                             <div class="msng-chat-profile-img" style="background-image: url(./images/m-user-profile-img-02.png)"></div>
                                         </div>
@@ -402,112 +331,33 @@
                                                 <li><a href="#"><span class="pix-option-icon pix-icon-edit"></span> Report</a></li>
                                             </ul>
                                         </div>
-                                    </li>
-                                    <li class="msng-chat-nav-item">
-                                        <div class="msng-chat-photo">
-                                            <div class="msng-chat-profile-img" style="background-image: url(./images/m-user-profile-img-03.png)"></div>
-                                        </div>
-                                        <div class="msng-chat-info">
-                                            <h3>Robert Polian</h3>
-                                            <p>Lorem ipsum dolor sit amet, consetetur…</p>
-                                        </div>
-                                        <div class="chat-edit-opt">
-                                            <span class="edit-dot"></span>
-                                            <ul class="pix-opt-lists">
-                                                <li><a href="#"><span class="pix-option-icon pix-icon-edit"></span> Go to profile</a></li>
-                                                <li><a href="#"><span class="pix-option-icon pix-icon-delete"></span> Delete</a></li>
-                                                <li><a href="#"><span class="pix-option-icon pix-icon-edit"></span> Report</a></li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li class="msng-chat-nav-item">
-                                        <div class="msng-chat-photo">
-                                            <div class="msng-chat-profile-img" style="background-image: url(./images/m-user-profile-img-04.png)"></div>
-                                        </div>
-                                        <div class="msng-chat-info">
-                                            <h3>Hertbrom Brown</h3>
-                                            <p>Lorem ipsum dolor sit amet, consetetur…</p>
-                                        </div>
-                                        <div class="chat-edit-opt">
-                                            <span class="edit-dot"></span>
-                                            <ul class="pix-opt-lists">
-                                                <li><a href="#"><span class="pix-option-icon pix-icon-edit"></span> Go to profile</a></li>
-                                                <li><a href="#"><span class="pix-option-icon pix-icon-delete"></span> Delete</a></li>
-                                                <li><a href="#"><span class="pix-option-icon pix-icon-edit"></span> Report</a></li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li class="msng-chat-nav-item">
-                                        <div class="msng-chat-photo">
-                                            <div class="msng-chat-profile-img" style="background-image: url(./images/m-user-profile-img-05.png)"></div>
-                                        </div>
-                                        <div class="msng-chat-info">
-                                            <h3>Cutia Malika</h3>
-                                            <p>Lorem ipsum dolor sit amet, consetetur…</p>
-                                        </div>
-                                        <div class="chat-edit-opt">
-                                            <span class="edit-dot"></span>
-                                            <ul class="pix-opt-lists">
-                                                <li><a href="#"><span class="pix-option-icon pix-icon-edit"></span> Go to profile</a></li>
-                                                <li><a href="#"><span class="pix-option-icon pix-icon-delete"></span> Delete</a></li>
-                                                <li><a href="#"><span class="pix-option-icon pix-icon-edit"></span> Report</a></li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li class="msng-chat-nav-item">
-                                        <div class="msng-chat-photo">
-                                            <div class="msng-chat-profile-img" style="background-image: url(./images/m-user-profile-img-06.png)"></div>
-                                        </div>
-                                        <div class="msng-chat-info">
-                                            <h3>Johan Tonbiam</h3>
-                                            <p>Lorem ipsum dolor sit amet, consetetur…</p>
-                                        </div>
-                                        <div class="chat-edit-opt">
-                                            <span class="edit-dot"></span>
-                                            <ul class="pix-opt-lists">
-                                                <li><a href="#"><span class="pix-option-icon pix-icon-edit"></span> Go to profile</a></li>
-                                                <li><a href="#"><span class="pix-option-icon pix-icon-delete"></span> Delete</a></li>
-                                                <li><a href="#"><span class="pix-option-icon pix-icon-edit"></span> Report</a></li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li class="msng-chat-nav-item">
-                                        <div class="msng-chat-photo">
-                                            <div class="    msng-chat-profile-img" style="background-image: url(./images/m-user-profile-img-07.png)"></div>
-                                        </div>
-                                        <div class="msng-chat-info">
-                                            <h3>Woela Fuenoana</h3>
-                                            <p>Lorem ipsum dolor sit amet, consetetur…</p>
-                                        </div>
-                                        <div class="chat-edit-opt">
-                                            <span class="edit-dot"></span>
-                                            <ul class="pix-opt-lists">
-                                                <li><a href="#"><span class="pix-option-icon pix-icon-edit"></span> Go to profile</a></li>
-                                                <li><a href="#"><span class="pix-option-icon pix-icon-delete"></span> Delete</a></li>
-                                                <li><a href="#"><span class="pix-option-icon pix-icon-edit"></span> Report</a></li>
-                                            </ul>
-                                        </div>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </div>
                         </div>
-                        <div class="msng-chat-conversation">
+                        <div class="msng-chat-conversation"> <!--assume right column -->
                             <div class="chat-conv-lists pix-custom-scrollbar">
-                                <div class="chat-conv-row chat-receiver">
+                                {% for message in messages %}
+                                <div class="chat-conv-row {% if message.sender == logged_in_user %}chat-sender{% else %}chat-receiver{% endif %}">
                                     <div class="chat-conv-lists-item">
-                                        <div class="chat-conv-list-photo" style="background-image: url(./images/m-user-profile-img-01.png)"></div>
+                                        <div class="chat-conv-list-photo" style="background-image: url({{ message.sender.avatar }})"></div>
                                         <div class="chat-conv-list-desc">
                                             <div class="chat-conv-title">
-                                                <span class="chat-conv-name">Elana Rose</span>
-                                                <span class="chat-conv-date">Apr 03, 2022, 2:05 AM</span>
+                                                <span class="chat-conv-name">{{ message.sender.fullname }}</span>
+                                                <span class="chat-conv-date">{{ message.timestamp }}</span>
                                                 <span class="chat-conv-report">Report</span>
                                             </div>
-                                            <span class="chat-conv-text">Lorem ipsum dolor sit amet, consetetur</span>
+                                            <span class="chat-conv-text">{{ message.content }}</span>
+                                            {% if message.file %}
+                                                <br><a href="{{ messsage.file.url }}">Download File</a>
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="chat-conv-row chat-sender">
+                                {% empty %}
+                                <p>No messages yet. Start the conversation!</p>
+                                {% endfor %}
+                                <!-- <div class="chat-conv-row chat-sender">
                                     <div class="chat-conv-lists-item">
                                         <div class="chat-conv-list-photo" style="background-image: url(./images/m-user-profile-img-03.png)"></div>
                                         <div class="chat-conv-list-desc">
@@ -545,116 +395,7 @@
                                             <span class="chat-conv-text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr</span>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="chat-conv-row chat-receiver">
-                                    <div class="chat-conv-lists-item">
-                                        <div class="chat-conv-list-photo" style="background-image: url(./images/m-user-profile-img-01.png)"></div>
-                                        <div class="chat-conv-list-desc">
-                                            <div class="chat-conv-title">
-                                                <span class="chat-conv-name">Elana Rose</span>
-                                                <span class="chat-conv-date">Apr 03, 2022, 2:05 AM</span>
-                                                <span class="chat-conv-report">Report</span>
-                                            </div>
-                                            <span class="chat-conv-text">Lorem ipsum dolor sit amet, consetetur</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="chat-conv-row chat-sender">
-                                    <div class="chat-conv-lists-item">
-                                        <div class="chat-conv-list-photo" style="background-image: url(./images/m-user-profile-img-03.png)"></div>
-                                        <div class="chat-conv-list-desc">
-                                            <div class="chat-conv-title">
-                                                <span class="chat-conv-name">Alain Bro</span>
-                                                <span class="chat-conv-date">Apr 03, 2022, 2:05 AM</span>
-                                            </div>
-                                            <span class="chat-conv-text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="chat-conv-row chat-receiver">
-                                    <div class="chat-conv-lists-item">
-                                        <div class="chat-conv-list-photo" style="background-image: url(./images/m-user-profile-img-01.png)"></div>
-                                        <div class="chat-conv-list-desc">
-                                            <div class="chat-conv-title">
-                                                <span class="chat-conv-name">Elana Rose</span>
-                                                <span class="chat-conv-date">Apr 03, 2022, 2:05 AM</span>
-                                                <span class="chat-conv-report">Report</span>
-                                            </div>
-                                            <span class="chat-conv-text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="chat-conv-row chat-sender">
-                                    <div class="chat-conv-lists-item">
-                                        <div class="chat-conv-list-photo" style="background-image: url(./images/m-user-profile-img-03.png)"></div>
-                                        <div class="chat-conv-list-desc">
-                                            <div class="chat-conv-title">
-                                                <span class="chat-conv-name">Alain Bro</span>
-                                                <span class="chat-conv-date">Apr 03, 2022, 2:05 AM</span>
-                                            </div>
-                                            <span class="chat-conv-text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="chat-conv-row chat-receiver">
-                                    <div class="chat-conv-lists-item">
-                                        <div class="chat-conv-list-photo" style="background-image: url(./images/m-user-profile-img-01.png)"></div>
-                                        <div class="chat-conv-list-desc">
-                                            <div class="chat-conv-title">
-                                                <span class="chat-conv-name">Elana Rose</span>
-                                                <span class="chat-conv-date">Apr 03, 2022, 2:05 AM</span>
-                                                <span class="chat-conv-report">Report</span>
-                                            </div>
-                                            <span class="chat-conv-text">Lorem ipsum dolor sit amet, consetetur</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="chat-conv-row chat-sender">
-                                    <div class="chat-conv-lists-item">
-                                        <div class="chat-conv-list-photo" style="background-image: url(./images/m-user-profile-img-03.png)"></div>
-                                        <div class="chat-conv-list-desc">
-                                            <div class="chat-conv-title">
-                                                <span class="chat-conv-name">Alain Bro</span>
-                                                <span class="chat-conv-date">Apr 03, 2022, 2:05 AM</span>
-                                            </div>
-                                            <span class="chat-conv-text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="chat-conv-row chat-receiver">
-                                    <div class="chat-conv-lists-item">
-                                        <div class="chat-conv-list-photo" style="background-image: url(./images/m-user-profile-img-01.png)"></div>
-                                        <div class="chat-conv-list-desc">
-                                            <div class="chat-conv-title">
-                                                <span class="chat-conv-name">Elana Rose</span>
-                                                <span class="chat-conv-date">Apr 03, 2022, 2:05 AM</span>
-                                                <span class="chat-conv-report">Report</span>
-                                            </div>
-                                            <span class="chat-conv-text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="chat-conv-row chat-sender">
-                                    <div class="chat-conv-lists-item">
-                                        <div class="chat-conv-list-photo" style="background-image: url(./images/m-user-profile-img-03.png)"></div>
-                                        <div class="chat-conv-list-desc">
-                                            <div class="chat-conv-title">
-                                                <span class="chat-conv-name">Alain Bro</span>
-                                                <span class="chat-conv-date">Apr 03, 2022, 2:05 AM</span>
-                                            </div>
-                                            <span class="chat-conv-text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr</span>
-                                        </div>
-                                    </div>
-                                </div>
-
+                                </div> -->
                             </div>
                             <div class="msg-chat-footer">
                                 <span class="chat-attached-icon"></span>

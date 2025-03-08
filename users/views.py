@@ -168,7 +168,7 @@ def settingsView(request):
         return render(request, template_name, {'countries': countries, 'error': error, 'message': message, 'user': user, 'categories': categories, 'skills': skills, 'mycategory': mycategory, 'logged_in_user': user})
     return render(request, template_name, {'countries': countries, 'user': exist, 'categories': categories, 'skills': skills, 'mycategory': mycategory, 'logged_in_user': logged_in_user})
 
-def connectionView(origin_user_id, profile_user_id):
+def registerConnectionView(origin_user_id, profile_user_id):
     if origin_user_id == profile_user_id:
         return
         
@@ -185,11 +185,40 @@ def connectionView(origin_user_id, profile_user_id):
     if str(profile_user_id) not in map(str, origin_user.connections):
         origin_user.connections.append(profile_user_id)
         origin_user.save()
+
+def connectionsView(request):
+    if not request.user.is_authenticated:
+        return redirect('signin_url')
+    connected_users = []
+    all_users = Users.objects.all()
+    logged_in_user = request.user
+    user = request.user
+    categories = Categories.objects.all()
+    for each_user in all_users:
+        if int(each_user.id) in user.connections:
+            for category in categories:
+                print('category.id:', category.id)
+                print('each_user.category:', each_user.category)
+                if category.id == each_user.category:
+                    each_user.category = category.category
+            connected_users.append(each_user)
+    # form = OrderForm()
+    # if request.method == 'POST':
+    #     form = OrderForm(request.POST)
+    #     if form.is_valid():
+    #         form.save()
+    #         return redirect('show_url')
+    template_name = 'pixcoverapp/connections.html'
+    context = {
+        'connected_users': connected_users,
+        'logged_in_user': logged_in_user,
+    }
+    return render(request, template_name, context)
         
 
-    if str(origin_user_id) not in map(str, profile_user.connections):
-        profile_user.connections.append(origin_user_id)
-        profile_user.save()
+    # if str(origin_user_id) not in map(str, profile_user.connections):
+    #     profile_user.connections.append(origin_user_id)
+    #     profile_user.save()
 
 
 def aboutView(request, profile_id = None):
@@ -405,7 +434,7 @@ def profileDetailView(request, profile_id):
     print('profile id:', profile_id)
     user = request.user
     if request.method == 'POST':
-        connectionView(user.id, profile_id)
+        registerConnectionView(user.id, profile_id)
     form = OrderForm()
     profile = get_object_or_404(Users, id=profile_id)
         # form = OrderForm(request.POST)

@@ -4,9 +4,8 @@
 
 
 <div class="profile-navbar">
-    <!-- <p>user debsdsfug: {{ user.id }}</p> -->
-     <!-- <p>request user id: {{ logged_in_user.id }}</p>
-     <p>profile user id: {{ user.id }}</p> -->
+     <p>request user id: {{ logged_in_user.id }}</p>
+     <p>profile user id: {{ user.id }}</p>
     <ul id="scrollContainer" class="page-navbar pix-nav-border-bottom scroll-container">
         {% if nav_title == 'profile-edit' %} <li class="active"><a href="/users/profile-search">Portfolio</a></li> {%endif%}
             <li class="{% if nav_title == 'settings' %} active {%endif%}"><a href="/users/settings">Work</a></li>
@@ -19,7 +18,9 @@
         <!-- <li class="{% if nav_title == 'about' %} active {%endif%}"><a href="/users/about">About</a></li> -->
         <!-- <li class="{% if nav_title == 'reviews' %} active {%endif%}"><a href="/reviews">Reviews</a></li> -->
         <li class="{% if nav_title == 'reviews' %} active {%endif%}"><a href="{% url 'reviews_url' user.id %}">Reviews</a></li>
-        <li class="{% if nav_title == 'connections' %} active {%endif%}"><a href="/connections">Connetions</a></li>
+        {% if not logged_in_user or not user or logged_in_user.id == user.id %}
+        <li class="{% if nav_title == 'connections' %} active {%endif%}"><a href="/users/connections">Connetions</a></li>
+        {% endif %}
         <li class="{% if nav_title == 'stats' %} active {%endif%}"><a href="/stats">Stats</a></li>
     </ul>
 </div>

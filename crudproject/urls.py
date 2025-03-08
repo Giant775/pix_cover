@@ -24,6 +24,7 @@ urlpatterns = [
     path('', include('pixcoverapp.urls')), # landing page
     path('admin/', admin.site.urls),
     path('users/', include('users.urls')), #User authentication and profiles
+    path('profile-messenger/', include('messaging.urls')),
     # path('jobs/', include('jobs.urls')), #Job postings and search
     # path('connections/', include('connections.urls')), #User connections
     # path('messaging/', include('messaging.urls')), #Messaging

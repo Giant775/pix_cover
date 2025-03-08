@@ -124,8 +124,15 @@
                                                 <div class="pix-profile-src-item pix-profile-img-item">
                                                     <div class="pix-profile-cover-img loading pix-lazyload-img">
                                                         <span class="photo-mask"></span>
-                                                        <img class="lazyload" src="{{ MEDIA_URL }}{{user_list.avatar}}" width="800" height="500" alt="Images">
-                                                        <div class="pix-profile-photo" style="background-image: url({{ MEDIA_URL }}{{user_list.avatar}});"></div>
+                                                        <!-- <img class="lazyload" src="{{ MEDIA_URL }}{{user_list.avatar}}" width="800" height="500" alt="Images">
+                                                        <div class="pix-profile-photo" style="background-image: url({{ MEDIA_URL }}{{user_list.avatar}});"></div> -->
+                                                        {% if user_list.avatar %}
+                                                            <img class="lazyload" src="{{ MEDIA_URL }}{{ user_list.avatar }}" width="800" height="500" alt="User Avatar">
+                                                            <div class="pix-profile-photo" style="background-image: url('{{ MEDIA_URL }}{{ user_list.avatar }}');"></div>
+                                                        {% else %}
+                                                            <img class="lazyload" src="{{ MEDIA_URL }}default-avatar.jpg" width="800" height="500" alt="Default Avatar">
+                                                            <div class="pix-profile-photo" style="background-image: url('{{ MEDIA_URL }}default-avatar.jpg');"></div>
+                                                        {% endif %}
                                                     </div>
                                                     <div class="pix-profile-src-desc">
                                                         <h4 class="profile-name">{{user_list.fullname|getabname}}<span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>

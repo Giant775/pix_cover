@@ -51,29 +51,36 @@
                     </div>
 
                     {% with profile5=static_prefix|add:'images/user-profile-img-5.png' profile4=static_prefix|add:'images/user-profile-img-4.png' profile3=static_prefix|add:'images/user-profile-img-3.png' profile1=static_prefix|add:'images/user-profile-img.png' profile2=static_prefix|add:'images/user-profile-img-2.png'  %}
+                    <p>connected users: {{connected_users}}</p>
                     <div class="connection-page-content">
                         <div class="pix-src-content">
                             <div class="pix-post-container">
                                 <div id="pixProfileFollowers" class="pix-tab-content pix-collapse pix-show">
                                     <div class="pix-profile-src-block pix-row">
+                                        {% for connected_user in connected_users %}
                                         <div class="pix-col-3 profile-src-col">
                                             <div class="pix-profile-src-item pix-profile-img-item">
                                                 <div class="pix-profile-cover-img loading pix-lazyload-img">
                                                     <span class="photo-mask"></span>
-                                                    <img class="lazyload" src="{% static 'images/profile-cover-img-01.jpg' %}" width="800" height="500" alt="Images">
-                                                    <div class="pix-profile-photo" style="background-image: url({{profile2}});"></div> 
+                                                    {% if connected_user.avatar %}
+                                                        <img class="lazyload" src="{{ MEDIA_URL }}{{ connected_user.avatar }}" width="800" height="500" alt="User Avatar">
+                                                        <div class="pix-profile-photo" style="background-image: url('{{ MEDIA_URL }}{{ connected_user.avatar }}');"></div>
+                                                    {% else %}
+                                                        <img class="lazyload" src="{{ MEDIA_URL }}default-avatar.jpg" width="800" height="500" alt="Default Avatar">
+                                                        <div class="pix-profile-photo" style="background-image: url('{{ MEDIA_URL }}default-avatar.jpg');"></div>
+                                                    {% endif %}
                                                 </div>
                                                 <div class="pix-profile-src-desc">
-                                                    <h4 class="profile-name">Alexa P. <span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
-                                                    <span class="profile-title">Model</span>
+                                                    <h4 class="profile-name">{{connected_user.fullname}} <span class="pix-verify-icon pix-verify-tick-icon-black pix_loading_hidden"></span></h4>
+                                                    <span class="profile-title">{{connected_user.category}}</span>
                                                 </div>
                                                 <div class="pix-profile-src-foot">
-                                                    <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
+                                                    <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="{% url 'profile_detail_url' connected_user.id %}"><span class="pix-btn-text">Profile</span></a>
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <div class="pix-col-3 profile-src-col">
+                                        {% endfor %}
+                                        <!-- <div class="pix-col-3 profile-src-col">
                                             <div class="pix-profile-src-item">
                                                 <div class="pix-profile-cover-img loading pix-lazyload-img">
                                                     <span class="photo-mask"></span>
@@ -737,7 +744,7 @@
                                                     <a class="pix-btn btn-white btn-border btn-h60 pix_loading_hidden" href="#"><span class="pix-btn-text">Profile</span></a>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             </div>
